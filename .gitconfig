@@ -1,0 +1,24 @@
+[user]
+	name = Pablo Aguiar
+	email = scorphus@gmail.com
+[color]
+  ui = true
+[color "branch"]
+  current = yellow black
+  local = yellow bold
+  remote = magenta bold
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+  whitespace = red bold reverse
+[color "status"]
+  added = green bold
+  changed = red bold
+  untracked = yellow bold
+  branch = cyan bold reverse
+[diff]
+  tool = meld
+[core]
+  editor = vim
