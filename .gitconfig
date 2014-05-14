@@ -2,23 +2,33 @@
 	name = Pablo Aguiar
 	email = scorphus@gmail.com
 [color]
-  ui = true
+	ui = true
 [color "branch"]
-  current = yellow black
-  local = yellow bold
-  remote = magenta bold
+	current = yellow black
+	local = yellow bold
+	remote = magenta bold
 [color "diff"]
-  meta = yellow bold
-  frag = magenta bold
-  old = red bold
-  new = green bold
-  whitespace = red bold reverse
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace = red bold reverse
 [color "status"]
-  added = green bold
-  changed = red bold
-  untracked = yellow bold
-  branch = cyan bold reverse
+	added = green bold
+	changed = red bold
+	untracked = yellow bold
+	branch = cyan bold reverse
 [diff]
-  tool = meld
+	tool = meld
 [core]
-  editor = vim
+	editor = vim
+[alias]
+	co = checkout
+	st = status
+	ss = stash
+	df = diff
+	ds = diff --staged
+	ll = log --all --graph --decorate --abbrev-commit
+	lo = log --all --graph --decorate --abbrev-commit --oneline
+	commitam = commit --amend
+	commitamn = commit --amend --no-edit
