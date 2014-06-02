@@ -1,0 +1,21 @@
+#!/bin/bash
+#
+# An example hook script to prepare a packed repository for use over
+# dumb transports.
+#
+# To enable this hook, rename this file to "post-update".
+ 
+branch=$(git rev-parse --symbolic --abbrev-ref $1) || { cd /var/www/pub ; env -i git checkout --force master ; exit 0; }
+ 
+echo Atualizando branch $branch ...
+ 
+cd /var/www/pub
+env -i git fetch -p teste && echo Remote teste atualizado ...
+env -i git checkout --force master && echo Checkout de master ...
+if [[ $branch == 'master' ]] ; then
+        env -i git pull --force teste $branch && echo Branch $branch atualizado!
+        exit 0
+fi
+env -i git branch -D $branch && echo Branch $branch deletado ...
+env -i git checkout --force $branch && echo Checkout de $branch ...
+env -i git pull --force teste $branch && echo Branch $branch atualizado!
