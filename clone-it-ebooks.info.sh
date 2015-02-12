@@ -3,25 +3,18 @@ mkdir dump html images pdf
 for (( i=$1;i<=$2;i++ ));do
         lynx -source http://it-ebooks.info/book/$i >site.html
         lynx -dump site.html >site.txt
-        LINK=`grep go.php site.txt | awk '{print $NF}' | awk -F\/ '{print "http://www.it-ebooks.info/" $NF}'`
-        NOME=`grep "QR code" site.txt | sed "s/   QR code - //g" | sed "s/\//-/g" | sed "s/ /_/g"`
-        DOWN=`echo $LINK|awk -F\/ '{print $NF}'`
-        #|egrep "go.php|QR code"|sed "s/QR code - //g"
+        LINK_PDF=`grep '<tr><td>Download:' site.html | awk -F"'" '{print $2}'`
+        LINK_IMG=`grep 'src="/images/ebooks/' site.html |awk -F\= '{print $2}'|awk -F\" '{print$2}'`
+        PUBLISHER=`grep 'Publisher:' site.txt | awk -F']' '{print $2}' | sed -e 's/[^[:alnum:]]/_/g' | tr -s '_'`
+        NOME=`grep "QR code" site.txt | sed "s/   QR code - //g" | sed -e 's/[^[:alnum:]]/_/g' | tr -s '_'`
+        mv site.html html/"${NOME}.html"
+        mv site.txt dump/"${NOME}_${i}.html"
         if [ "$NOME" != "" ];then
-                mv site.html html/"${NOME}.html"
-                echo "html/${NOME}.html"
-                LINKIMG=`grep 'src="/images/ebooks/' html/"${NOME}.html" |awk -F\= '{print $2}'|awk -F\" '{print$2}'`
-                echo "$LINKIMG"
-                cd imagens
-                wget -c http://www.it-ebooks.info/${LINKIMG}
+                echo "Baixando $i - $NOME.pdf"
+                cd images
+                wget -c http://www.it-ebooks.info/${LINK_IMG}
                 cd ..
-        fi
-        if [ ! -f pdf/"${NOME}_${i}.pdf" ] && [ "$NOME" != "" ];then
-                echo "Baixando $i -  $NOME.pdf"
-                wget $LINK #2>baixando.wget
-                mv $DOWN pdf/"${NOME}_${i}.pdf" 
-                mv site.txt dump/"${NOME}_${i}.html"
-        else
-                echo "Ja temos ${NOME}_$i ou o livro ainda nao existe"
+                mkdir "pdf/${PUBLISHER}"
+                wget -c $LINK_PDF --referer=http://it-ebooks.info/book/$i -O "pdf/${PUBLISHER}/${NOME}_${i}.pdf"
         fi
 done
