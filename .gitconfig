@@ -22,6 +22,7 @@
 	tool = meld
 [core]
 	editor = vim
+	excludesfile = /home/scorphus/.gitignore-global
 [alias]
 	br = branch
 	co = checkout
@@ -32,9 +33,9 @@
 	ds = diff --staged
 	ll = log --all --graph --decorate --abbrev-commit
 	lo = log --all --graph --decorate --abbrev-commit --oneline
-	lg = log --color --graph --decorate --abbrev-commit --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"
-	lpa = log -25 --all --graph --decorate --abbrev-commit --date=relative --pretty=format:"%C(auto)%h%C(red)%x09%ae%C(green)%x09%ad%C(white)%x09%s%C(auto)%d"
-	lpaa = log --all --graph --decorate --abbrev-commit --date=relative --pretty=format:"%C(auto)%h%C(red)%x09%ae%C(green)%x09%ad%C(white)%x09%s%C(auto)%d"
+	lg = log --color --graph --decorate --abbrev-commit --pretty=format:'%C(bold red)%h%Creset -%C(bold yellow)%d%Creset %s %C(bold green)(%cr) %C(bold blue)<%an>%Creset'
+	lpa = log -25 --all --graph --decorate --abbrev-commit --date=relative --pretty=format:'%C(bold yellow)%h%C(bold red)%x09%ae%C(bold green)%x09%ad%C(reset)%x09%s%C(auto)%d'
+	lpaa = log --all --graph --decorate --abbrev-commit --date=relative --pretty=format:'%C(bold yellow)%h%C(bold red)%x09%ae%C(bold green)%x09%ad%C(reset)%x09%s%C(auto)%d'
 	cvp = commit -vp
 	cvpa = commit -vp --amend
 	cam = commit --amend
