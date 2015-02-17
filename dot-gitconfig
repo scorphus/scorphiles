@@ -23,12 +23,21 @@
 [core]
 	editor = vim
 [alias]
+	br = branch
 	co = checkout
+	cc = checkout
 	st = status
 	ss = stash
 	df = diff
 	ds = diff --staged
 	ll = log --all --graph --decorate --abbrev-commit
 	lo = log --all --graph --decorate --abbrev-commit --oneline
+	lg = log --color --graph --decorate --abbrev-commit --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"
+	lpa = log -25 --all --graph --decorate --abbrev-commit --date=relative --pretty=format:"%C(auto)%h%C(red)%x09%ae%C(green)%x09%ad%C(white)%x09%s%C(auto)%d"
+	lpaa = log --all --graph --decorate --abbrev-commit --date=relative --pretty=format:"%C(auto)%h%C(red)%x09%ae%C(green)%x09%ad%C(white)%x09%s%C(auto)%d"
+	cvp = commit -vp
+	cvpa = commit -vp --amend
 	cam = commit --amend
 	camn = commit --amend --no-edit
+	pufum = pull --ff-only upstream master
+	pufom = pull --ff-only origin master
