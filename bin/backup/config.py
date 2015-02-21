@@ -2,9 +2,9 @@
 'Arquivo com diretivas de configuração para scripts de backup e restauração'
 
 __author__ = 'Pablo Santiago Blum de Aguiar <pablo.aguiar@gmail.com>'
-__copyright__ = 'Copyright (c) 2010 Blum-Aguiar'
-__license__ = '''Copyright (c) 2010 Blum-Aguiar
-Copyright (c) 2010 Pablo Santiago Blum de Aguiar <pablo.aguiar@gmail.com>
+__copyright__ = 'Copyright (c) 2008 Blum-Aguiar'
+__license__ = '''Copyright (c) 2008 Blum-Aguiar
+Copyright (c) 2008 Pablo Santiago Blum de Aguiar <pablo.aguiar@gmail.com>
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
