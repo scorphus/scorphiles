@@ -1,0 +1,31 @@
+"*":
+  "exception-reporting":
+    userId: "d24ef4b7-6a7d-3309-812a-0a167cfde57c"
+  welcome:
+    showOnStartup: false
+  metrics: false
+  editor:
+    invisibles: {}
+    showInvisibles: true
+    fontSize: 12
+    tabLength: 4
+    scrollSensitivity: 60
+    showIndentGuide: true
+  core:
+    autoHideMenuBar: true
+    ignoredNames: [
+      "*.pyc"
+      "*.*~"
+    ]
+    themes: [
+      "seti-ui"
+      "seti-syntax"
+    ]
+    disabledPackages: [
+      "highlight-line"
+    ]
+  "linter-flake8":
+    ignoreErrorCodes: [
+      "E501"
+    ]
+  linter: {}
