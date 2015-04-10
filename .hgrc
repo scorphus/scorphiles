@@ -1,3 +1,36 @@
 # Mercurial configuration file
+# http://www.selenic.com/mercurial/hgrc.5.html
+
+# http://www.selenic.com/mercurial/hgrc.5.html#ui
 [ui]
 username = Pablo Santiago Blum de Aguiar <scorphus@gmail.com>
+editor = vim
+merge = meld
+
+# http://mercurial.selenic.com/wiki/UsingExtensions
+[extensions]
+color=
+graphlog=
+histedit=
+pager=
+progress=
+rebase=
+transplant=
+
+# http://mercurial.selenic.com/wiki/PagerExtension
+[pager]
+pager = LESS='FRX' less -d
+quite = True
+attend = annotate, cat, diff, export, qlog, log, qdiff
+
+# http://www.selenic.com/mercurial/hgrc.5.html#diff
+[diff]
+git = 1
+showfunc = 1
+unified = 8
+
+# http://www.selenic.com/mercurial/hgrc.5.html#defaults
+[defaults]
+commit = -v
+qnew = -Ue
+log = -G
