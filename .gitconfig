@@ -39,7 +39,10 @@
 	lpp = log --graph --decorate --abbrev-commit --date=relative --pretty=format:'%C(bold yellow)%h%C(bold red)%x09%ae%x3B%G?%C(bold green)%x09%ad%C(reset)%x09%s%C(auto)%d'
 	lpa = log -25 --all --graph --decorate --abbrev-commit --date=relative --pretty=format:'%C(bold yellow)%h%C(bold red)%x09%ae%x3B%G?%C(bold green)%x09%ad%C(reset)%x09%s%C(auto)%d'
 	lpaa = log --all --graph --decorate --abbrev-commit --date=relative --pretty=format:'%C(bold yellow)%h%C(bold red)%x09%ae%x3B%G?%C(bold green)%x09%ad%C(reset)%x09%s%C(auto)%d'
+	lpd = log --graph --decorate --abbrev-commit --date=short --pretty=format:'%C(bold yellow)%h%C(bold red)%x09%ae%x3B%G?%C(bold green)%x09%ad%C(reset)%x20%s%C(auto)%d'
 	lpad = log --all --graph --decorate --abbrev-commit --date=short --pretty=format:'%C(bold yellow)%h%C(bold red)%x09%ae%x3B%G?%C(bold green)%x09%ad%C(reset)%x20%s%C(auto)%d'
+	lpr = log --reverse --decorate --abbrev-commit --date=short --pretty=format:'%C(bold yellow)%h%C(bold red)%x09%ae%x3B%G?%C(bold green)%x09%ad%C(reset)%x20%s%C(auto)%d'
+	lpra = log --all --reverse --decorate --abbrev-commit --date=short --pretty=format:'%C(bold yellow)%h%C(bold red)%x09%ae%x3B%G?%C(bold green)%x09%ad%C(reset)%x20%s%C(auto)%d'
 	cvp = commit -vp
 	cvpa = commit -vp --amend
 	cam = commit --amend
