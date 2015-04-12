@@ -1,6 +1,9 @@
 [user]
 	name = Pablo Santiago Blum de Aguiar
 	email = scorphus@gmail.com
+	signingkey = AAE6400E
+[commit]
+	gpgsign = true
 [color]
 	ui = true
 [color "branch"]
