@@ -25,7 +25,7 @@
 	tool = meld
 [core]
 	editor = vim
-	excludesfile = /home/scorphus/.gitignore-global
+	excludesfile = ~/.gitignore-global
 [alias]
 	br = branch
 	co = checkout

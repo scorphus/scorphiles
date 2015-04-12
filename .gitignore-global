@@ -43,3 +43,6 @@ Thumbs.db
 *.swp
 
 .venv
+
+# ~/.gitignore-global test
+*.ignore-ignore-me-do
