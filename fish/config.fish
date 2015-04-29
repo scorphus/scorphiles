@@ -16,5 +16,9 @@ set fish_plugins bundler emoji-clock gem gi node osx peco python rvm sublime the
 set PROJECT_HOME $HOME/Workspace
 eval (python -m virtualfish auto_activation compat_aliases global_requirements projects)
 
+# Go
+set -x GOPATH $HOME/gocode
+set -x PATH $PATH $GOPATH/bin
+
 # Load oh-my-fish configuration.
 . $fish_path/oh-my-fish.fish
