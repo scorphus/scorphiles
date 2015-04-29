@@ -13,7 +13,7 @@ set fish_plugins bundler emoji-clock gem gi node osx peco python rvm sublime the
 #set fish_custom $HOME/dotfiles/oh-my-fish
 
 # virtualfish
-set -g PROJECT_HOME $HOME/Workspace
+set PROJECT_HOME $HOME/Workspace
 eval (python -m virtualfish auto_activation compat_aliases global_requirements projects)
 
 # Load oh-my-fish configuration.
