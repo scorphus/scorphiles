@@ -1,0 +1,37 @@
+{
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Anaconda",
+		"Better CoffeeScript",
+		"Colorsublime",
+		"Djaneiro",
+		"Emmet",
+		"fish-shell",
+		"Flask Completions",
+		"Git",
+		"GitGutter",
+		"Insert Nums",
+		"JavaScript Snippets",
+		"LineEndings",
+		"Package Control",
+		"Pytest Snippets",
+		"Python Nose Testing Snippets",
+		"Python PEP8 Autoformat",
+		"R-snippets",
+		"Sass",
+		"SideBarEnhancements",
+		"Sublime Text 3 Snippets",
+		"SublimeLinter",
+		"SublimeLinter-coffee",
+		"SublimeLinter-pep8",
+		"SublimeLinter-pyflakes",
+		"SublimeLinter-pyyaml",
+		"SublimeREPL",
+		"Text Pastry",
+		"Theme - Afterglow",
+		"Theme - Soda"
+	]
+}
