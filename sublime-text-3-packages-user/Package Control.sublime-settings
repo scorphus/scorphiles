@@ -6,6 +6,9 @@
 	[
 		"Anaconda",
 		"Better CoffeeScript",
+		"BracketHighlighter",
+		"Color Highlighter",
+		"ColorPicker",
 		"Colorsublime",
 		"Djaneiro",
 		"Emmet",
@@ -17,11 +20,14 @@
 		"JavaScript Snippets",
 		"JsFormat",
 		"LineEndings",
+		"Markdown Extended",
 		"Package Control",
 		"Pytest Snippets",
 		"Python Nose Testing Snippets",
 		"Python PEP8 Autoformat",
 		"R-snippets",
+		"Restructured Text (RST) Snippets",
+		"RestructuredText Improved",
 		"Sass",
 		"SideBarEnhancements",
 		"Sublime Text 3 Snippets",
@@ -34,6 +40,7 @@
 		"SublimeREPL",
 		"Text Pastry",
 		"Theme - Afterglow",
-		"Theme - Soda"
+		"Theme - Soda",
+		"Wrap Plus"
 	]
 }
