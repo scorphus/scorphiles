@@ -21,7 +21,8 @@
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
-		"Vintage"
+		"Vintage",
+		"RestructuredText"
 	],
 	"indent_to_bracket": false,
 	"line_padding_bottom": -1,
