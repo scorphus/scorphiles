@@ -12,6 +12,11 @@
                 "args": [],
                 "excludes": []
             },
+            "jshint": {
+                "@disable": false,
+                "args": [],
+                "excludes": []
+            },
             "pep8": {
                 "@disable": false,
                 "args": [],
