@@ -3,9 +3,9 @@
 # https://github.com/borisguery/git-keywords-checker
 
 # Add or remove keywords here
-KEYWORDS_REGEX="console\.(debug|info|log|warn)\("
+KEYWORDS_REGEX="console\.(debug|info|log|warn)\(|BREAKPOINT|FIXME|TODO|@focus|ipdb.set_trace\(\)"
 # Add extensions to check here
-EXTENSIONS_REGEX="(.js$|.coffee$)"
+EXTENSIONS_REGEX="(.js$|.coffee$|.py$)"
 
 ERRORS_BUFFER=""
 TEXT_DEFAULT="\\033[0;39m"
@@ -31,7 +31,7 @@ if test $? -ne 0 ; then
         SED_EXTENDED_CMD="sed -E"
     else
         $VERBOSE && echo " (no)"
-        echo -e "$TEXT_ERROR" "Unable to determine sed version" "$TEXT_DEFAULT"
+        echo -e "${TEXT_ERROR}Unable to determine sed version$TEXT_DEFAULT"
     fi
 else
     $VERBOSE && echo " (yes)"
@@ -39,12 +39,12 @@ else
 fi
 rm -f $TMP_FOO_FILE
 
-for FILE in $FILES; do 
+for FILE in $FILES; do
      if [[ $FILE =~ $EXTENSIONS_REGEX ]]; then
         ERRORS=""
         while IFS=: read -ra RESULT; do
             if [ "$RESULT" != "" ]; then
-                ERRORS="$ERRORS\n\tline $TEXT_BOLD${RESULT[1]}$TEXT_DEFAULT: "
+                ERRORS="$ERRORS\nline $TEXT_BOLD${RESULT[1]}$TEXT_DEFAULT: "
                 ERRORS="$ERRORS"$(sed -n ${RESULT[1]}p $FILE | $SED_EXTENDED_CMD "s/($KEYWORDS_REGEX)/\\$TEXT_UNDERLINE\1\\$TEXT_DEFAULT/g")
                 if [ "$ERRORS_BUFFER" != "" ]; then
                     ERRORS_BUFFER="$ERRORS_BUFFER\n$ERRORS"
@@ -54,15 +54,15 @@ for FILE in $FILES; do
             fi
         done < <(grep -sEnH $KEYWORDS_REGEX $FILE)
         if [ "$ERRORS" != "" ]; then
-            ERRORS="$TEXT_ERROR Errors found in $TEXT_BOLD$FILE$TEXT_DEFAULT$ERRORS"
+            ERRORS="${TEXT_ERROR}Forbidden words found in $TEXT_BOLD$FILE$TEXT_DEFAULT$ERRORS"
             echo -e "$ERRORS"
         fi
      fi
 done
 
 if [ "$ERRORS_BUFFER" != "" ]; then
-    echo -e "$TEXT_ERROR" "There were errors or warnings, commit aborted." "$TEXT_DEFAULT"
-    echo -e "$TEXT_INFO" "If you are sure you want to commit those files, use --no-verify option" "$TEXT_DEFAULT"
+    echo -e "${TEXT_ERROR}There were errors or warnings, commit aborted.$TEXT_DEFAULT"
+    echo -e "${TEXT_INFO}If you are sure you want to commit those files, use --no-verify option$TEXT_DEFAULT"
 
     exit 1
 fi
