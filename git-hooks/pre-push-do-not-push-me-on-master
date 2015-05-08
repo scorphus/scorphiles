@@ -1,0 +1,23 @@
+#!/bin/bash
+#
+# based on a pre-push hook by Peter Goldsmith, thanks!
+
+flag="DO NOT PUSH ME ON MASTER"
+
+input=`cat -`
+branch=`expr "$input" : '[^ ]* [^ ]* [^/]*/[^/]*/\([^ ]*\) [^ ]*'`
+if test "$branch" != "master"; then
+    exit 0
+fi
+
+found=`git grep --color "$flag" HEAD`
+if [ -n "$found" ]
+then
+    echo "The flag $flag found on:"
+    echo "$found"
+    format='%C(bold yellow)%h%C(reset) by %C(bold red)%ae%C(reset)'
+    commit=`git log --pretty=format:"$format" -S "$flag" | tail -n1`
+    echo "First occurrence found in $commit"
+    exit 1
+fi
+exit 0
