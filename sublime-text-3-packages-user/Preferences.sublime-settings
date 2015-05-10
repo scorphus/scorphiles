@@ -15,7 +15,7 @@
 	[
 		"subpixel_antialias"
 	],
-	"font_size": 14,
+	"font_size": 15,
 	"gutter": true,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
