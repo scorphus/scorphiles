@@ -2,6 +2,7 @@
 set fish_path $HOME/.oh-my-fish
 
 # Theme
+set SCORPHISH_GIT_INFO_ON_FIRST_LINE
 set fish_theme scorphish
 
 # All built-in plugins can be found at ~/.oh-my-fish/plugins/
@@ -15,7 +16,6 @@ set fish_plugins bundler emoji-clock gem gi node osx peco python rvm sublime the
 # virtualfish
 set PROJECT_HOME $HOME/Workspace
 set VIRTUALFISH_COMPAT_ALIASES
-set SCORPHISH_GIT_INFO_ON_FIRST_LINE
 eval (python -m virtualfish auto_activation compat_aliases global_requirements projects)
 
 # Go
