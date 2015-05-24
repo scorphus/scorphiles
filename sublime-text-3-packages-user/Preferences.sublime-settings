@@ -15,14 +15,14 @@
 	[
 		"subpixel_antialias"
 	],
-	"font_size": 15,
+	"font_size": 12,
 	"gutter": true,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
-		"RestructuredText",
-		"Vintage"
+		"Vintage",
+		"RestructuredText"
 	],
 	"indent_to_bracket": false,
 	"line_padding_bottom": -1,
