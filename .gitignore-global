@@ -47,3 +47,6 @@ Thumbs.db
 
 # ~/.gitignore-global test
 *.ignore-ignore-me-do
+
+# Ignored wildcards
+*IGNOREME*
