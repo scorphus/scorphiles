@@ -27,3 +27,11 @@ function run_event -d 'Usage: run_event <uuid> <event>'
     python -u tests/testproject/manage.py run_event -p $argv[1] -a $argv[2] \
         --settings=testproject.settings_IGNOREME
 end
+
+function run_test_server_no_reload -d 'make -n clean_pycs run_test_server'
+    kill_test_server
+    clean_pycs
+    set -l PYTHONPATH "$PYTHONPATH:."
+    python -u tests/testproject/manage.py runserver 0.0.0.0:8000 \
+        --settings=testproject.settings_IGNOREME --noreload
+end
