@@ -6,9 +6,9 @@ function gpip -d "Globoi's artifactory-aware pip"
                 --allow-external \
                 --allow-unverified \
                 --process-dependency-links \
-                --index-url=http://artifactory.globoi.com/artifactory/api/pypi/pypi/simple \
-                --extra-index-url=http://artifactory.globoi.com/artifactory/api/pypi/pypi/simple/ \
-                --extra-index-url=http://artifactory.globoi.com/artifactory/api/pypi/pypi-all/simple/ \
+                --index-url=https://artifactory.globoi.com/artifactory/api/pypi/pypi/simple \
+                --extra-index-url=https://artifactory.globoi.com/artifactory/api/pypi/pypi/simple/ \
+                --extra-index-url=https://artifactory.globoi.com/artifactory/api/pypi/pypi-all/simple/ \
                 -U $argv[2]
         else
             echo 'Sorry, we only support `install`, mate :('
