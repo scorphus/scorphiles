@@ -1,15 +1,6 @@
 # Path to your oh-my-fish.
 set fish_path $HOME/.oh-my-fish
 
-# Theme
-set SCORPHISH_GIT_INFO_ON_FIRST_LINE
-set fish_theme scorphish
-
-# All built-in plugins can be found at ~/.oh-my-fish/plugins/
-# Custom plugins may be added to ~/.oh-my-fish/custom/plugins/
-# Enable plugins by adding their name separated by a space to the line below.
-set fish_plugins bundler emoji-clock gem gi node osx peco python rvm sublime theme z
-
 # Path to your custom folder (default path is ~/.oh-my-fish/custom)
 #set fish_custom $HOME/dotfiles/oh-my-fish
 
@@ -24,3 +15,21 @@ set -x PATH $PATH $GOPATH/bin
 
 # Load oh-my-fish configuration.
 . $fish_path/oh-my-fish.fish
+
+# OMF Theme
+set SCORPHISH_GIT_INFO_ON_FIRST_LINE
+Theme 'scorphish'
+
+# OMF Plugins
+Plugin 'bundler'
+Plugin 'emoji-clock'
+Plugin 'gem'
+Plugin 'gi'
+Plugin 'node'
+Plugin 'osx'
+Plugin 'peco'
+Plugin 'python'
+Plugin 'rvm'
+Plugin 'sublime'
+Plugin 'theme'
+Plugin 'z'
