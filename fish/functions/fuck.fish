@@ -9,3 +9,7 @@ function fuck -d 'Correct your previous console command'
         history --delete $fucked_up_commandd
     end
 end
+
+function fuck_ -d 'Run fuck but output to STDOUT'
+    thefuck $history[1]
+end
