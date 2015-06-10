@@ -11,7 +11,7 @@ eval (python -m virtualfish auto_activation compat_aliases global_requirements p
 
 # Go
 set -x GOPATH $HOME/gocode
-set -x PATH $PATH $GOPATH/bin
+set -x PATH $GOPATH/bin $PATH
 
 # Load oh-my-fish configuration.
 . $fish_path/oh-my-fish.fish
