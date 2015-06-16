@@ -54,3 +54,31 @@ function bstore-show-apps -a environ -d "Show applications on backstage-store"
         __bstore-sql-query $api_url $host $db $user $pass | less -XRF
     end
 end
+
+function bstore-setup-extra -d "Install extra dependencies"
+    pip install -U ipdbplugin
+end
+
+function bstore-focus-ipdb -d "Same as make focus but with --ipdb"
+    make clear_repositories_test
+    coverage run --branch (which nosetests) -vv --with-yanc \
+        --with-nosegrowlnotify --logging-level=WARNING --with-focus -i \
+        --processes=4 --ipdb --ipdb-failures -s tests/
+end
+
+function bstore-focus-ignore-ipdb -d "Same as make focus-ignore but with --ipdb"
+    make clear_repositories_test
+    @coverage run --branch (which nosetests) -vv --with-yanc \
+        --with-nosegrowlnotify --logging-level=WARNING --without-ignored -i \
+        --processes=4 --ipdb --ipdb-failures -s tests/
+end
+
+function bstore-focus-ipdb-exhaustion -d "Run bstore-focus exhaustively"
+    set -l counter 1
+    echo "Running stint $counter..."
+    while bstore-focus-ipdb
+        echo "Stint $counter went OK"
+        set -l counter (expr $counter + 1)
+        echo "Running stint $counter..."
+     end
+end
