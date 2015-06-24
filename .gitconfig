@@ -55,3 +55,7 @@
 	rom = rebase origin/master
 	rup = remote update -p
 	fat = fetch --all --tags
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
