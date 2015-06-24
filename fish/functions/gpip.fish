@@ -5,6 +5,8 @@ function gpip -d "Globoi's artifactory-aware pip"
                 --allow-external \
                 --allow-unverified \
                 --process-dependency-links \
+                --trusted-host pypi.globoi.com \
+                --trusted-host artifactory.globoi.com \
                 --index-url=https://artifactory.globoi.com/artifactory/api/pypi/pypi/simple \
                 --extra-index-url=https://artifactory.globoi.com/artifactory/api/pypi/pypi/simple/ \
                 --extra-index-url=https://artifactory.globoi.com/artifactory/api/pypi/pypi-all/simple/ \
