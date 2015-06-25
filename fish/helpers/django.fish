@@ -1,8 +1,11 @@
 function fix_pip_dependencies
-    gpip install menu_designer
-    gpip install globo_foto
-    gpip install freezegun
-    gpip install 'pymongo==2.8.1'
+    gpip install \
+         beautifulsoup4 \
+         freezegun \
+         globo_foto \
+         menu_designer \
+         pymongo\<3 \
+         widgetssi
 end
 
 function kill_test_server
