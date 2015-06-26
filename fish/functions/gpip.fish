@@ -10,6 +10,8 @@ function gpip -d "Globoi's artifactory-aware pip"
                 --index-url=https://artifactory.globoi.com/artifactory/api/pypi/pypi/simple \
                 --extra-index-url=https://artifactory.globoi.com/artifactory/api/pypi/pypi/simple/ \
                 --extra-index-url=https://artifactory.globoi.com/artifactory/api/pypi/pypi-all/simple/ \
+                --extra-index-url=https://artifactory.globoi.com/artifactory/api/ipypi/pypi/simple/ \
+                --extra-index-url=https://artifactory.globoi.com/artifactory/api/ipypi/pypi-all/simple/ \
                 -U $argv[2..-1]
         else
             echo 'Sorry, we only support `install`, mate :('
