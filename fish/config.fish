@@ -25,7 +25,6 @@ Theme 'scorphish'
 
 # OMF Plugins
 Plugin 'bundler'
-Plugin 'emoji-clock'
 Plugin 'gem'
 Plugin 'gi'
 Plugin 'node'
