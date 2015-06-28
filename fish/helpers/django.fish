@@ -35,8 +35,14 @@ function run_test_server_no_reload -d 'make -n clean_pycs run_test_server'
         --settings=testproject.settings_IGNOREME --noreload
 end
 
-function nosetests-unit -a verbosity -d 'Run nosetests unit tests'
+function cleanup -d 'Clean pycs, reset installed_test'
     clean-pycs
+    rmf tests/testproject/components/installed_test
+    mkdirp tests/testproject/components/installed_test
+end
+
+function nosetests-unit -a verbosity -d 'Run nosetests unit tests'
+    cleanup
     set -x REUSE_DB "1"
     coverage run tests/testproject/manage.py test tests/ \
         --settings=testproject.settings_test \
@@ -51,7 +57,7 @@ function nosetests-unit-v -d 'Run nosetests unit tests verbosely'
 end
 
 function nosetests-focus -a verbosity -d 'Run nosetests focused tests'
-    clean-pycs
+    cleanup
     set -x REUSE_DB "1"
     coverage run tests/testproject/manage.py test tests/ \
         --settings=testproject.settings_test_focus \
