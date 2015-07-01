@@ -1,4 +1,4 @@
-function fix_pip_dependencies
+function ostore-fix-pip-dependencies
     gpip install \
          beautifulsoup4 \
          freezegun \
@@ -8,40 +8,40 @@ function fix_pip_dependencies
          widgetssi
 end
 
-function kill_test_server
+function ostore-kill-test-server
     ps ax | grep 8000 | grep python | awk '{print $1}' | xargs kill
 end
 
-function run_test_server -d 'make -n clean_pycs run_test_server'
-    kill_test_server
+function ostore-run-test-server -d 'make -n clean_pycs run_test_server'
+    kill-test-server
     clean-pycs
     set -l PYTHONPATH "$PYTHONPATH:."
     python -u tests/testproject/manage.py runserver 0.0.0.0:8000 \
         --settings=testproject.settings_IGNOREME
 end
 
-function run_event -d 'Usage: run_event <uuid> <event>'
+function ostore-run-event -d 'Usage: ostore-run-event <uuid> <event>'
     clean-pycs
     set -l PYTHONPATH "$PYTHONPATH:."
     python -u tests/testproject/manage.py run_event -p $argv[1] -a $argv[2] \
         --settings=testproject.settings_IGNOREME
 end
 
-function run_test_server_no_reload -d 'make -n clean_pycs run_test_server'
-    kill_test_server
+function ostore-run-test-server-no-reload -d 'make -n clean_pycs run_test_server'
+    kill-test-server
     clean-pycs
     set -l PYTHONPATH "$PYTHONPATH:."
     python -u tests/testproject/manage.py runserver 0.0.0.0:8000 \
         --settings=testproject.settings_IGNOREME --noreload
 end
 
-function cleanup -d 'Clean pycs, reset installed_test'
+function ostore-cleanup -d 'Clean pycs, reset installed_test'
     clean-pycs
     rmf tests/testproject/components/installed_test
     mkdirp tests/testproject/components/installed_test
 end
 
-function nosetests-unit -a verbosity -d 'Run nosetests unit tests'
+function ostore-nosetests-unit -a verbosity -d 'Run nosetests unit tests'
     cleanup
     set -x REUSE_DB "1"
     coverage run tests/testproject/manage.py test tests/ \
@@ -52,11 +52,11 @@ function nosetests-unit -a verbosity -d 'Run nosetests unit tests'
     end
 end
 
-function nosetests-unit-v -d 'Run nosetests unit tests verbosely'
+function ostore-nosetests-unit-v -d 'Run nosetests unit tests verbosely'
     nosetests-unit --verbosity=2
 end
 
-function nosetests-focus -a verbosity -d 'Run nosetests focused tests'
+function ostore-nosetests-focus -a verbosity -d 'Run nosetests focused tests'
     cleanup
     set -x REUSE_DB "1"
     coverage run tests/testproject/manage.py test tests/ \
@@ -64,11 +64,11 @@ function nosetests-focus -a verbosity -d 'Run nosetests focused tests'
         --with-yanc --yanc-color=yes --ipdb --ipdb-failures $verbosity
 end
 
-function nosetests-focus-v -d 'Run nosetests focused tests verbosely'
+function ostore-nosetests-focus-v -d 'Run nosetests focused tests verbosely'
     nosetests-focus --verbosity=2
 end
 
-function nosetests-focus-ignore -a verbosity -d 'Run nosetests ignoring focus-ignored tests'
+function ostore-nosetests-focus-ignore -a verbosity -d 'Run nosetests ignoring focus-ignored tests'
     clean-pycs
     set -x REUSE_DB "1"
     coverage run tests/testproject/manage.py test tests/ \
@@ -76,6 +76,6 @@ function nosetests-focus-ignore -a verbosity -d 'Run nosetests ignoring focus-ig
         --with-yanc --yanc-color=yes $verbosity
 end
 
-function nosetests-focus_ignore-v -d 'Run nosetests ignoring focus-ignored tests verbosely'
+function ostore-nosetests-focus-ignore-v -d 'Run nosetests ignoring focus-ignored tests verbosely'
     nosetests-ignore --verbosity=2
 end
