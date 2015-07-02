@@ -5,11 +5,10 @@ function __bstore-sql-query -a api_url -a host -a db -a user -a title -a pass
                 \"$api_url/api/projects/list/\"
             ) AS projects
         FROM applications"
-    # if [ "$title" != "" ]
-    #     set sql (printf "%s WHERE title = \"%s\"" $sql $title)
-    # end
-    set sql (printf "%s\G" $sql)
-    echo $sql
+    if [ "$title" != "" ]
+        set sql (printf "%s WHERE title LIKE \"%%%s%%\"" $sql $title | tr "\n" " ")
+    end
+    set sql (printf "%s \G" $sql)
     echo $sql | mysql -u$user -p$pass -h $host $db
 end
 
@@ -55,8 +54,7 @@ function bstore-show-apps -a env_ -a title -d "Show applications on backstage-st
         set -l host (echo $mysql_url | gsed -r "s/$pattern/\3/")
         set -l db (echo $mysql_url | gsed -r "s/$pattern/\4/")
 
-        # echo $api_url $host $db $user $title $pass
-        __bstore-sql-query $api_url $host $db $user $title $pass | less -XRF
+        __bstore-sql-query $api_url $host $db $user "$title" $pass ^ /dev/null | less -XRF
     end
 end
 
