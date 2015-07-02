@@ -1,11 +1,15 @@
-function __bstore-sql-query -a api_url -a host -a db -a user -a pass
-    set -l sql "
-        SELECT id, title, url_slug, secret_key AS secret,
+function __bstore-sql-query -a api_url -a host -a db -a user -a title -a pass
+    set -l sql "SELECT id, title, url_slug, secret_key AS secret,
             TO_BASE64(secret_key) AS shared, CONCAT(
                 \"curl \", \"-H'X-SECRET-KEYS:\", secret_key, \"' \",
                 \"$api_url/api/projects/list/\"
             ) AS projects
-        FROM applications\G"
+        FROM applications"
+    # if [ "$title" != "" ]
+    #     set sql (printf "%s WHERE title = \"%s\"" $sql $title)
+    # end
+    set sql (printf "%s\G" $sql)
+    echo $sql
     echo $sql | mysql -u$user -p$pass -h $host $db
 end
 
@@ -31,16 +35,16 @@ function bstore-release-component -d "Bump a new release of a component"
     git push origin master --tags
 end
 
-function bstore-show-apps -a environ -d "Show applications on backstage-store"
-    if test "$environ" = "" -o "$environ" = "local"
-        __bstore-sql-query http://localhost:2369 localhost backstage_store root
+function bstore-show-apps -a env_ -a title -d "Show applications on backstage-store"
+    if test "$env_" = "" -o "$env_" = "local"
+        __bstore-sql-query http://localhost:2369 localhost backstage_store root $title
     else
         if [ (uname) != "Darwin" ]
             alias gsed="sed"
         end
 
-        set -l conf_file ~/Workspace/backstage-store/$environ.conf
-        set -l ini_file ~/Workspace/backstage-store/alembic.$environ.ini
+        set -l conf_file ~/Workspace/backstage-store/$env_.conf
+        set -l ini_file ~/Workspace/backstage-store/alembic.$env_.ini
 
         set -l api_url (extract_derpconf.py $conf_file STORE_API_URL)
         set -l mysql_url (extract_iniconf.py $ini_file alembic sqlalchemy.url)
@@ -51,7 +55,8 @@ function bstore-show-apps -a environ -d "Show applications on backstage-store"
         set -l host (echo $mysql_url | gsed -r "s/$pattern/\3/")
         set -l db (echo $mysql_url | gsed -r "s/$pattern/\4/")
 
-        __bstore-sql-query $api_url $host $db $user $pass | less -XRF
+        # echo $api_url $host $db $user $title $pass
+        __bstore-sql-query $api_url $host $db $user $title $pass | less -XRF
     end
 end
 
