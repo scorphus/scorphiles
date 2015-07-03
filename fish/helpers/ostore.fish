@@ -13,7 +13,7 @@ function ostore-kill-test-server
 end
 
 function ostore-run-test-server -d 'make -n clean_pycs run_test_server'
-    kill-test-server
+    ostore-kill-test-server
     clean-pycs
     set -l PYTHONPATH "$PYTHONPATH:."
     python -u tests/testproject/manage.py runserver 0.0.0.0:8000 \
@@ -28,7 +28,7 @@ function ostore-run-event -d 'Usage: ostore-run-event <uuid> <event>'
 end
 
 function ostore-run-test-server-no-reload -d 'make -n clean_pycs run_test_server'
-    kill-test-server
+    ostore-kill-test-server
     clean-pycs
     set -l PYTHONPATH "$PYTHONPATH:."
     python -u tests/testproject/manage.py runserver 0.0.0.0:8000 \
@@ -42,7 +42,7 @@ function ostore-cleanup -d 'Clean pycs, reset installed_test'
 end
 
 function ostore-nosetests-unit -a verbosity -d 'Run nosetests unit tests'
-    cleanup
+    ostore-cleanup
     set -x REUSE_DB "1"
     coverage run tests/testproject/manage.py test tests/ \
         --settings=testproject.settings_test \
@@ -53,11 +53,11 @@ function ostore-nosetests-unit -a verbosity -d 'Run nosetests unit tests'
 end
 
 function ostore-nosetests-unit-v -d 'Run nosetests unit tests verbosely'
-    nosetests-unit --verbosity=2
+    ostore-nosetests-unit --verbosity=2
 end
 
 function ostore-nosetests-focus -a verbosity -d 'Run nosetests focused tests'
-    cleanup
+    ostore-cleanup
     set -x REUSE_DB "1"
     coverage run tests/testproject/manage.py test tests/ \
         --settings=testproject.settings_test_focus \
@@ -65,7 +65,7 @@ function ostore-nosetests-focus -a verbosity -d 'Run nosetests focused tests'
 end
 
 function ostore-nosetests-focus-v -d 'Run nosetests focused tests verbosely'
-    nosetests-focus --verbosity=2
+    ostore-nosetests-focus --verbosity=2
 end
 
 function ostore-nosetests-focus-ignore -a verbosity -d 'Run nosetests ignoring focus-ignored tests'
@@ -77,5 +77,5 @@ function ostore-nosetests-focus-ignore -a verbosity -d 'Run nosetests ignoring f
 end
 
 function ostore-nosetests-focus-ignore-v -d 'Run nosetests ignoring focus-ignored tests verbosely'
-    nosetests-ignore --verbosity=2
+    ostore-nosetests-ignore --verbosity=2
 end
