@@ -12,11 +12,23 @@ function ostore-kill-test-server
     ps ax | grep 8000 | grep python | awk '{print $1}' | xargs kill
 end
 
+function ostore-kill-test-server-2
+    ps ax | grep 8002 | grep python | awk '{print $1}' | xargs kill
+end
+
 function ostore-run-test-server -d 'make -n clean_pycs run_test_server'
     ostore-kill-test-server
     clean-pycs
     set -l PYTHONPATH "$PYTHONPATH:."
     python -u tests/testproject/manage.py runserver 0.0.0.0:8000 \
+        --settings=testproject.settings_IGNOREME
+end
+
+function ostore-run-test-server-2 -d 'make -n clean_pycs run_test_server 2'
+    ostore-kill-test-server-2
+    clean-pycs
+    set -l PYTHONPATH "$PYTHONPATH:."
+    python -u tests/testproject/manage.py runserver 0.0.0.0:8002 \
         --settings=testproject.settings_IGNOREME
 end
 
@@ -32,6 +44,14 @@ function ostore-run-test-server-no-reload -d 'make -n clean_pycs run_test_server
     clean-pycs
     set -l PYTHONPATH "$PYTHONPATH:."
     python -u tests/testproject/manage.py runserver 0.0.0.0:8000 \
+        --settings=testproject.settings_IGNOREME --noreload
+end
+
+function ostore-run-test-server-2-no-reload -d 'make -n clean_pycs run_test_server'
+    ostore-kill-test-server-2
+    clean-pycs
+    set -l PYTHONPATH "$PYTHONPATH:."
+    python -u tests/testproject/manage.py runserver 0.0.0.0:8002 \
         --settings=testproject.settings_IGNOREME --noreload
 end
 
