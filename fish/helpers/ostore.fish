@@ -3,9 +3,12 @@ function ostore-fix-pip-dependencies
          beautifulsoup4 \
          freezegun \
          globo_foto \
+         globocore \
          menu_designer \
          pymongo\<3 \
-         widgetssi
+         django==1.4.13 \
+         widgetssi \
+         --upgrade
 end
 
 function ostore-kill-test-server
