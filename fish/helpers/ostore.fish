@@ -1,12 +1,12 @@
 function ostore-fix-pip-dependencies
     gpip install \
          beautifulsoup4 \
+         django==1.4.13 \
          freezegun \
          globo_foto \
          globocore \
          menu_designer \
          pymongo\<3 \
-         django==1.4.13 \
          widgetssi \
          --upgrade
 end
