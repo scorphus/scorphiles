@@ -23,7 +23,6 @@
 	tool = meld
 [core]
 	editor = vim
-	excludesfile = ~/.gitignore-global
 [alias]
 	br = branch
 	co = checkout
