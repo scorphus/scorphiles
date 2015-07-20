@@ -1,7 +1,7 @@
 <snippet>
     <content><![CDATA[
 from nose_focus import focus_ignore
-@focus
+@focus_ignore
 ]]></content>
     <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
     <tabTrigger>focus_ignore</tabTrigger>
