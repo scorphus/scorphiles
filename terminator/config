@@ -1,0 +1,32 @@
+[global_config]
+  handle_size = 1
+  enabled_plugins = InactivityWatch, ActivityWatch, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  title_transmit_fg_color = "#000000"
+  title_inactive_fg_color = "#c0bebf"
+  title_transmit_bg_color = "#c0bebf"
+  title_inactive_bg_color = "#000000"
+[keybindings]
+  go_left = <Shift><Alt>Left
+  go_down = <Shift><Alt>Down
+  go_right = <Shift><Alt>Right
+  go_up = <Shift><Alt>Up
+[profiles]
+  [[default]]
+    scrollbar_position = hidden
+    use_system_font = False
+    copy_on_selection = True
+    background_darkness = 0.9
+    background_type = transparent
+    background_image = None
+    font = Ubuntu Mono 10
+    background_color = "#151718"
+[layouts]
+  [[default]]
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      profile = default
+    [[[window0]]]
+      type = Window
+      parent = ""
+[plugins]
