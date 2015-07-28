@@ -7,7 +7,6 @@ function gpip15 -d "Globoi's artifactory-aware pip v1.5"
                 --process-dependency-links \
                 --index-url=http://artifactory.globoi.com/artifactory/api/pypi/pypi-all/simple/ \
                 --extra-index-url=http://artifactory.globoi.com/artifactory/api/pypi/pypi/simple/ \
-                --extra-index-url=http://artifactory.globoi.com/artifactory/api/pypi/pypi/simple/ \
                 --extra-index-url=http://artifactory.globoi.com/artifactory/api/pypi/pypi-all/simple/ \
                 --extra-index-url=http://artifactory.globoi.com/artifactory/api/ipypi/pypi/simple/ \
                 --extra-index-url=http://artifactory.globoi.com/artifactory/api/ipypi/pypi-all/simple/ \
