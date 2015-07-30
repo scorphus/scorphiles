@@ -44,8 +44,10 @@ function ostore-run-event -d 'Run an event'
     end
     clean-pycs
     set -l PYTHONPATH "$PYTHONPATH:."
+    echo python -u tests/testproject/manage.py run_event -p $argv[1] -a $argv[2] \
+        --settings=testproject.settings_IGNOREME $argv[3..-1]
     python -u tests/testproject/manage.py run_event -p $argv[1] -a $argv[2] \
-        --settings=testproject.settings_IGNOREME
+        --settings=testproject.settings_IGNOREME $argv[3..-1]
 end
 
 function ostore-run-test-server-no-reload -d 'make -n clean_pycs run_test_server'
