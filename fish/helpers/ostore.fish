@@ -35,7 +35,13 @@ function ostore-run-test-server-2 -d 'make -n clean_pycs run_test_server 2'
         --settings=testproject.settings_IGNOREME
 end
 
-function ostore-run-event -d 'Usage: ostore-run-event <uuid> <event>'
+function ostore-run-event -d 'Run an event'
+    if test (count $argv) -lt 2
+        echo "Just too bad, you supplied a wrong number of arguments!"
+        echo "Usage: ostore-run-event <uuid> <event>"
+        echo "Example: ostore-run-event techtudo/ayrton accelerate"
+        return 1
+    end
     clean-pycs
     set -l PYTHONPATH "$PYTHONPATH:."
     python -u tests/testproject/manage.py run_event -p $argv[1] -a $argv[2] \
