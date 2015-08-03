@@ -110,3 +110,14 @@ end
 function ostore-nosetests-focus-ignore-v -d 'Run nosetests ignoring focus-ignored tests verbosely'
     ostore-nosetests-ignore --verbosity=2
 end
+
+function ostore-binary-search -a command -a pattern -d 'Run a specific test against omnistore'
+    while true
+        fish -ic $command
+        if test $status -eq 0
+            break
+        end
+    end
+    fish -ic $command | grep $pattern
+    return $status
+end
