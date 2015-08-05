@@ -10,7 +10,8 @@ function __bstore-sql-query -a api_url -a host -a db -a user -a title -a pass
             ) AS version
         FROM applications"
     if [ "$title" != "" ]
-        set sql (printf "%s WHERE title LIKE \"%%%s%%\"" $sql $title | tr "\n" " ")
+        set colate "COLLATE UTF8_GENERAL_CI"
+        set sql (printf "%s WHERE title %s LIKE \"%%%s%%\"" $sql $colate $title | tr "\n" " ")
     end
     set sql (printf "%s \G" $sql)
     echo $sql | mysql -u$user -p$pass -h $host $db
