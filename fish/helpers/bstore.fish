@@ -1,6 +1,7 @@
 function __bstore-sql-query -a api_url -a host -a db -a user -a title -a pass
-    set -l sql "SELECT id, title, url_slug, secret_key AS secret,
-            TO_BASE64(secret_key) AS shared, CONCAT(
+    set -l sql "SELECT id, title, url, url_slug, secret_key AS secret,
+            TO_BASE64(secret_key) AS shared,
+            CONCAT(
                 \"curl \", \"-H'X-SECRET-KEYS:\", secret_key, \"' \",
                 \"$api_url/api/projects/list/\"
             ) AS projects
