@@ -4,7 +4,10 @@ function __bstore-sql-query -a api_url -a host -a db -a user -a title -a pass
             CONCAT(
                 \"curl \", \"-H'X-SECRET-KEYS:\", secret_key, \"' \",
                 \"$api_url/api/projects/list/\"
-            ) AS projects
+            ) AS projects,
+            CONCAT(
+                \"curl \", url, \"/admin/omni-store/version\"
+            ) AS version
         FROM applications"
     if [ "$title" != "" ]
         set sql (printf "%s WHERE title LIKE \"%%%s%%\"" $sql $title | tr "\n" " ")
