@@ -15,6 +15,7 @@
     scrollbar_position = hidden
     use_system_font = False
     copy_on_selection = True
+    visible_bell = True
     background_darkness = 0.9
     background_type = transparent
     background_image = None
