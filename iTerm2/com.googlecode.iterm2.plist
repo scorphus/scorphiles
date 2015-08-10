@@ -758,11 +758,11 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>435 284 845 359 0 0 1280 777 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>95 143 924 485 0 0 1280 777 </string>
+	<string>0 1256 605 485 0 800 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>4 1 1275 776 0 0 1280 777 </string>
+	<string>7 4 1270 768 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>4 9 1270 768 0 0 1280 777 </string>
+	<string>4 9 1060 768 0 0 1280 777 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1008,7 +1008,7 @@
 			<key>Hide After Opening</key>
 			<false/>
 			<key>Horizontal Spacing</key>
-			<real>1</real>
+			<real>0.89999997615814209</real>
 			<key>Idle Code</key>
 			<integer>0</integer>
 			<key>Initial Text</key>
@@ -1494,7 +1494,7 @@
 	<key>NoSyncTimeOfLastPromo</key>
 	<real>453262488.690566</real>
 	<key>NoSyncTimeOfLastPromoDownload</key>
-	<real>458488434.60111201</real>
+	<real>460555535.17527401</real>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
@@ -1557,11 +1557,11 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2015-07-13T13:53:46Z</date>
+	<date>2015-08-07T21:51:36Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
-	<true/>
+	<false/>
 	<key>ShowBookmarkName</key>
 	<false/>
 	<key>ShowPaneTitles</key>
