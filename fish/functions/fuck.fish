@@ -12,7 +12,3 @@ function fuck -d 'Correct your previous console command'
         return 0
     end
 end
-
-function fuck_ -d 'Run fuck but output to STDOUT'
-    thefuck $history[1]
-end
