@@ -8,6 +8,8 @@ function fuck -d 'Correct your previous console command'
     rm $eval_script
     if test $exit_code -ne 0
         history --delete $fucked_up_commandd
+        history --merge
+        return 0
     end
 end
 
