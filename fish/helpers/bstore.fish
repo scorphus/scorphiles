@@ -72,6 +72,9 @@ function bstore-focus-ipdb -d "Same as make focus but with --ipdb"
     coverage run --branch (which nosetests) -vv --with-yanc \
         --with-nosegrowlnotify --logging-level=WARNING --with-focus -i \
         --processes=4 --ipdb --ipdb-failures -s tests/
+    if [ $status != 0 ]
+        echo 'Maybe you forgot to install ipdbplugin? (pip install ipdbplugin)'
+    end
 end
 
 function bstore-focus-ignore-ipdb -d "Same as make focus-ignore but with --ipdb"
@@ -79,6 +82,9 @@ function bstore-focus-ignore-ipdb -d "Same as make focus-ignore but with --ipdb"
     @coverage run --branch (which nosetests) -vv --with-yanc \
         --with-nosegrowlnotify --logging-level=WARNING --without-ignored -i \
         --processes=4 --ipdb --ipdb-failures -s tests/
+    if [ $status != 0 ]
+        echo 'Maybe you forgot to install ipdbplugin? (pip install ipdbplugin)'
+    end
 end
 
 function bstore-focus-ipdb-exhaustion -d "Run bstore-focus exhaustively"
