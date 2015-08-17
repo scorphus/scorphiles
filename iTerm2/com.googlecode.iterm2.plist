@@ -1491,6 +1491,8 @@
 			<string>/Users/pablo</string>
 		</dict>
 	</array>
+	<key>NoSyncNeverRemindPrefsChangesCopy</key>
+	<true/>
 	<key>NoSyncTimeOfLastPromo</key>
 	<real>453262488.690566</real>
 	<key>NoSyncTimeOfLastPromoDownload</key>
@@ -1561,7 +1563,7 @@
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
-	<false/>
+	<true/>
 	<key>ShowBookmarkName</key>
 	<false/>
 	<key>ShowPaneTitles</key>
