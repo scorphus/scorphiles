@@ -1,5 +1,5 @@
 # https://github.com/fish-shell/fish-shell/issues/159#issuecomment-37057175
-function pipeset --no-scope-shadowing -d "Set multiline variable"
+function pipeset --no-scope-shadowing -d "Set a multi-line variable from stdin"
     set -l _options
     set -l _variables
     for _item in $argv
