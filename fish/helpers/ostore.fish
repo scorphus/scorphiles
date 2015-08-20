@@ -1,5 +1,7 @@
 function ostore-fix-pip-dependencies
     gpip install \
+         --no-deps \
+         --upgrade \
          beautifulsoup4 \
          django==1.4.13 \
          freezegun \
@@ -8,8 +10,7 @@ function ostore-fix-pip-dependencies
          menu_designer \
          pymongo\<3 \
          widgetssi \
-         mobile_globocore_integration \
-         --upgrade
+         mobile_globocore_integration
 end
 
 function ostore-kill-test-server
