@@ -35,6 +35,20 @@ function __bstore-mysql-credentials -a env_
     echo $mysql_url | gsed -r "s/$pattern/\1\n\2\n\3\n\4/"  # user, pass, host, db
 end
 
+function bstore-list-projects -a env_ -d "List all projects"
+    set -l sql "SELECT CONCAT(t.slug, '/', p.slug) as uuid, p.name as name
+        FROM projects p
+        LEFT JOIN teams t on p.owner_id = t.id
+        WHERE is_deleted IS false"
+    set sql (printf "%s \G" $sql)
+    if test "$env_" = "" -o "$env_" = "local"
+        echo $sql | mysql -uroot -h localhost backstage_store
+    else
+        set cred (__bstore-mysql-credentials $env_)
+        echo $sql | mysql -u$cred[1] -p$cred[2] -h $cred[3] $cred[4]
+    end
+end
+
 function bstore-release-component -d "Bump a new release of a component"
     if test (count $argv) -eq 1
         set step $argv[1]
