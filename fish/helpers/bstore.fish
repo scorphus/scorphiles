@@ -61,23 +61,12 @@ function bstore-show-apps -a env_ -a title -d "Show applications on backstage-st
     if test "$env_" = "" -o "$env_" = "local"
         __bstore-sql-query http://localhost:2369 localhost backstage_store root $title
     else
-        if [ (uname) != "Darwin" ]
-            alias gsed="sed"
-        end
-
         set -l conf_file ~/Workspace/backstage-store/$env_.conf
-        set -l ini_file ~/Workspace/backstage-store/alembic.$env_.ini
-
         set -l api_url (extract_derpconf.py $conf_file STORE_API_URL)
-        set -l mysql_url (extract_iniconf.py $ini_file alembic sqlalchemy.url)
 
-        set -l pattern "mysql:\/\/([^:]+):([^@]+)@([^:]+):3306\/(.+)"
-        set -l user (echo $mysql_url | gsed -r "s/$pattern/\1/")
-        set -l pass (echo $mysql_url | gsed -r "s/$pattern/\2/")
-        set -l host (echo $mysql_url | gsed -r "s/$pattern/\3/")
-        set -l db (echo $mysql_url | gsed -r "s/$pattern/\4/")
+        set cred (__bstore-mysql-credentials $env_)
 
-        __bstore-sql-query $api_url $host $db $user "$title" $pass ^ /dev/null | less -XRF
+        __bstore-sql-query $api_url $cred[3] $cred[4] $cred[1] "$title" $cred[2] ^ /dev/null | less -XRF
     end
 end
 
