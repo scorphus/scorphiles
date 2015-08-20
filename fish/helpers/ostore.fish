@@ -8,6 +8,7 @@ function ostore-fix-pip-dependencies
          menu_designer \
          pymongo\<3 \
          widgetssi \
+         mobile_globocore_integration \
          --upgrade
 end
 
