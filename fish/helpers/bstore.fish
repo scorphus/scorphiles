@@ -17,6 +17,24 @@ function __bstore-sql-query -a api_url -a host -a db -a user -a title -a pass
     echo $sql | mysql -u$user -p$pass -h $host $db
 end
 
+function __bstore-mysql-credentials -a env_
+    if [ "$env_" = "" ]
+        echo We need an environment here, pal\!
+        return 1
+    end
+
+    if [ (uname) != "Darwin" ]
+        alias gsed="sed"
+    end
+
+    set -l ini_file ~/Workspace/backstage-store/alembic.$env_.ini
+    set -l mysql_url (extract_iniconf.py $ini_file alembic sqlalchemy.url)
+
+    set -l pattern "mysql:\/\/([^:]+):([^@]+)@([^:]+):3306\/(.+)"
+
+    echo $mysql_url | gsed -r "s/$pattern/\1\n\2\n\3\n\4/"  # user, pass, host, db
+end
+
 function bstore-release-component -d "Bump a new release of a component"
     if test (count $argv) -eq 1
         set step $argv[1]
