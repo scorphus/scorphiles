@@ -1,4 +1,4 @@
-function __bstore-sql-query -a api_url -a host -a db -a user -a title -a pass
+function __bstore-query-apps -a api_url -a host -a db -a user -a title -a pass
     set -l sql "SELECT id, title, url, url_slug, secret_key AS secret,
             TO_BASE64(secret_key) AS shared,
             CONCAT(
@@ -59,14 +59,14 @@ end
 
 function bstore-show-apps -a env_ -a title -d "Show applications on backstage-store"
     if test "$env_" = "" -o "$env_" = "local"
-        __bstore-sql-query http://localhost:2369 localhost backstage_store root $title
+        __bstore-query-apps http://localhost:2369 localhost backstage_store root $title
     else
         set -l conf_file ~/Workspace/backstage-store/$env_.conf
         set -l api_url (extract_derpconf.py $conf_file STORE_API_URL)
 
         set cred (__bstore-mysql-credentials $env_)
 
-        __bstore-sql-query $api_url $cred[3] $cred[4] $cred[1] "$title" $cred[2] ^ /dev/null | less -XRF
+        __bstore-query-apps $api_url $cred[3] $cred[4] $cred[1] "$title" $cred[2] ^ /dev/null | less -XRF
     end
 end
 
