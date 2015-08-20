@@ -11,19 +11,6 @@ function ostore-fix-pip-dependencies
          --upgrade
 end
 
-function ostore-fix-pip15-dependencies
-    gpip15 install \
-           beautifulsoup4 \
-           django==1.4.13 \
-           freezegun \
-           globo_foto \
-           globocore \
-           menu_designer \
-           pymongo\<3 \
-           widgetssi \
-           --upgrade
-end
-
 function ostore-kill-test-server
     ps ax | grep 8000 | grep python | awk '{print $1}' | xargs kill
 end
