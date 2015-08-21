@@ -56,9 +56,11 @@ function bstore-release-component -d "Bump a new release of a component"
         set step 1
     end
 
-    set -l minor (
-        echo (egrep '0\.0\.\d' README.md | awk -F. '{print $NF}' ) + $step | bc
-    )
+    set current (egrep '0\.0\.\d' README.md | awk -F. '{print $NF}')
+    if [ "$current" = "" ]
+        set current "0"
+    end
+    set -l minor (echo $current + $step | bc)
 
     if [ (uname) = "Darwin" ]
         gsed -ie "s/0\.0\.[0-9]*/0.0.$minor/" README.md
