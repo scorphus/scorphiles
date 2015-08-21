@@ -9,7 +9,7 @@ function pip-uninstall-all -d 'Uninstall all pip modules'
     if test "$doit" = "y"
         for package in (pip list | egrep -iv 'pip' | awk '{print $1}')
             echo -n "uninstalling $package... "
-            echo 'y' | pip uninstall -q $package
+            pip uninstall -q $package -y
             echo " ...done!"
         end
     end
