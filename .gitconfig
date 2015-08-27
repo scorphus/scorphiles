@@ -3,6 +3,13 @@
 	email = scorphus@gmail.com
 	signingkey = D958916B
 [color]
+	branch = true
+	decorate = true
+	diff = true
+	grep = true
+	interactive = true
+	showbranch = true
+	status = true
 	ui = true
 [color "branch"]
 	current = yellow black
@@ -23,6 +30,8 @@
 	tool = meld
 [core]
 	editor = vim
+	whitespace = tab-in-indent,tabwidth=4
+	pager = less -sFXRMW
 [alias]
 	br = branch
 	co = checkout
