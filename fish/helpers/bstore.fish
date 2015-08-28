@@ -35,12 +35,17 @@ function __bstore-mysql-credentials -a env_
     echo $mysql_url | gsed -r "s/$pattern/\1\n\2\n\3\n\4/"  # user, pass, host, db
 end
 
-function bstore-list-projects -a env_ -d "List all projects"
-    set -l sql "SELECT CONCAT(t.slug, '/', p.slug) as uuid, p.name as name
+function bstore-list-projects -a env_ -a layout -d "List all projects"
+    set -l sql "SELECT
+            CONCAT(t.slug, '/', p.slug) as uuid,
+            p.name as name,
+            p.project_type as type
         FROM projects p
         LEFT JOIN teams t on p.owner_id = t.id
         WHERE is_deleted IS false"
-    set sql (printf "%s \G" $sql)
+    if [ "$layout" != "horizontal" ]
+        set sql (printf "%s \G" $sql)
+    end
     if test "$env_" = "" -o "$env_" = "local"
         echo $sql | mysql -uroot -h localhost backstage_store
     else
