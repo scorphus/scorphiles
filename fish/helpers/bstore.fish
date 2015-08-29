@@ -70,9 +70,9 @@ function bstore-release-component -d "Bump a new release of a component"
     set name (basename (pwd))
 
     if [ (uname) = "Darwin" ]
-        gsed -ie "s/# $name.*/# $name 0.0.$minor/" README.md
+        gsed -i "s/# $name.*/# $name 0.0.$minor/" ./README.md
     else
-        sed -ie "s/# $name.*/# $name 0.0.$minor/" README.md
+        sed -i "s/# $name.*/# $name 0.0.$minor/" ./README.md
     end
     git add README.md
     git commit -am "bump(0.0.$minor): yeah, bump!"
