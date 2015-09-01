@@ -12,5 +12,8 @@ set -g OMF_CONFIG $HOME/.config/omf
 # z omf pkg config
 set -g Z_SCRIPT_PATH /usr/local/etc/profile.d/z.sh
 
+# gem omf pkg config
+set -x GEM_ROOT $HOME/.gem
+
 # Load oh-my-fish configuration.
 source $OMF_PATH/init.fish
