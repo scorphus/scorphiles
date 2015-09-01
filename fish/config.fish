@@ -9,6 +9,7 @@ set -g OMF_CONFIG $HOME/.config/omf
 # For common configurations, we advise you to add them to your $OMF_CONFIG/init.fish file or
 # to create a custom plugin instead.
 
+# z omf pkg config
 set -g Z_SCRIPT_PATH /usr/local/etc/profile.d/z.sh
 
 # Load oh-my-fish configuration.
