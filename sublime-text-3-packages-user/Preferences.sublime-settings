@@ -25,7 +25,7 @@
 		"RestructuredText"
 	],
 	"indent_to_bracket": false,
-	"line_padding_bottom": -4,
+	"line_padding_bottom": -5,
 	"line_padding_top": 0,
 	"margin": 0,
 	"remember_full_screen": true,
