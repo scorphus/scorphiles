@@ -7,30 +7,49 @@
         "gutter_theme_excludes": [],
         "lint_mode": "background",
         "linters": {
+            "annotations": {
+                "@disable": false,
+                "args": [],
+                "errors": [
+                    "FIXME"
+                ],
+                "excludes": [],
+                "warnings": [
+                    "NOTE",
+                    "README",
+                    "TODO",
+                    "XXX",
+                    "@todo"
+                ]
+            },
             "coffee": {
                 "@disable": false,
                 "args": [],
                 "excludes": []
+            },
+            "flake8": {
+                "@disable": false,
+                "args": [],
+                "builtins": "",
+                "excludes": [],
+                "ignore": "E501",
+                "jobs": "1",
+                "max-complexity": -1,
+                "max-line-length": null,
+                "select": "",
+                "show-code": false
             },
             "jshint": {
                 "@disable": false,
                 "args": [],
                 "excludes": []
             },
-            "pep8": {
-                "@disable": false,
-                "args": [],
-                "excludes": [],
-                "ignore": "E501",
-                "max-line-length": 80,
-                "select": ""
-            },
-            "pyflakes": {
+            "pyyaml": {
                 "@disable": false,
                 "args": [],
                 "excludes": []
             },
-            "pyyaml": {
+            "rst": {
                 "@disable": false,
                 "args": [],
                 "excludes": []
