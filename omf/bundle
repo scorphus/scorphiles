@@ -1,0 +1,14 @@
+package bundler
+package gem
+package gi
+package https://github.com/scorphus/plugin-pip
+package https://gitlab.globoi.com/pablo.aguiar/plugin-bstore.git
+package https://gitlab.globoi.com/pablo.aguiar/plugin-ostore.git
+package osx
+package peco
+package python
+package rvm
+package sublime
+package thefuck
+package weather
+package z
