@@ -15,3 +15,6 @@ set -x PATH $HOME/bin $PATH
 
 # scorphish theme
 set -g SCORPHISH_GIT_INFO_ON_FIRST_LINE
+
+# set sensitive variables
+source $OMF_CONFIG/sensitive.fish ^/dev/null
