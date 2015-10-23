@@ -56,6 +56,8 @@
 	cvpa = commit -vp --amend
 	cam = commit --amend
 	camn = commit --amend --no-edit
+	purum = pull --rebase upstream master
+	purom = pull --rebase origin master
 	pufum = pull --ff-only upstream master
 	pufom = pull --ff-only origin master
 	mefum = merge --ff-only upstream/master
