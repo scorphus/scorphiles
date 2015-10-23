@@ -13,6 +13,10 @@ set -x PATH $GOPATH/bin $PATH
 # general purpose scripts
 set -x PATH $HOME/bin $PATH
 
+for dir in (basename (find $HOME/bin/ -type d -depth 1))
+    set -x PATH $HOME/bin/$dir $PATH
+end
+
 # scorphish theme
 set -g SCORPHISH_GIT_INFO_ON_FIRST_LINE
 
