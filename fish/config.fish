@@ -17,3 +17,6 @@ set -x GEM_ROOT $HOME/.gem
 
 # Load oh-my-fish configuration.
 source $OMF_PATH/init.fish
+
+# Load aliases
+source $HOME/.config/fish/aliases.fish
