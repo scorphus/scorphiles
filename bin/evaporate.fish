@@ -1,7 +1,7 @@
-#!/usr/bin/fish
+#!/usr/bin/env fish
 
-set days 6
-set path ~/gone_in_6_days/
+set days 10
+set path ~/Volatile/
 
 test -d $path; or exit 1
 
