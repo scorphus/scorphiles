@@ -1,0 +1,2 @@
+#!/bin/sh
+man.cx 1posix "$@"

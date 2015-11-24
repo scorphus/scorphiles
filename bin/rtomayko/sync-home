@@ -1,0 +1,70 @@
+#!/bin/sh
+# Usage: sync-home [user@]host ...
+# Copy crucial dotfiles and scripts to one or more remote machines.
+#
+# Copyright (c) 2008 Ryan Tomayko <http://tomayko.com/about>
+set -e
+
+test -z "$1" || echo "$@" | grep -q -- '--help' && {
+    echo "Usage: $0 [user@]host ..."
+    exit 1
+}
+
+cd ~
+for host in "$@"; do
+    echo "sync: $host"
+    rsync -avz --include-from=- --exclude='*' ./ "${host}:" <<FILES
++ /.inputrc
++ /.bashrc
++ /.dircolors
++ /.bash_completion
++ /.bash_completion.d
++ /.bash_completion.d/**
+
++ /.screenrc
++ /.gitshrc
++ /.gitconfig
++ /.tigrc
++ /.irbrc
+
++ /.vimrc
++ /.gvimrc
++ /.vim
+- /.vim/sessions
+- /.vim/plugin/netrwPlugin.vim
+- /.vim/plugin/ruby_debugger.vim
+- /.vim/swap
+- /.vim/.netrwhist
+- /.vim/tmp
++ /.vim/backup
+- /.vim/backup/**
++ /.vim/**
+
++ /bin
++ /bin/ack
++ /bin/autoscreen
++ /bin/lgrep
++ /bin/git-big-object-report
++ /bin/git-cut-branch
++ /bin/git-find-object
++ /bin/git-grab
++ /bin/git-ls-object-refs
++ /bin/git-ignore
++ /bin/git-object-deflate
++ /bin/git-push-log
++ /bin/git-sh
++ /bin/git-track
++ /bin/git-incoming
++ /bin/git-outgoing
++ /bin/gzball
++ /bin/headers
++ /bin/markdown
++ /bin/memcached-tool
++ /bin/sync-home
++ /bin/tinyurl
++ /bin/rbconfig
++ /bin/rbdev
++ /bin/addr
++ /bin/gendiff
+FILES
+done

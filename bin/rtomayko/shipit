@@ -1,0 +1,7 @@
+#!/bin/sh
+# Usage: shipit
+# Puts a ship it image on your clipboard.
+printf "http://img.skitch.com/20100310-nrgxbwqm58tibiq2un6mujqmm5.png" |
+pbcopy
+
+echo "squirrel link copied to clipboard"

@@ -1,0 +1,20 @@
+#!/bin/sh
+#/ autoscreen
+#/ Resume or start a screen session with ssh-agent forwarding setup
+set -e
+
+if [ "$SSH_AUTH_SOCK" = "" ]; then
+  echo "Error: ssh-agent forwarding not enabled."
+  echo "Use \`ssh -A' or add the following to ~/.ssh/config:"
+  echo ""
+  echo "Host *"
+  echo "  ForwardAgent yes"
+  echo ""
+  exit 1
+fi
+
+mkdir -p $HOME/.screen
+touch $HOME/.screenrc
+ln -sf "$SSH_AUTH_SOCK" "$HOME/.screen/ssh-auth-sock.$(hostname)"
+
+exec screen -D -RR

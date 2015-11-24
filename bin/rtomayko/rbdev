@@ -1,0 +1,82 @@
+#!/bin/sh
+# Usage: . rbdev
+#        cd some-great-project
+#        rbdev
+#
+# Set up the PATH, RUBYLIB, and MANPATH environment for local development
+# against a project adhering to the Ruby Packaging Standard [1].
+#
+# - Adds <project>/lib to RUBYLIB
+# - Maybe adds <project>/ext/* to RUBYLIB (when C extensions are present)
+# - Maybe adds <project>/bin to PATH (when bin scripts are present)
+# - Maybe adds <project>/man to MANPATH (when man pages are present)
+#
+# Place this file somewhere on your PATH (e.g., ~/bin) and source it into
+# your shell by adding a line like the following to your ~/.bashrc:
+#
+#   . ~/bin/rbdev 2>/dev/null || true
+#
+# Next, use the rbdev function to setup your environment:
+#
+#   $ cd ~/develop/your-great-ruby-project
+#   $ rbdev
+#
+# Once the environment is setup, you should be able to run the project's bin
+# scripts and tests without needing to pass explicit path and load path
+# arguments to ruby(1).
+#
+# [1]: http://chneukirchen.github.com/rps/
+
+test "$(basename $0)" = rbdev && {
+    echo 1>&2 "This program cannot be run directly; it must first be sourced"
+    echo 1>&2 "into a shell. Try: . $(basename $0)"
+    echo 1>&2
+    echo 1>&2 "Consider adding the following line to your ~/.bashrc:"
+    echo 1>&2 "  . $(basename $0) 2>/dev/null || true"
+    exit 1
+}
+
+# Usage: rbdev
+# Put standard-structure ruby project at <dir> on RUBYLIB, PATH,
+# MANPATH, etc. With no <dir>, assume the current working directory.
+rbdev() {
+    _dir="${1:-.}"
+    _exp=$(cd "$_dir" && pwd)
+    _mods=false
+
+    # put script at head of PATH
+    test -d "$_exp"/script && {
+        PATH="$_exp/script:$PATH"
+        printf 1>&2 "%10s %s\n" "PATH+" "$_dir/script"
+        _mods=true
+    }
+
+    # put bin at head of PATH
+    test -d "$_exp"/bin && {
+        PATH="$_exp/bin:$PATH"
+        printf 1>&2 "%10s %s\n" "PATH+" "$_dir/bin"
+        _mods=true
+    }
+
+    # put extension library build dirs at head of RUBYLIB
+    for _sub in $(
+        find "$_exp"/ext -type d 2>/dev/null || true
+        test -d "$_exp"/lib && echo "$_exp"/lib
+      )
+    do
+        export RUBYLIB="$_sub:$RUBYLIB"
+        printf 1>&2 "%10s %s\n" "RUBYLIB+" "$(echo "$_sub" | sed "s@$_exp/@$_dir/@")"
+        _mods=true
+    done
+
+    unset _exp _sub
+
+    # check if we did anything useful
+    if   $_mods
+    then unset _mods _dir
+         true
+    else echo 1>&2 "no lib, ext, or bin dirs detected at $_dir"
+         unset _mods _dir
+         false
+    fi
+}

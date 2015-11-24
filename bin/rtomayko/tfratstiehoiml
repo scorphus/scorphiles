@@ -1,0 +1,3 @@
+#!/bin/sh
+/bin/echo -n "that's fucking ridiculous and the stupidest thing" \
+             "I've ever heard of in my life."

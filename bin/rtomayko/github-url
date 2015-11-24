@@ -1,0 +1,58 @@
+#!/bin/sh
+#/ Usage: github-url [-r <remote>] [<path>]
+#/ Make a github.com URL using the current repository's remote URLs to
+#/ determine location. When <path> is given, append it to the generated URL.
+set -e
+
+# The http URL to the git repository on github.com.
+url=
+remote=origin
+
+# handle different default remote
+if [ "$1" = "-r" ]; then
+    remote="$2"
+    shift 2
+fi
+
+# Run through all remotes looking for a github repository. Bail when found.
+remotes="$remote $(git remote)"
+for remote in $remotes;
+do
+    git_url=$(git config remote.$remote.url || true)
+    case "$git_url" in
+        https://github.com/*)
+            url="$git_url"
+            break
+            ;;
+        git@github.com:*)
+            url=$(echo "$git_url" | sed 's|git@github.com:|https://github.com/|')
+            break
+            ;;
+        git://github.com/*)
+            url=$(echo "$git_url" | sed 's|git://github.com|https://github.com|')
+            break
+            ;;
+    esac
+done
+
+# No github.com remotes exists. Death.
+if [ -z "$url" ]; then
+    echo "error: no github.com git remotes found" 1>&2
+    exit 1
+fi
+
+# Axe the .git suffix if there is one. Remove trailing slashes.
+url=$(echo "$url" | sed 's|\.git$||')
+url=$(echo "$url" | sed 's|/{1,}$||')
+
+# When given a path, append it to the url. Be smart about it, such that a full
+# path only appends the part that is inside the current git repository.
+path="$1"
+if [ -n "$path" ]; then
+    gitdir=$(git rev-parse --git-dir)
+    workdir=$(cd "$gitdir"/.. && pwd)
+    path=$(echo "$path" | sed "s|^$workdir/||")
+    echo "$url/tree/master/$path"
+else
+    echo "$url"
+fi

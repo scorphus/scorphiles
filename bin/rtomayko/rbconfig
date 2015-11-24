@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+require 'rbconfig'
+conf = RbConfig::CONFIG
+if ARGV.any?
+  ARGV.each do |key|
+    puts conf[key]
+  end
+else
+  conf.keys.sort.each do |key|
+    puts "#{key}='#{conf[key]}'"
+  end
+end
