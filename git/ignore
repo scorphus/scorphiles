@@ -80,3 +80,4 @@ Thumbs.db
 
 # Ignored wildcards
 *IGNOREME*
+node_modules
