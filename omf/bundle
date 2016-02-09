@@ -1,10 +1,12 @@
 package bundler
+package foreign-env
 package gem
 package gi
 package https://github.com/scorphus/plugin-pip
 package https://github.com/scorphus/plugin-pytest
 package https://gitlab.globoi.com/pablo.aguiar/plugin-bstore.git
 package https://gitlab.globoi.com/pablo.aguiar/plugin-ostore.git
+package nvm
 package osx
 package peco
 package python
