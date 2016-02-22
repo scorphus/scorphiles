@@ -11,6 +11,10 @@ package peco
 package python
 package rvm
 package sublime
+package technicolor
 package thefuck
+package vcs
 package weather
 package z
+theme default
+theme pure
