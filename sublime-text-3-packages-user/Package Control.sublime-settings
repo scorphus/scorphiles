@@ -13,6 +13,7 @@
 		"Colorsublime",
 		"Djaneiro",
 		"Emmet",
+		"ERB Autocomplete",
 		"fish-shell",
 		"Flask Completions",
 		"Git",
@@ -23,8 +24,11 @@
 		"JavaScript Snippets",
 		"JsFormat",
 		"LineEndings",
+		"LoremGibson",
 		"Markdown Extended",
 		"Markdown Preview",
+		"Material Theme",
+		"Monokai - Spacegray",
 		"OmniMarkupPreviewer",
 		"Open-Include",
 		"Package Control",
@@ -35,6 +39,7 @@
 		"Random Everything",
 		"Restructured Text (RST) Snippets",
 		"RestructuredText Improved",
+		"RSpec",
 		"Sass",
 		"Select Quoted",
 		"SideBarEnhancements",
@@ -50,7 +55,10 @@
 		"Text Pastry",
 		"Theme - Afterglow",
 		"Theme - Soda",
+		"Theme - Spacegray",
+		"Theme - Tech49",
 		"Vagrant",
+		"Virtualenv",
 		"Wrap Plus"
 	]
 }
