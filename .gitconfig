@@ -74,3 +74,5 @@
 [grep]
 	extendRegexp = true
 	lineNumber = true
+[rebase]
+	autosquash = true
