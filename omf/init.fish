@@ -1,13 +1,13 @@
 # virtualfish
-set PROJECT_HOME $HOME/Workspace
-set VIRTUALFISH_COMPAT_ALIASES
+set -g PROJECT_HOME $HOME/Workspace
+set -g VIRTUALFISH_COMPAT_ALIASES
 eval (python -m virtualfish auto_activation compat_aliases global_requirements projects)
 if test "$VIRTUAL_ENV" != ""
     vf activate (basename $VIRTUAL_ENV)
 end
 
 # golang
-set -x GOPATH $HOME/gocode
+set -g GOPATH $HOME/gocode
 set -x PATH $GOPATH/bin $PATH
 
 # general purpose scripts
