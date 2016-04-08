@@ -25,3 +25,6 @@ source $OMF_CONFIG/sensitive.fish ^/dev/null
 
 # Python stuff
 set -g PYTHONDONTWRITEBYTECODE 1  # Don't write bytecode files everywhere
+
+# TheFuck stuff
+set -g TF_OVERRIDDEN_ALIASES 'cd,grep,ls,man,open,git'
