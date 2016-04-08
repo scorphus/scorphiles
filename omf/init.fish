@@ -22,3 +22,6 @@ set -g SCORPHISH_GIT_INFO_ON_FIRST_LINE
 
 # set sensitive variables
 source $OMF_CONFIG/sensitive.fish ^/dev/null
+
+# Python stuff
+set -g PYTHONDONTWRITEBYTECODE 1  # Don't write bytecode files everywhere
