@@ -5,9 +5,9 @@ set -g OMF_PATH $HOME/.local/share/omf
 set -g OMF_CONFIG $HOME/.config/omf
 
 ### Configuration required to load oh-my-fish ###
-# Note: Only add configurations that are required to be set before oh-my-fish is loaded.
-# For common configurations, we advise you to add them to your $OMF_CONFIG/init.fish file or
-# to create a custom plugin instead.
+# Note: Only add configurations that are required to be set before oh-my-fish
+# is loaded. For common configurations, we advise you to add them to your
+# $OMF_CONFIG/init.fish file or to create a custom plugin instead.
 
 # z omf pkg config
 set -g Z_SCRIPT_PATH /usr/local/etc/profile.d/z.sh
