@@ -1,3 +1,19 @@
+# golang
+set -x GOPATH $HOME/gocode
+set -x PATH $GOPATH/bin $PATH
+
+# general purpose scripts
+set -x PATH $HOME/bin $PATH
+for dir in (basename (find $HOME/bin/ -type d -depth 1))
+    set -x PATH $HOME/bin/$dir $PATH
+end
+
+# Python stuff
+set -g PYTHONDONTWRITEBYTECODE 1  # Don't write bytecode files everywhere
+
+# TheFuck stuff
+set -g TF_OVERRIDDEN_ALIASES 'cd,grep,ls,man,open,git'
+
 # Path to your oh-my-fish.
 set -g OMF_PATH $HOME/.local/share/omf
 
