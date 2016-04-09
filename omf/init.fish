@@ -1,9 +1,13 @@
 # virtualfish
 set -g PROJECT_HOME $HOME/Workspace
 set -g VIRTUALFISH_COMPAT_ALIASES
-eval (python -m virtualfish auto_activation compat_aliases global_requirements projects)
-if test "$VIRTUAL_ENV" != ""
-    vf activate (basename $VIRTUAL_ENV)
+set -l vf_plugins auto_activation compat_aliases global_requirements projects
+set -l vf_loader (python -m virtualfish $vf_plugins ^ /dev/null)
+if test -n "$vf_loader"
+    eval $vf_loader
+    if test "$VIRTUAL_ENV" != ""; and type -q vf
+        vf activate (basename $VIRTUAL_ENV) 2>&1 > /dev/null
+    end
 end
 
 # scorphish theme
