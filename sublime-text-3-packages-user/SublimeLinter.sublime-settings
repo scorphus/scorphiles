@@ -28,7 +28,7 @@
                 "excludes": []
             },
             "flake8": {
-                "@disable": false,
+                "@disable": true,
                 "args": [],
                 "builtins": "",
                 "excludes": [],
