@@ -1,0 +1,30 @@
+#!/bin/sh
+#
+# Show each commit from an object.
+#
+# $1 - Optional name of the object to show commits from. Values can be a ref, a
+#      branch name, a tag, etc. Default is master.
+# $2 - Optional number of lines of context to use in the diff. Default is 20.
+#
+# Examples
+#
+#   git show-commits
+#   git show-commits master 5
+#
+
+if [[ -z $1 ]]; then
+    branch='master'
+else
+    branch=$1
+fi
+
+for ref in $(git log $branch.. | grep 'commit ' | cut -d\  -f2 | tail -r); do
+    echo 'About to show' $ref
+    git show -U20 --color=always $ref | less -r
+done
+
+if [[ -z $ref ]]; then
+    echo 'Well, maybe you should provide a starting point. Ex.:'
+    echo 'git show-commits HEAD~5'
+    exit 1
+fi
