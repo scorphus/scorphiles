@@ -1,4 +1,6 @@
 package bundler
+package config
+package errno
 package foreign-env
 package gem
 package https://github.com/scorphus/plugin-pip
@@ -10,6 +12,7 @@ package osx
 package peco
 package python
 package rvm
+package shark
 package sublime
 package technicolor
 package thefuck
