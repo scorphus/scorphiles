@@ -28,7 +28,6 @@ function _passpie_using_command
   return 1
 end
 
-complete -f -c passpie -n '_passpie_needs_command' -a 'add copy remove search update' --description 'Manage a credential'
-complete -f -c passpie -n '_passpie_using_command add copy remove search update' -a '(_passpie_credentials)
+complete -f -c passpie -n '_passpie_needs_command' -a 'status reset search complete list add remove update purge init export import copy config log' --description 'Manage a credential'
+complete -f -c passpie -n '_passpie_using_command status reset search complete list add remove update purge init export import copy config log' -a '(_passpie_credentials)
                                                                   (_passpie_credential_names)' --description 'Credential'
-
