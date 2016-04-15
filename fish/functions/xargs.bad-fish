@@ -1,0 +1,8 @@
+function xargs -d 'An overridden, fish-wise xargs'
+    set -l cmd "fish -lc $argv"
+    set -l input ""
+    while read line
+        set input $input $line
+    end
+    eval $cmd $input
+end

@@ -15,6 +15,7 @@ histedit=
 pager=
 progress=
 rebase=
+record=
 transplant=
 
 # http://mercurial.selenic.com/wiki/PagerExtension

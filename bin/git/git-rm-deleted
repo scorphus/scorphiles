@@ -1,0 +1,6 @@
+#!/bin/sh
+#
+# Remove deleted files from the working tree and from the index.
+
+deleted_files=$(git st | grep deleted | cut -d\  -f5)
+git rm $deleted_files

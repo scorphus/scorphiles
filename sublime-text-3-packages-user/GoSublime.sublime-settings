@@ -1,0 +1,11 @@
+{
+    // you may set specific environment variables here
+    // e.g "env": { "PATH": "$HOME/go/bin:$PATH" }
+    // in values, $PATH and ${PATH} are replaced with
+    // the corresponding environment(PATH) variable, if it exists.
+    "env": {
+        "GOPATH": "$HOME/gocode",
+        "PATH": "$HOME/gocode/bin:$PATH"
+    }
+
+}
