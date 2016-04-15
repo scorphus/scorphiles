@@ -1,0 +1,6 @@
+#!/bin/sh
+#
+# Show the current branch name.
+
+branch=$(git rev-parse --abbrev-ref HEAD)
+echo $branch
