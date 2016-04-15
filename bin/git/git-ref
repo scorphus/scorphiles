@@ -1,0 +1,20 @@
+#!/bin/sh
+#
+# Show the ref of an object.
+#
+# $1 - Optional object to copy ref from.
+#
+# Examples
+#
+#   git copy-ref
+#   git copy-ref HEAD~5
+#
+
+if [[ -z $1 ]]; then
+    object='HEAD'
+else
+    object=$1
+fi
+
+ref=$(git rev-parse $object | cut -c1-7)
+echo $ref

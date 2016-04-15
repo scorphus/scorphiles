@@ -1,0 +1,21 @@
+#!/bin/sh
+#
+# Copy the ref of an object to the clipboard.
+#
+# $1 - Optional object to copy ref from.
+#
+# Examples
+#
+#   git copy-ref
+#   git copy-ref HEAD~5
+#
+
+if [[ -z $1 ]]; then
+    object='HEAD'
+else
+    object=$1
+fi
+
+ref=$(git rev-parse $object | cut -c1-7)
+echo $ref
+echo $ref | tr -d '\n' | tr -d ' ' | pbcopy
