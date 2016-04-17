@@ -16,6 +16,11 @@ else
     object=$1
 fi
 
-ref=$(git rev-parse $object | cut -c1-7)
+ref=$(git rev-parse $object)
+
+if [[ $0 != *'full'* ]]; then
+    ref=$(echo $ref | cut -c1-7)
+fi
+
 echo $ref
 echo $ref | tr -d '\n' | tr -d ' ' | pbcopy
