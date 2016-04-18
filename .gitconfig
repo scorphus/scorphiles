@@ -40,9 +40,11 @@
 	ss = stash
 	df = diff
 	ds = diff --staged
+	l = log -40 --branches=* --graph --decorate --abbrev-commit --oneline --all
 	ll = log --branches=* --graph --decorate --abbrev-commit
 	lo = log --branches=* --graph --decorate --abbrev-commit --oneline
-	la = log --branches=* --graph --decorate --abbrev-commit --oneline --all
+	la = log -25 --branches=* --graph --decorate --abbrev-commit --oneline --all
+	laa = log --branches=* --graph --decorate --abbrev-commit --oneline --all
 	lg = log --color --graph --decorate --abbrev-commit --pretty=format:'%C(bold red)%h%Creset -%C(bold yellow)%d%Creset %s %C(bold green)(%cr) %C(bold blue)<%an>%Creset'
 	lp = log -25 --graph --decorate --abbrev-commit --date=relative --pretty=format:'%C(bold yellow)%h%C(bold red)%x09%ae%C(bold green)%x09%ad%C(reset)%x09%s%C(auto)%d'
 	lpp = log --graph --decorate --abbrev-commit --date=relative --pretty=format:'%C(bold yellow)%h%C(bold red)%x09%ae%C(bold green)%x09%ad%C(reset)%x09%s%C(auto)%d'
