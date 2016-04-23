@@ -7,7 +7,7 @@ function pipeset --no-scope-shadowing -d "Set a multi-line variable from stdin"
             case '-*'
                 set _options $_options $_item
             case '*'
-                set _variables $_variables  $_item
+                set _variables $_variables $_item
         end
     end
     for _variable in $_variables
