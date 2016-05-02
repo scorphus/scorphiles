@@ -49,7 +49,7 @@
      showgrid="false"
      inkscape:snap-text-baseline="true"
      inkscape:zoom="0.99875"
-     inkscape:cx="151.99934"
+     inkscape:cx="150.99809"
      inkscape:cy="124.53372"
      inkscape:window-x="4"
      inkscape:window-y="1"
@@ -61,7 +61,7 @@
      fit-margin-bottom="0" />
   <g
      id="g5472"
-     transform="matrix(1.0198935,0,0,1.0096365,74.07558,0.00215328)"
+     transform="matrix(1.0198935,0,0,1.0096365,90.272256,0.00215328)"
      inkscape:export-filename="/Users/pablo/Volatile/path4236.png"
      inkscape:export-xdpi="70.367943"
      inkscape:export-ydpi="70.367943">
@@ -124,7 +124,7 @@
   <g
      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:67.86125183px;line-height:125%;font-family:'Lobster 1.4';-inkscape-font-specification:'Lobster 1.4, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
      id="text5485"
-     transform="translate(-229.4775,-206.51486)">
+     transform="translate(-229.4775,-206.51485)">
     <path
        d="m 255.7398,296.34141 -3.3252,15.60809 0,-0.27145 c 0,-1.96797 -1.62867,-3.46092 -5.49676,-3.46092 -11.80786,0 -17.44034,14.59017 -17.44034,23.75144 0,8.07549 4.41098,10.92566 9.02555,10.92566 4.81814,0 8.00762,-3.12162 10.04346,-6.24324 0.54289,3.80023 2.9859,5.83607 6.6504,5.83607 3.66451,0 9.77202,-1.08578 13.64012,-12.14716 l -2.85018,0 c -1.01792,3.39306 -2.85017,5.97179 -5.49676,5.97179 -1.90011,0 -2.78231,-0.61075 -2.78231,-2.51087 0,-0.61075 0.0679,-1.28936 0.27144,-2.17156 l 7.80405,-36.64508 -10.04347,1.35723 z m -7.26115,34.33779 c -0.8822,3.73237 -3.66451,5.63249 -5.56462,5.63249 -1.22151,0 -3.39307,-0.0679 -3.39307,-5.29318 0,-6.37896 3.73237,-18.59398 9.50058,-18.59398 2.03584,0 2.64659,1.5608 2.78231,2.37514 l -3.3252,15.54023 0,0.3393 z"
        id="path4216"
@@ -203,4 +203,15 @@
        inkscape:export-ydpi="70.367943"
        inkscape:connector-curvature="0" />
   </g>
+  <text
+     sodipodi:linespacing="125%"
+     id="text4211"
+     y="-23.226801"
+     x="610.64441"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:67.86125183px;line-height:125%;font-family:'Lobster 1.4';-inkscape-font-specification:'Lobster 1.4, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     xml:space="preserve"><tspan
+       y="-23.226801"
+       x="610.64441"
+       id="tspan4213"
+       sodipodi:role="line">dotfilesetal</tspan></text>
 </svg>
