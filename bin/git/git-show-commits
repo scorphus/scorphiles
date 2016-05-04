@@ -18,9 +18,15 @@ else
     branch=$1
 fi
 
+if [[ -z $2 ]]; then
+    context=20
+else
+    context=$2
+fi
+
 for ref in $(git log $branch.. | grep 'commit ' | cut -d\  -f2 | tail -r); do
     echo 'About to show' $ref
-    git show -U20 --color=always $ref | less -r
+    git show -U$context --color=always $ref | less -r
 done
 
 if [[ -z $ref ]]; then
