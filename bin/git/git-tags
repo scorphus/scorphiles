@@ -1,0 +1,17 @@
+#!/bin/sh
+#
+# List local tag objects, sorted by version number in ascending order.
+#
+
+if ! sort -V $0 >/dev/null 2>&1; then
+    if gsort -V $0 >/dev/null 2>&1; then
+        alias sortv='gsort -V'
+    else
+        echo 'Showing unsorted list! Try installing `gsort`.'
+        alias sortv='sort'
+    fi
+else
+    alias sortv='sort -V'
+fi
+
+git tag | sortv
