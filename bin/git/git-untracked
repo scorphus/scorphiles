@@ -1,0 +1,20 @@
+#!/bin/sh
+#
+# Show list of untracked files.
+#
+# $1 - Optional `rm` to remove untracked files.
+#
+# Examples
+#
+#   git copy-ref
+#   git copy-ref HEAD~5
+#
+
+git clean -fd --dry-run | sed s/^Would\ remove\ //
+
+if [ "$1" = "rm" ]; then
+    read -p "Remove ALL these files/directories (y/N)? " doit
+    if test "$doit" = "y" -o "$doit" = "Y"; then
+        git clean -fd
+    fi
+fi
