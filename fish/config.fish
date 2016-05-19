@@ -9,10 +9,10 @@ for dir in (basename (find $HOME/bin/ -type d -depth 1))
 end
 
 # Python stuff
-set -g PYTHONDONTWRITEBYTECODE 1  # Don't write bytecode files everywhere
+set -xg PYTHONDONTWRITEBYTECODE 1  # Don't write bytecode files everywhere
 
 # TheFuck stuff
-set -g TF_OVERRIDDEN_ALIASES 'cd,grep,ls,man,open,git'
+set -xg TF_OVERRIDDEN_ALIASES 'cd,grep,ls,man,open,git'
 
 # Path to your oh-my-fish.
 set -g OMF_PATH $HOME/.local/share/omf
