@@ -20,4 +20,6 @@ function set-abbreviations -d "Set default abbreviations"
   abbr -a gpurum git pull --rebase upstream master
   abbr -a gru git remote update
   abbr -a grup git remote update --prune
+  abbr -a pbc pbcopy
+  abbr -a pbp pbpaste
 end
