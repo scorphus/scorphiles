@@ -1,4 +1,10 @@
 #!/usr/bin/env python
+# -*- coding:utf-8 -*-
+
+# Copyright 2015 Pablo Santiago Blum de Aguiar <scorphus@gmail.com>. All rights
+# reserved. Use of this source code is governed by Apache License, Version 2.0,
+# that can be found on https://opensource.org/licenses/Apache-2.0
+
 import ConfigParser
 import os
 import sys
