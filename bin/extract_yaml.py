@@ -38,11 +38,15 @@ def main(argv):
             return 3
 
         for key in keys:
-            if key not in yaml_dict:
-                usage(yaml_dict)
-                return 4
-
-            yaml_dict = yaml_dict[key]
+            try:
+                idx = int(key)
+                key = idx
+            except:
+                pass
+            try:
+                yaml_dict = yaml_dict[key]
+            except:
+                yaml_dict = ''
 
         print yaml_dict
 
