@@ -60,7 +60,10 @@ def main(argv):
         except:
             json_dict = ''
 
-    print(json_dict.encode('utf8') if json_dict else '')
+    try:
+        print(json_dict.encode('utf8') if json_dict else '')
+    except:
+        print(json.dumps(json_dict).encode('utf8') if json_dict else '')
 
 
 if __name__ == '__main__':
