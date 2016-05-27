@@ -49,6 +49,7 @@ def main(argv):
         usage(json_dict)
         return 3
 
+    status = 0
     for key in keys:
         try:
             idx = int(key)
@@ -59,11 +60,15 @@ def main(argv):
             json_dict = json_dict[key]
         except:
             json_dict = ''
+            status = 23
+            break
 
     try:
         print(json_dict.encode('utf8') if json_dict else '')
     except:
         print(json.dumps(json_dict).encode('utf8') if json_dict else '')
+
+    return status
 
 
 if __name__ == '__main__':
