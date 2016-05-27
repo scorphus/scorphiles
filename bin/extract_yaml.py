@@ -5,7 +5,6 @@
 # reserved. Use of this source code is governed by Apache License, Version 2.0,
 # that can be found on https://opensource.org/licenses/Apache-2.0
 
-import os
 import sys
 import yaml
 
