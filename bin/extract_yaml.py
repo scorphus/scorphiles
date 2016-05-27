@@ -20,35 +20,42 @@ def main(argv):
                 '\n  '.join(sorted(yaml_dict.keys()))
             )
 
-    if len(argv) < 2 or not os.path.isfile(argv[1]):
+    if len(argv) < 1:
         usage()
         return 1
 
-    with open(sys.argv[1]) as yaml_file:
+    if not sys.stdin.isatty():
         try:
-            yaml_dict = yaml.load(yaml_file)
+            yaml_dict = yaml.load(sys.stdin)
         except Exception as e:
-            print 'Could not read {}: {}'.format(sys.argv[1], e)
+            print 'Could not read from STDIN: {}'.format(e)
             return 2
-
+        keys = [x for x in argv[1].split('.')] if len(argv) > 1 else []
+    else:
+        with open(sys.argv[1]) as yaml_file:
+            try:
+                yaml_dict = yaml.load(yaml_file)
+            except Exception as e:
+                print 'Could not read {}: {}'.format(sys.argv[1], e)
+                return 2
         keys = [x for x in argv[2].split('.')] if len(argv) > 2 else []
 
-        if not keys:
-            usage(yaml_dict)
-            return 3
+    if not keys:
+        usage(yaml_dict)
+        return 3
 
-        for key in keys:
-            try:
-                idx = int(key)
-                key = idx
-            except:
-                pass
-            try:
-                yaml_dict = yaml_dict[key]
-            except:
-                yaml_dict = ''
+    for key in keys:
+        try:
+            idx = int(key)
+            key = idx
+        except:
+            pass
+        try:
+            yaml_dict = yaml_dict[key]
+        except:
+            yaml_dict = ''
 
-        print yaml_dict
+    print yaml_dict
 
 
 if __name__ == '__main__':
