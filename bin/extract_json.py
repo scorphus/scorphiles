@@ -9,15 +9,16 @@ import json
 import sys
 
 
+def usage(json_dict=None):
+    print main.__doc__
+    if json_dict:
+        print 'Available keys:\n  {}'.format(
+            '\n  '.join(sorted(json_dict.keys()))
+        )
+
+
 def main(argv):
     '''Usage: extract_json.py <json-file> <key>[.<key>...]'''
-
-    def usage(json_dict=None):
-        print main.__doc__
-        if json_dict:
-            print 'Available keys:\n  {}'.format(
-                '\n  '.join(sorted(json_dict.keys()))
-            )
 
     if len(argv) < 1:
         usage()
