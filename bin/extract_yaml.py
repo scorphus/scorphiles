@@ -25,7 +25,7 @@ def main(argv):
 
     if not sys.stdin.isatty():
         try:
-            yaml_dict = yaml.load(sys.stdin)
+            yaml_dict = yaml.safe_load(sys.stdin)
         except Exception as e:
             print 'Could not read from STDIN: {}'.format(e)
             return 2
@@ -33,7 +33,7 @@ def main(argv):
     else:
         with open(sys.argv[1]) as yaml_file:
             try:
-                yaml_dict = yaml.load(yaml_file)
+                yaml_dict = yaml.safe_load(yaml_file)
             except Exception as e:
                 print 'Could not read {}: {}'.format(sys.argv[1], e)
                 return 2
