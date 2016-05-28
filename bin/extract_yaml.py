@@ -44,6 +44,7 @@ def main(argv):
         usage(yaml_dict)
         return 3
 
+    status = 0
     for key in keys:
         try:
             idx = int(key)
@@ -54,8 +55,15 @@ def main(argv):
             yaml_dict = yaml_dict[key]
         except:
             yaml_dict = ''
+            status = 23
+            break
 
-    print yaml_dict
+    try:
+        print(yaml_dict.encode('utf8') if yaml_dict else '')
+    except:
+        print(yaml.dump(yaml_dict).encode('utf8') if yaml_dict else '')
+
+    return status
 
 
 if __name__ == '__main__':
