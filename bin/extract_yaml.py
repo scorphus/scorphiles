@@ -9,15 +9,16 @@ import sys
 import yaml
 
 
+def usage(yaml_dict=None):
+    print main.__doc__
+    if yaml_dict:
+        print 'Available keys:\n  {}'.format(
+            '\n  '.join(sorted(yaml_dict.keys()))
+        )
+
+
 def main(argv):
     '''Usage: extract_yaml.py <yam-file> <key>[.<key>...]'''
-
-    def usage(yaml_dict=None):
-        print main.__doc__
-        if yaml_dict:
-            print 'Available keys:\n  {}'.format(
-                '\n  '.join(sorted(yaml_dict.keys()))
-            )
 
     if len(argv) < 1:
         usage()
