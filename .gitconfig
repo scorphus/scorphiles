@@ -32,6 +32,7 @@
 	editor = vim
 	whitespace = tab-in-indent,tabwidth=4
 	pager = less -sFXRMW
+	commentChar = ";"
 [alias]
 	br = branch
 	co = checkout
