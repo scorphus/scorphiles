@@ -79,3 +79,10 @@
 	lineNumber = true
 [rebase]
 	autosquash = true
+[sendemail]
+	smtpserver = smtp.gmail.com
+	smtpserverport = 587
+	smtpencryption = tls
+	smtpuser = scorphus@gmail.com
+	chainreplyto = false
+	from = Pablo Santiago Blum de Aguiar <scorphus@gmail.com>
