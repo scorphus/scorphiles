@@ -81,3 +81,7 @@ Thumbs.db
 # Ignored wildcards
 *IGNOREME*
 node_modules
+
+# Sublime project and workspace files
+*.sublime-project
+*.sublime-workspace
