@@ -17,7 +17,7 @@ package sublime
 package technicolor
 package thefuck
 package vcs
-package weather
+package wttr
 package z
 theme default
 theme pure
