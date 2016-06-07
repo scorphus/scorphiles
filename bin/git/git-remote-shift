@@ -1,0 +1,35 @@
+#!/bin/sh
+#
+# Rename current remote ($1) to something else ($3) and add a new one ($1).
+#
+# $1 - Name of the current remote.
+# $2 - URL of the new remote.
+# $3 - Optional new name of the current remote. Default is upstream.
+#
+# Examples
+#
+#   git remote-shift origin git@github.com:scorphus/dotfilesetal.git
+#   git remote-shift upstream git@github.com:oh-my-fish/oh-my-fish.git origin
+#
+
+if [[ -z $1 ]]; then
+    echo 'specify current remote name'
+    exit 1
+else
+    origin=$1
+fi
+
+if [[ -z $2 ]]; then
+    echo 'specify new remote URL'
+    exit 1
+else
+    url=$2
+fi
+
+if [[ -z $3 ]]; then
+    upstream='upstream'
+else
+    upstream=$3
+fi
+
+git remote rename $origin $upstream && git remote add $origin $url
