@@ -22,7 +22,7 @@ set -g OMF_CONFIG $HOME/.config/omf
 
 # iTerm2 Shell Integration
 # https://iterm2.com/documentation-shell-integration.html
-iterm2-startup.fish
+source $HOME/.config/fish/iterm2-startup.fish
 
 ### Configuration required to load oh-my-fish ###
 # Note: Only add configurations that are required to be set before oh-my-fish
