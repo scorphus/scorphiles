@@ -1,0 +1,12 @@
+// Copy this and place into your Packages/User directory.
+{
+  // The full path to the racer binary. If racer is already
+  // in your system path, then this default will be fine.
+  "racer": "/Users/pablo/.cargo/bin/racer",
+
+  // A list of search paths. This should generally just
+  // be the path to the rust compiler src/ directory.
+  "search_paths": [
+    "/Users/pablo/.local/src/rustc-1.8.0/src"
+  ]
+}
