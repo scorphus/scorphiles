@@ -17,6 +17,7 @@ progress=
 rebase=
 record=
 transplant=
+hggit = /Users/pablo/Workspace/hg-git/hggit
 
 # http://mercurial.selenic.com/wiki/PagerExtension
 [pager]
