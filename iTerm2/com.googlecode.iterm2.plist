@@ -1069,17 +1069,17 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame NSColorPanel</key>
-	<string>266 448 231 329 0 0 1280 777 </string>
+	<string>367 448 231 329 0 0 1280 777 </string>
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>435 284 845 359 0 0 1280 777 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>100 307 606 456 0 0 1280 777 </string>
+	<string>-1180 307 606 456 -1280 0 1280 777 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>2010 288 620 392 1680 0 1280 777 </string>
+	<string>330 295 620 392 0 0 1280 800 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 13 1676 1037 0 0 1680 1027 </string>
+	<string>266 215 570 423 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>176 324 570 423 0 0 1680 1027 </string>
+	<string>4 0 1676 1027 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>271 49 570 423 0 0 1680 1027 </string>
 	<key>NeverWarnAboutMeta</key>
@@ -1793,7 +1793,16 @@
 			<key>Transparency</key>
 			<real>0.0</real>
 			<key>Triggers</key>
-			<array/>
+			<array>
+				<dict>
+					<key>action</key>
+					<string>HighlightTrigger</string>
+					<key>partial</key>
+					<true/>
+					<key>regex</key>
+					<string>Switched to a new branch</string>
+				</dict>
+			</array>
 			<key>Unlimited Scrollback</key>
 			<false/>
 			<key>Use Bold Font</key>
@@ -1816,6 +1825,8 @@
 	</array>
 	<key>NoSyncCommandHistoryHasEverBeenUsed</key>
 	<true/>
+	<key>NoSyncConfirmBeta</key>
+	<true/>
 	<key>NoSyncDoNotWarnBeforeMultilinePaste</key>
 	<true/>
 	<key>NoSyncDoNotWarnBeforeMultilinePaste_selection</key>
@@ -1825,7 +1836,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>856B7482-7D65-41A2-9221-8EE5E820532C</string>
 	<key>NoSyncLastTipTime</key>
-	<real>487705073.412458</real>
+	<real>489014355.24994999</real>
 	<key>NoSyncNeverRemindPrefsChangesCopy</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
@@ -1848,6 +1859,20 @@
 		<string>0002</string>
 		<string>0003</string>
 		<string>0004</string>
+		<string>0005</string>
+		<string>0006</string>
+		<string>0007</string>
+		<string>0008</string>
+		<string>0009</string>
+		<string>0010</string>
+		<string>0011</string>
+		<string>0012</string>
+		<string>0013</string>
+		<string>0014</string>
+		<string>0015</string>
+		<string>0016</string>
+		<string>0016</string>
+		<string>0017</string>
 	</array>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
@@ -1863,6 +1888,8 @@
 	<false/>
 	<key>PasteFromClipboard</key>
 	<false/>
+	<key>PasteTabToStringTabStopSize</key>
+	<integer>4</integer>
 	<key>PointerActions</key>
 	<dict>
 		<key>Button,1,1,,</key>
@@ -1915,7 +1942,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-06-16T11:50:14Z</date>
+	<date>2016-06-30T18:28:15Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -1969,6 +1996,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.0.0</string>
+	<string>3.0.3</string>
 </dict>
 </plist>
