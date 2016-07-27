@@ -23,6 +23,7 @@
 	"ignored_packages":
 	[
 		"RestructuredText",
+		"Sourcegraph",
 		"SublimeLinter",
 		"Vintage"
 	],
