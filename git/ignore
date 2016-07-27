@@ -85,3 +85,9 @@ node_modules
 # Sublime project and workspace files
 *.sublime-project
 *.sublime-workspace
+
+
+# Python stuff
+.coveragerc
+.tox
+htmlcov
