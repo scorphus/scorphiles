@@ -3,10 +3,10 @@
 function __tsuru_apps
   set -l cmd (commandline -opc)
   if [ (count $cmd) -gt 1 ]
-    if [ "$cmd[-1]" = "-a" ]
+    if [ "$cmd[-1]" = "-a" -o "$cmd[-1]" = "--app" ]
       tsuru app-list -q
     end
-    if [ "$cmd[-2]" = "-a" ]
+    if [ "$cmd[-2]" = "-a" -o "$cmd[-2]" = "--app" ]
       tsuru app-list -q -n $cmd[-1]
     end
   end
@@ -15,7 +15,8 @@ end
 function __tsuru_needs_app
   set cmd (commandline -opc)
   if [ (count $cmd) -gt 2 ]
-    if [ "$cmd[-1]" = "-a" -o "$cmd[-2]" = "-a" ]
+    if [ "$cmd[-1]" = "-a" -o "$cmd[-2]" = "-a" \
+         -o "$cmd[-1]" = "--app" -o "$cmd[-2]" = "--app" ]
       return 0
     end
   end
@@ -49,5 +50,7 @@ function __tsuru_extract_command
 end
 
 __tsuru_completions tsuru (tsuru | __tsuru_extract_command)
+__tsuru_completions tsuru-admin (tsuru-admin | __tsuru_extract_command)
 
 complete -f -c tsuru -n "__tsuru_needs_app" -a "(__tsuru_apps)" -d "app"
+complete -f -c tsuru-admin -n "__tsuru_needs_app" -a "(__tsuru_apps)" -d "app"
