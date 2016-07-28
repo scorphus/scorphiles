@@ -30,20 +30,24 @@ function __tsuru_needs_cmd
   return 1
 end
 
-function __tsuru_completions
+function __tsuru_completions -a tsuru
   for arg in $argv
     set cmd_txt (expr $arg : '.*\|\(.*\)')
     if [ "$cmd_txt" != "" ]
       set cmd_name (expr $arg : '\(.*\)\|.*')
-      complete -c tsuru -n "__tsuru_needs_cmd" -a $cmd_name -d "$cmd_txt"
+      complete -c $tsuru -n "__tsuru_needs_cmd" -a $cmd_name -d "$cmd_txt"
     end
   end
 end
 
-__tsuru_completions (tsuru | egrep "^  " | awk -F ' ' '{
+function __tsuru_extract_command
+  tee | egrep "^  " | awk -F ' ' '{
     tsuru_cmd = $1;
     $1 = "";
     print tsuru_cmd "|" $0
-}' | sed 's/| /|/')
+  }' | sed 's/| /|/'
+end
+
+__tsuru_completions tsuru (tsuru | __tsuru_extract_command)
 
 complete -f -c tsuru -n "__tsuru_needs_app" -a "(__tsuru_apps)" -d "app"
