@@ -1073,13 +1073,15 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>435 284 845 359 0 0 1280 777 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>100 307 606 456 0 0 1280 777 </string>
+	<string>-1180 307 606 456 -1280 0 1280 777 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>330 295 620 392 0 0 1280 800 </string>
+	<string>-948 288 620 392 -1280 0 1280 777 </string>
+	<key>NSWindow Frame SessionsPreferences</key>
+	<string>269 139 606 456 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>4 0 1276 777 0 0 1280 777 </string>
+	<string>7 4 1276 768 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>4 0 1676 1027 0 0 1680 1027 </string>
+	<string>93 222 570 528 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>271 49 570 423 0 0 1680 1027 </string>
 	<key>NeverWarnAboutMeta</key>
@@ -2572,7 +2574,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>856B7482-7D65-41A2-9221-8EE5E820532C</string>
 	<key>NoSyncLastTipTime</key>
-	<real>489943861.96794897</real>
+	<real>491325677.08226901</real>
 	<key>NoSyncNeverRemindPrefsChangesCopy</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
@@ -2618,6 +2620,22 @@
 		<string>0024</string>
 		<string>0025</string>
 		<string>0026</string>
+		<string>0027</string>
+		<string>0028</string>
+		<string>0029</string>
+		<string>0030</string>
+		<string>0031</string>
+		<string>0032</string>
+		<string>0033</string>
+		<string>0034</string>
+		<string>0035</string>
+		<string>0036</string>
+		<string>0037</string>
+		<string>0038</string>
+		<string>0039</string>
+		<string>0040</string>
+		<string>0041</string>
+		<string>0042</string>
 	</array>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
@@ -2634,7 +2652,7 @@
 	<key>PasteFromClipboard</key>
 	<false/>
 	<key>PasteTabToStringTabStopSize</key>
-	<integer>4</integer>
+	<integer>0</integer>
 	<key>PointerActions</key>
 	<dict>
 		<key>Button,1,1,,</key>
@@ -2687,7 +2705,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-07-07T18:21:18Z</date>
+	<date>2016-07-27T18:50:43Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -2741,6 +2759,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.0.4</string>
+	<string>3.0.5</string>
 </dict>
 </plist>
