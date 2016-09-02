@@ -1,9 +1,9 @@
-#!/usr/bin/env fish
+#!/bin/sh
 
-set days 10
-set path ~/Volatile/
+days=10
+path=$HOME/Volatile
 
-test -d $path; or exit 1
+test -d $path || exit 1
 
 echo Removing old files:
 find $path -type f -mtime +$days -print -delete
