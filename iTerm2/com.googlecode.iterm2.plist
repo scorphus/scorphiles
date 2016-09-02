@@ -1031,7 +1031,9 @@
 	<key>MaxVertically</key>
 	<false/>
 	<key>NSColorPanelMode</key>
-	<string>6</string>
+	<string>1</string>
+	<key>NSColorPickerSlidersDefaults</key>
+	<string>1</string>
 	<key>NSFontPanelAttributes</key>
 	<string>1, 0</string>
 	<key>NSNavLastRootDirectory</key>
@@ -1071,7 +1073,7 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame NSColorPanel</key>
-	<string>367 448 231 329 0 0 1280 777 </string>
+	<string>507 444 231 297 0 0 1280 777 </string>
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>435 284 845 359 0 0 1280 777 </string>
 	<key>NSWindow Frame Preferences</key>
@@ -1081,11 +1083,11 @@
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>269 139 606 456 0 0 1280 777 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>478 106 796 473 0 0 1680 1027 </string>
+	<string>188 155 918 512 0 0 1280 777 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>80 193 592 584 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>4 345 570 423 0 0 1280 777 </string>
+	<string>0 600 570 423 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>93 222 570 528 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -1805,6 +1807,8 @@
 				<dict>
 					<key>action</key>
 					<string>HighlightTrigger</string>
+					<key>parameter</key>
+					<string>{YnBsaXN0MDDUAQIDBAUGCAlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKEHVSRudWxsXxAPTlNLZXllZEFyY2hpdmVy0goLDA1XTlNXaGl0ZVxOU0NvbG9yU3BhY2VCMQAQAwgRGiMtMjc5P1FWXmtuAAAAAAAAAQEAAAAAAAAADgAAAAAAAAAAAAAAAAAAAHA=,YnBsaXN0MDDUAQIDBAUGCAlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKEHVSRudWxsXxAPTlNLZXllZEFyY2hpdmVy0goLDA1VTlNSR0JcTlNDb2xvclNwYWNlTxAcMC40NzEyODQzODY4IDAuMTMxMjIzMDIzNCAxABABCBEaIy0yNzk/UVZcaYgAAAAAAAABAQAAAAAAAAAOAAAAAAAAAAAAAAAAAAAAig==}</string>
 					<key>partial</key>
 					<true/>
 					<key>regex</key>
@@ -1813,6 +1817,8 @@
 				<dict>
 					<key>action</key>
 					<string>HighlightTrigger</string>
+					<key>parameter</key>
+					<string>{YnBsaXN0MDDUAQIDBAUGCAlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKEHVSRudWxsXxAPTlNLZXllZEFyY2hpdmVy0goLDA1XTlNXaGl0ZVxOU0NvbG9yU3BhY2VCMQAQAwgRGiMtMjc5P1FWXmtuAAAAAAAAAQEAAAAAAAAADgAAAAAAAAAAAAAAAAAAAHA=,YnBsaXN0MDDUAQIDBAUGCAlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKEHVSRudWxsXxAPTlNLZXllZEFyY2hpdmVy0goLDA1VTlNSR0JcTlNDb2xvclNwYWNlTxAdMC41MjIyMDEzNTkzIDAgMC4wMjA5Mjg1Nzg0NQAQAQgRGiMtMjc5P1FWXGmJAAAAAAAAAQEAAAAAAAAADgAAAAAAAAAAAAAAAAAAAIs=}</string>
 					<key>partial</key>
 					<true/>
 					<key>regex</key>
@@ -1822,7 +1828,7 @@
 					<key>action</key>
 					<string>HighlightTrigger</string>
 					<key>parameter</key>
-					<string>{YnBsaXN0MDDUAQIDBAUGCAlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKEHVSRudWxsXxAPTlNLZXllZEFyY2hpdmVy0goLDA1VTlNSR0JcTlNDb2xvclNwYWNlTxAnMC4wMzYxNjI0MDUzIDAuMDM2MTYyNDA1MyAwLjAzNjE2MjQwNTMAEAEIERojLTI3OT9RVlxpkwAAAAAAAAEBAAAAAAAAAA4AAAAAAAAAAAAAAAAAAACV,YnBsaXN0MDDUAQIDBAUGCAlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKEHVSRudWxsXxAPTlNLZXllZEFyY2hpdmVy0goLDA1VTlNSR0JcTlNDb2xvclNwYWNlTxARMSAwLjYzODU1MTUxMTIgMAAQAQgRGiMtMjc5P1FWXGl9AAAAAAAAAQEAAAAAAAAADgAAAAAAAAAAAAAAAAAAAH8=}</string>
+					<string>{YnBsaXN0MDDUAQIDBAUGCAlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKEHVSRudWxsXxAPTlNLZXllZEFyY2hpdmVy0goLDA1VTlNSR0JcTlNDb2xvclNwYWNlTxAnMC4wMzYxNjI0MDUzIDAuMDM2MTYyNDA1MyAwLjAzNjE2MjQwNTMAEAEIERojLTI3OT9RVlxpkwAAAAAAAAEBAAAAAAAAAA4AAAAAAAAAAAAAAAAAAACV,YnBsaXN0MDDUAQIDBAUGCAlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKEHVSRudWxsXxAPTlNLZXllZEFyY2hpdmVy0goLDA1VTlNSR0JcTlNDb2xvclNwYWNlTxAoMC44OTY2Njg2NzI2IDAuNzI2MDc3Njc1OCAwLjAzMzc5NTU0Njc0ABABCBEaIy0yNzk/UVZcaZQAAAAAAAABAQAAAAAAAAAOAAAAAAAAAAAAAAAAAAAAlg==}</string>
 					<key>partial</key>
 					<true/>
 					<key>regex</key>
@@ -1833,6 +1839,8 @@
 					<string>HighlightTrigger</string>
 					<key>parameter</key>
 					<string>{YnBsaXN0MDDUAQIDBAUGCAlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKEHVSRudWxsXxAPTlNLZXllZEFyY2hpdmVy0goLDA1XTlNXaGl0ZVxOU0NvbG9yU3BhY2VCMQAQAwgRGiMtMjc5P1FWXmtuAAAAAAAAAQEAAAAAAAAADgAAAAAAAAAAAAAAAAAAAHA=,YnBsaXN0MDDUAQIDBAUGCAlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKEHVSRudWxsXxAPTlNLZXllZEFyY2hpdmVy0goLDA1VTlNSR0JcTlNDb2xvclNwYWNlTxAcMCAwLjQzNzI2MzI1NzYgMC40MDIwMjczNDE4ABABCBEaIy0yNzk/UVZcaYgAAAAAAAABAQAAAAAAAAAOAAAAAAAAAAAAAAAAAAAAig==}</string>
+					<key>partial</key>
+					<true/>
 					<key>regex</key>
 					<string>(INFO|Info|info)</string>
 				</dict>
@@ -1841,14 +1849,18 @@
 					<string>HighlightTrigger</string>
 					<key>parameter</key>
 					<string>{YnBsaXN0MDDUAQIDBAUGCAlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKEHVSRudWxsXxAPTlNLZXllZEFyY2hpdmVy0goLDA1VTlNSR0JcTlNDb2xvclNwYWNlTxAqMC4wMTc3MzU5NTMyOCAwLjAxNzczNTk1MzI4IDAuMDE3NzM1OTUzMjgAEAEIERojLTI3OT9RVlxplgAAAAAAAAEBAAAAAAAAAA4AAAAAAAAAAAAAAAAAAACY,YnBsaXN0MDDUAQIDBAUGCAlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKEHVSRudWxsXxAPTlNLZXllZEFyY2hpdmVy0goLDA1VTlNSR0JcTlNDb2xvclNwYWNlTxARMC4xMTA5MzMxNTA2IDEgMAAQAQgRGiMtMjc5P1FWXGl9AAAAAAAAAQEAAAAAAAAADgAAAAAAAAAAAAAAAAAAAH8=}</string>
+					<key>partial</key>
+					<true/>
 					<key>regex</key>
-					<string>(b904b430-123a-4f93-8cf4-5365adf97892|PASS)</string>
+					<string>PASS</string>
 				</dict>
 				<dict>
 					<key>action</key>
 					<string>HighlightTrigger</string>
 					<key>parameter</key>
-					<string>{YnBsaXN0MDDUAQIDBAUGCAlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKEHVSRudWxsXxAPTlNLZXllZEFyY2hpdmVy0goLDA1XTlNXaGl0ZVxOU0NvbG9yU3BhY2VCMQAQAwgRGiMtMjc5P1FWXmtuAAAAAAAAAQEAAAAAAAAADgAAAAAAAAAAAAAAAAAAAHA=,YnBsaXN0MDDUAQIDBAUGCAlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKEHVSRudWxsXxAPTlNLZXllZEFyY2hpdmVy0goLDA1VTlNSR0JcTlNDb2xvclNwYWNlTxARMSAwLjI4OTc4Mjg2OTYgMAAQAQgRGiMtMjc5P1FWXGl9AAAAAAAAAQEAAAAAAAAADgAAAAAAAAAAAAAAAAAAAH8=}</string>
+					<string>{YnBsaXN0MDDUAQIDBAUGCAlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKEHVSRudWxsXxAPTlNLZXllZEFyY2hpdmVy0goLDA1XTlNXaGl0ZVxOU0NvbG9yU3BhY2VCMQAQAwgRGiMtMjc5P1FWXmtuAAAAAAAAAQEAAAAAAAAADgAAAAAAAAAAAAAAAAAAAHA=,YnBsaXN0MDDUAQIDBAUGCAlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKEHVSRudWxsXxAPTlNLZXllZEFyY2hpdmVy0goLDA1VTlNSR0JcTlNDb2xvclNwYWNlTxAdMC41MjIyMDI5MDkgMCAwLjAwODU4NTAxODEwNgAQAQgRGiMtMjc5P1FWXGmJAAAAAAAAAQEAAAAAAAAADgAAAAAAAAAAAAAAAAAAAIs=}</string>
+					<key>partial</key>
+					<true/>
 					<key>regex</key>
 					<string>(FAIL|Fail|fail)</string>
 				</dict>
@@ -1856,7 +1868,9 @@
 					<key>action</key>
 					<string>HighlightTrigger</string>
 					<key>parameter</key>
-					<string>{YnBsaXN0MDDUAQIDBAUGCAlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKEHVSRudWxsXxAPTlNLZXllZEFyY2hpdmVy0goLDA1XTlNXaGl0ZVxOU0NvbG9yU3BhY2VCMQAQAwgRGiMtMjc5P1FWXmtuAAAAAAAAAQEAAAAAAAAADgAAAAAAAAAAAAAAAAAAAHA=,YnBsaXN0MDDUAQIDBAUGCAlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKEHVSRudWxsXxAPTlNLZXllZEFyY2hpdmVy0goLDA1VTlNSR0JcTlNDb2xvclNwYWNlRjEgMCAwABABCBEaIy0yNzk/UVZcaXAAAAAAAAABAQAAAAAAAAAOAAAAAAAAAAAAAAAAAAAAcg==}</string>
+					<string>{YnBsaXN0MDDUAQIDBAUGCAlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKEHVSRudWxsXxAPTlNLZXllZEFyY2hpdmVy0goLDA1XTlNXaGl0ZVxOU0NvbG9yU3BhY2VCMQAQAwgRGiMtMjc5P1FWXmtuAAAAAAAAAQEAAAAAAAAADgAAAAAAAAAAAAAAAAAAAHA=,YnBsaXN0MDDUAQIDBAUGCAlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKEHVSRudWxsXxAPTlNLZXllZEFyY2hpdmVy0goLDA1VTlNSR0JcTlNDb2xvclNwYWNlTxAdMC41MjIyMDEzNTkzIDAgMC4wMjA5Mjg1Nzg0NQAQAQgRGiMtMjc5P1FWXGmJAAAAAAAAAQEAAAAAAAAADgAAAAAAAAAAAAAAAAAAAIs=}</string>
+					<key>partial</key>
+					<true/>
 					<key>regex</key>
 					<string>(PANICKED|Panicked|panicked|PANIC|Panicked|panic)</string>
 				</dict>
@@ -1865,6 +1879,8 @@
 					<string>HighlightTrigger</string>
 					<key>parameter</key>
 					<string>{YnBsaXN0MDDUAQIDBAUGCAlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKEHVSRudWxsXxAPTlNLZXllZEFyY2hpdmVy0goLDA1VTlNSR0JcTlNDb2xvclNwYWNlRjAgMCAwABABCBEaIy0yNzk/UVZcaXAAAAAAAAABAQAAAAAAAAAOAAAAAAAAAAAAAAAAAAAAcg==,YnBsaXN0MDDUAQIDBAUGCAlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKEHVSRudWxsXxAPTlNLZXllZEFyY2hpdmVy0goLDA1VTlNSR0JcTlNDb2xvclNwYWNlTxAoMC4wOTc1NDAxNzcyNCAwLjczMTk4Nzg0NzIgMC42ODQ0MzQzOTEyABABCBEaIy0yNzk/UVZcaZQAAAAAAAABAQAAAAAAAAAOAAAAAAAAAAAAAAAAAAAAlg==}</string>
+					<key>partial</key>
+					<true/>
 					<key>regex</key>
 					<string>(START|Start|start)</string>
 				</dict>
@@ -1873,8 +1889,36 @@
 					<string>HighlightTrigger</string>
 					<key>parameter</key>
 					<string>{YnBsaXN0MDDUAQIDBAUGCAlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKEHVSRudWxsXxAPTlNLZXllZEFyY2hpdmVy0goLDA1VTlNSR0JcTlNDb2xvclNwYWNlRjAgMCAwABABCBEaIy0yNzk/UVZcaXAAAAAAAAABAQAAAAAAAAAOAAAAAAAAAAAAAAAAAAAAcg==,YnBsaXN0MDDUAQIDBAUGCAlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKEHVSRudWxsXxAPTlNLZXllZEFyY2hpdmVy0goLDA1VTlNSR0JcTlNDb2xvclNwYWNlTxAcMC4xMzM5NjA5OTExIDEgMC45NDQzMzA5OTgzABABCBEaIy0yNzk/UVZcaYgAAAAAAAABAQAAAAAAAAAOAAAAAAAAAAAAAAAAAAAAig==}</string>
+					<key>partial</key>
+					<true/>
 					<key>regex</key>
 					<string>DEBUG|Debug|debug|DEBU|Debu|debu</string>
+				</dict>
+				<dict>
+					<key>action</key>
+					<string>HighlightTrigger</string>
+					<key>parameter</key>
+					<string>{YnBsaXN0MDDUAQIDBAUGCAlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKEHVSRudWxsXxAPTlNLZXllZEFyY2hpdmVy0goLDA1XTlNXaGl0ZVxOU0NvbG9yU3BhY2VCMQAQAwgRGiMtMjc5P1FWXmtuAAAAAAAAAQEAAAAAAAAADgAAAAAAAAAAAAAAAAAAAHA=,YnBsaXN0MDDUAQIDBAUGCAlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKEHVSRudWxsXxAPTlNLZXllZEFyY2hpdmVy0goLDA1VTlNSR0JcTlNDb2xvclNwYWNlTxAdMC44MDM4MDcwMjAyIDAgMC4wNTQzNjM4NDY3OAAQAQgRGiMtMjc5P1FWXGmJAAAAAAAAAQEAAAAAAAAADgAAAAAAAAAAAAAAAAAAAIs=}</string>
+					<key>partial</key>
+					<true/>
+					<key>regex</key>
+					<string>(b904b430-123a-4f93-8cf4-5365adf97892|6fa5b5b0-c381-404a-8d46-9589c86e2d89)</string>
+				</dict>
+				<dict>
+					<key>action</key>
+					<string>HighlightTrigger</string>
+					<key>parameter</key>
+					<string>{YnBsaXN0MDDUAQIDBAUGCAlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKEHVSRudWxsXxAPTlNLZXllZEFyY2hpdmVy0goLDA1VTlNSR0JcTlNDb2xvclNwYWNlTxAcMC45ODgyMzUyOTQxIDAuNDY2NjY2NjY2NyAwABABCBEaIy0yNzk/UVZcaYgAAAAAAAABAQAAAAAAAAAOAAAAAAAAAAAAAAAAAAAAig==,YnBsaXN0MDDUAQIDBAUGCAlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKEHVSRudWxsXxAPTlNLZXllZEFyY2hpdmVy0goLDA1VTlNSR0JcTlNDb2xvclNwYWNlTDAuMiAwLjIgMC4yABABCBEaIy0yNzk/UVZcaXYAAAAAAAABAQAAAAAAAAAOAAAAAAAAAAAAAAAAAAAAeA==}</string>
+					<key>regex</key>
+					<string>(f738a662-0275-4106-b43d-52c315ebeb5a|676aa5c0-6524-47cc-b3f9-9d4db214722c)</string>
+				</dict>
+				<dict>
+					<key>action</key>
+					<string>HighlightTrigger</string>
+					<key>parameter</key>
+					<string>{YnBsaXN0MDDUAQIDBAUGCAlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKEHVSRudWxsXxAPTlNLZXllZEFyY2hpdmVy0goLDA1XTlNXaGl0ZVxOU0NvbG9yU3BhY2VCMQAQAwgRGiMtMjc5P1FWXmtuAAAAAAAAAQEAAAAAAAAADgAAAAAAAAAAAAAAAAAAAHA=,YnBsaXN0MDDUAQIDBAUGCAlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKEHVSRudWxsXxAPTlNLZXllZEFyY2hpdmVy0goLDA1VTlNSR0JcTlNDb2xvclNwYWNlTxAcMC45MjU0OTAxOTYxIDAuNDkwMTk2MDc4NCAwABABCBEaIy0yNzk/UVZcaYgAAAAAAAABAQAAAAAAAAAOAAAAAAAAAAAAAAAAAAAAig==}</string>
+					<key>regex</key>
+					<string>91a8d246-0ee2-4735-94f6-b66a78fcd5f7</string>
 				</dict>
 			</array>
 			<key>Unlimited Scrollback</key>
@@ -2802,7 +2846,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-08-24T05:17:05Z</date>
+	<date>2016-09-01T23:28:04Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -2858,7 +2902,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.0.7</string>
+	<string>3.0.8</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
