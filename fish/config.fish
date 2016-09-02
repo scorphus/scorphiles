@@ -2,8 +2,8 @@
 set -gx PATH /usr/local/sbin $PATH
 
 # golang
-set -x GOPATH $HOME/gocode
-set -x PATH $GOPATH/bin $PATH
+set -gx GOPATH $HOME/gocode
+set -gx PATH $GOBIN $PATH
 
 # general purpose scripts
 set -x PATH $HOME/bin $PATH
