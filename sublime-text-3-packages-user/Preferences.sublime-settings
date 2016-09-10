@@ -3,8 +3,9 @@
 	"bold_folder_labels": true,
 	"caret_extra_width": 2,
 	"close_windows_when_empty": false,
-	"color_scheme": "Packages/User/Monokai (SL) (SublimePythonIDE) (Flake8Lint).tmTheme",
+	"color_scheme": "Packages/User/Boxy Tomorrow (Flake8Lint).tmTheme",
 	"create_window_at_startup": false,
+	"default_line_ending": "unix",
 	"dictionary": "Packages/Language - English/en_US.dic",
 	"draw_minimap_border": true,
 	"draw_white_space": "all",
@@ -16,7 +17,7 @@
 	[
 		"subpixel_antialias"
 	],
-	"font_size": 12.8,
+	"font_size": 11.8,
 	"gutter": true,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
@@ -47,7 +48,7 @@
 	"show_tab_close_buttons": false,
 	"spell_check": true,
 	"tab_size": 4,
-	"theme": "Soda Dark 3.sublime-theme",
+	"theme": "Boxy Tomorrow.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_automatic_white_space": true,
 	"trim_trailing_white_space_on_save": true
