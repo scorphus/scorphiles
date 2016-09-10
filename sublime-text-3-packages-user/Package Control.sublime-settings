@@ -5,10 +5,12 @@
 	],
 	"installed_packages":
 	[
+		"Agila Theme",
 		"Anaconda",
 		"Ansible",
 		"Babel",
 		"Better CoffeeScript",
+		"Boxy Theme",
 		"BracketHighlighter",
 		"Case Conversion",
 		"Color Highlighter",
@@ -37,6 +39,7 @@
 		"LoremGibson",
 		"Markdown Extended",
 		"Markdown Preview",
+		"Material Color Scheme",
 		"Material Theme",
 		"Mercurial",
 		"Monokai - Spacegray",
