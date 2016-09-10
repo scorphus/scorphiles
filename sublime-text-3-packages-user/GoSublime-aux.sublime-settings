@@ -4,7 +4,7 @@
 		"go run",
 		"go run go_routines_errors_and_channels.go"
 	],
-	"ann": "a16.01.09-1",
-	"install_version": "r16.01.09-1",
-	"version": "r16.01.09-1"
+	"ann": "a16.07.09-1",
+	"install_version": "r16.07.09-1",
+	"version": "r16.07.09-1"
 }
