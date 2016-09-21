@@ -66,6 +66,7 @@
 	purom = pull --rebase origin master
 	pufum = pull --ff-only upstream master
 	pufom = pull --ff-only origin master
+	mff = merge --ff-only
 	mefum = merge --ff-only upstream/master
 	mefom = merge --ff-only origin/master
 	rum = rebase upstream/master
