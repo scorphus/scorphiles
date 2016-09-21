@@ -1083,11 +1083,11 @@
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>269 139 606 456 0 0 1280 777 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>188 155 918 512 0 0 1280 777 </string>
+	<string>97 152 796 473 0 0 1280 777 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>80 193 592 584 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 600 570 423 0 0 1680 1027 </string>
+	<string>4 0 1276 777 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>93 222 570 528 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -1902,7 +1902,7 @@
 					<key>partial</key>
 					<true/>
 					<key>regex</key>
-					<string>(b904b430-123a-4f93-8cf4-5365adf97892|6fa5b5b0-c381-404a-8d46-9589c86e2d89)</string>
+					<string>(b904b430-123a-4f93-8cf4-5365adf97892|6fa5b5b0-c381-404a-8d46-9589c86e2d89|c8dc0002-076a-41e3-aae9-1aa14998be93|11059454-dfda-45f6-9238-2af919b5c3cf)</string>
 				</dict>
 				<dict>
 					<key>action</key>
@@ -2699,6 +2699,10 @@
 	<integer>0</integer>
 	<key>NoSyncPermissionToShowTip</key>
 	<true/>
+	<key>NoSyncSuppressBroadcastInputWarning</key>
+	<true/>
+	<key>NoSyncSuppressBroadcastInputWarning_selection</key>
+	<integer>0</integer>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
 	<real>486529523.54222101</real>
 	<key>NoSyncTimeOfLastPromo</key>
@@ -2846,7 +2850,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-09-01T23:28:04Z</date>
+	<date>2016-09-05T18:33:46Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
