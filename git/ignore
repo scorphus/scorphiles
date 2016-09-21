@@ -91,3 +91,4 @@ node_modules
 .coveragerc
 .tox
 htmlcov
+.byebug_history
