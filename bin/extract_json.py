@@ -25,6 +25,10 @@ def usage(json_dict=None):
 def main(argv):
     '''Usage: extract_json.py <json-file> <key>[.<key>...]'''
 
+    iterate = '--iterate' in argv
+    if iterate:
+        del(argv[argv.index('--iterate')])
+
     if len(argv) < 1:
         usage()
         return 1
@@ -66,7 +70,24 @@ def main(argv):
     try:
         print(json_dict.encode('utf8') if json_dict else '')
     except:
-        print(json.dumps(json_dict).encode('utf8') if json_dict else '')
+        if iterate and type(json_dict) is list:
+            for item in json_dict:
+                try:
+                    print(item.encode('utf8') if item else '')
+                except:
+                    print(json.dumps(item).encode('utf8') if item else '')
+        elif iterate and type(json_dict) is dict:
+            for key, item in json_dict.items():
+                try:
+                    print('{}:{}'.format(
+                        key, item.encode('utf8') if item else '')
+                    )
+                except:
+                    print('{}:{}'.format(
+                        key, json.dumps(item).encode('utf8') if item else '')
+                    )
+        else:
+            print(json.dumps(json_dict).encode('utf8') if json_dict else '')
 
     return status
 
