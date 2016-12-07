@@ -1920,6 +1920,14 @@
 					<key>regex</key>
 					<string>91a8d246-0ee2-4735-94f6-b66a78fcd5f7</string>
 				</dict>
+				<dict>
+					<key>action</key>
+					<string>HighlightTrigger</string>
+					<key>parameter</key>
+					<string>{YnBsaXN0MDDUAQIDBAUGCAlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKEHVSRudWxsXxAPTlNLZXllZEFyY2hpdmVy0goLDA1VTlNSR0JcTlNDb2xvclNwYWNlRjEgMSAxABABCBEaIy0yNzk/UVZcaXAAAAAAAAABAQAAAAAAAAAOAAAAAAAAAAAAAAAAAAAAcg==,YnBsaXN0MDDUAQIDBAUGCAlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKEHVSRudWxsXxAPTlNLZXllZEFyY2hpdmVy0goLDA1VTlNSR0JcTlNDb2xvclNwYWNlTxAbMC4yMzEzNzI1NDkgMC41NjA3ODQzMTM3IDAAEAEIERojLTI3OT9RVlxphwAAAAAAAAEBAAAAAAAAAA4AAAAAAAAAAAAAAAAAAACJ}</string>
+					<key>regex</key>
+					<string>93a4eb4b-8a93-4c09-b080-4ba92a01d142</string>
+				</dict>
 			</array>
 			<key>Unlimited Scrollback</key>
 			<false/>
