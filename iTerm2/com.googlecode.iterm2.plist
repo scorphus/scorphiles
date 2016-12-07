@@ -1822,7 +1822,7 @@
 					<key>partial</key>
 					<true/>
 					<key>regex</key>
-					<string>(ERROR|Error|error|ERRO|Erro|erro)</string>
+					<string>(?i)error?</string>
 				</dict>
 				<dict>
 					<key>action</key>
@@ -1832,7 +1832,7 @@
 					<key>partial</key>
 					<true/>
 					<key>regex</key>
-					<string>(WARNING|Warning|warning|WARN|Warn|warn)</string>
+					<string>(?i)warn(ing)?</string>
 				</dict>
 				<dict>
 					<key>action</key>
@@ -1842,7 +1842,7 @@
 					<key>partial</key>
 					<true/>
 					<key>regex</key>
-					<string>(INFO|Info|info)</string>
+					<string>(?i)info</string>
 				</dict>
 				<dict>
 					<key>action</key>
@@ -1852,7 +1852,7 @@
 					<key>partial</key>
 					<true/>
 					<key>regex</key>
-					<string>PASS</string>
+					<string>(?i)pass\b</string>
 				</dict>
 				<dict>
 					<key>action</key>
@@ -1862,7 +1862,7 @@
 					<key>partial</key>
 					<true/>
 					<key>regex</key>
-					<string>(FAIL|Fail|fail)</string>
+					<string>(?i)fail(ed)?</string>
 				</dict>
 				<dict>
 					<key>action</key>
@@ -1872,7 +1872,7 @@
 					<key>partial</key>
 					<true/>
 					<key>regex</key>
-					<string>(PANICKED|Panicked|panicked|PANIC|Panicked|panic)</string>
+					<string>(?i)panic(ked)?</string>
 				</dict>
 				<dict>
 					<key>action</key>
@@ -1882,7 +1882,7 @@
 					<key>partial</key>
 					<true/>
 					<key>regex</key>
-					<string>(START|Start|start)</string>
+					<string>(?i)start</string>
 				</dict>
 				<dict>
 					<key>action</key>
@@ -1892,7 +1892,7 @@
 					<key>partial</key>
 					<true/>
 					<key>regex</key>
-					<string>DEBUG|Debug|debug|DEBU|Debu|debu</string>
+					<string>(?i)debug?</string>
 				</dict>
 				<dict>
 					<key>action</key>
