@@ -40,11 +40,12 @@
 
     "python.linting.enabled": true,
     "python.linting.lintOnSave": true,
-    "python.linting.pylintEnabled": true,
+
+    "python.linting.pylintEnabled": false,
     "python.linting.pylintCategorySeverity.convention": "Hint",
     "python.linting.pylintCategorySeverity.warning": "Error",
 
-
     "python.linting.flake8Enabled": true,
-    "ok": true
+
+    "window.zoomLevel": 0
 }
