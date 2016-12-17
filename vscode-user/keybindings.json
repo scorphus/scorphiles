@@ -31,6 +31,9 @@
     {
         "key": "cmd+alt+q",
         "command": "rewrap.rewrapComment"
+    },
+    {
+        "key": "ctrl+t",
+        "command": "extension.transpose"
     }
-
 ]
