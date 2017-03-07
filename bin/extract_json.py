@@ -6,12 +6,7 @@
 # that can be found on https://opensource.org/licenses/Apache-2.0
 
 import sys
-
-try:
-    import ujson as json
-except:
-    sys.stderr.write('You better install ujson!\n')
-    import json
+import json
 
 
 def usage(json_dict=None):
