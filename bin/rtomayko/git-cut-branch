@@ -45,7 +45,7 @@ if [ -n "$remote" -a -n "$merge" ]
 then tracking="$remote/$merge"
 elif [ -n "$merge" ]
 then tracking="$merge"
-else die "$current is not tracking anything"
+else die "$current is not tracking anything, tip: git branch -u origin/master"
 fi
 
 # make sure there's no changes before we reset hard
