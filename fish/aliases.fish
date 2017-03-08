@@ -10,3 +10,6 @@ alias rmf='rm -rf'
 alias subl..='subl ..'
 alias subl.='subl .'
 alias v='vagrant'
+
+alias http-format='http --pretty=format'
+alias http-all='http --pretty=all'
