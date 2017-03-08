@@ -2,7 +2,6 @@ function set-abbreviations -d "Set default abbreviations"
   abbr -a gcam git commit --amend
   abbr -a gcamn git commit --amend --no-edit
   abbr -a gco git checkout
-  abbr -a gcc git checkout
   abbr -a gcvp git commit -vp
   abbr -a gcvpa git commit -vp --amend
   abbr -a gl git log -40 --branches=* --graph --decorate --abbrev-commit --oneline --all
