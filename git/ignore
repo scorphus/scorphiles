@@ -93,3 +93,4 @@ node_modules
 .tox
 htmlcov
 .byebug_history
+*.egg-info
