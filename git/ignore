@@ -82,9 +82,10 @@ Thumbs.db
 *IGNOREME*
 node_modules
 
-# Sublime project and workspace files
+# Editor project and workspace files
 *.sublime-project
 *.sublime-workspace
+.vscode
 
 
 # Python stuff
