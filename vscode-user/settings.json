@@ -1,8 +1,8 @@
 // Place your settings in this file to overwrite the default settings
 {
     "editor.fontFamily": "Fira Code",
-    "editor.fontSize": 11.7,
-    "editor.lineHeight": 11,
+    "editor.fontSize": 11.5,
+    "editor.lineHeight": 12,
     "editor.fontLigatures": true,
     "editor.renderWhitespace": "all",
     "editor.renderControlCharacters": true,
@@ -47,5 +47,10 @@
 
     "python.linting.flake8Enabled": true,
 
-    "window.zoomLevel": 0
+    "window.zoomLevel": 0,
+    "window.title": "${activeEditorShort}${separator}${activeEditorMedium}${separator}${rootName}",
+
+    "editor.wordWrap": false,
+    "workbench.colorTheme": "One Dark+ (Sublime)",
+    "workbench.iconTheme": "vs-seti"
 }
