@@ -47,17 +47,17 @@
 	la = log -25 --branches=* --graph --decorate --abbrev-commit --oneline --all
 	laa = log --branches=* --graph --decorate --abbrev-commit --oneline --all
 	lg = log --color --graph --decorate --abbrev-commit --pretty=format:'%C(bold red)%h%Creset -%C(bold yellow)%d%Creset %s %C(bold green)(%cr) %C(bold blue)<%an>%Creset'
-	lp = log -25 --graph --decorate --abbrev-commit --date=relative --pretty=format:'%C(bold yellow)%h%C(bold red) %ae%C(bold green)%x09%ad%C(reset)%x09%s%C(auto)%d'
-	lpp = log --graph --decorate --abbrev-commit --date=relative --pretty=format:'%C(bold yellow)%h%C(bold red) %ae%C(bold green)%x09%ad%C(reset)%x09%s%C(auto)%d'
-	lpd = log --graph --decorate --abbrev-commit --date=short --pretty=format:'%C(bold yellow)%h%C(bold red) %ae%C(bold green)%x09%ad%C(reset)%x20%s%C(auto)%d'
-	lpa = log -25 --branches=* --graph --decorate --abbrev-commit --date=relative --pretty=format:'%C(bold yellow)%h%C(bold red) %ae%C(bold green)%x09%ad%C(reset)%x09%s%C(auto)%d'
-	lpas = log -25 --all --graph --decorate --abbrev-commit --date=relative --pretty=format:'%C(bold yellow)%h%C(bold red) %ae%C(bold green)%x09%ad%C(reset)%x09%s%C(auto)%d'
-	lpaa = log --branches=* --graph --decorate --abbrev-commit --date=relative --pretty=format:'%C(bold yellow)%h%C(bold red) %ae%C(bold green)%x09%ad%C(reset)%x09%s%C(auto)%d'
-	lpaas = log --all --graph --decorate --abbrev-commit --date=relative --pretty=format:'%C(bold yellow)%h%C(bold red) %ae%C(bold green)%x09%ad%C(reset)%x09%s%C(auto)%d'
+	lp = log -25 --graph --decorate --abbrev-commit --date=relative --pretty=format:'%C(bold yellow)%h%C(bold red) %<(8,trunc)%aN%C(bold green)%x09%<(12,trunc)%ad%C(reset)%x09%s%C(auto)%d'
+	lpp = log --graph --decorate --abbrev-commit --date=relative --pretty=format:'%C(bold yellow)%h%C(bold red) %<(8,trunc)%aN%C(bold green)%x09%<(12,trunc)%ad%C(reset)%x09%s%C(auto)%d'
+	lpd = log --graph --decorate --abbrev-commit --date=short --pretty=format:'%C(bold yellow)%h%C(bold red) %<(8,trunc)%aN%C(bold green)%x09%ad%C(reset)%x20%s%C(auto)%d'
+	lpa = log -25 --branches=* --graph --decorate --abbrev-commit --date=relative --pretty=format:'%C(bold yellow)%h%C(bold red) %<(8,trunc)%aN%C(bold green)%x09%<(12,trunc)%ad%C(reset)%x09%s%C(auto)%d'
+	lpas = log -25 --all --graph --decorate --abbrev-commit --date=relative --pretty=format:'%C(bold yellow)%h%C(bold red) %<(8,trunc)%aN%C(bold green)%x09%<(12,trunc)%ad%C(reset)%x09%s%C(auto)%d'
+	lpaa = log --branches=* --graph --decorate --abbrev-commit --date=relative --pretty=format:'%C(bold yellow)%h%C(bold red) %<(8,trunc)%aN%C(bold green)%x09%<(12,trunc)%ad%C(reset)%x09%s%C(auto)%d'
+	lpaas = log --all --graph --decorate --abbrev-commit --date=relative --pretty=format:'%C(bold yellow)%h%C(bold red) %<(8,trunc)%aN%C(bold green)%x09%<(12,trunc)%ad%C(reset)%x09%s%C(auto)%d'
 	lpab = log --branches=* --graph --decorate --abbrev-commit --date=relative --pretty=format:'%C(bold yellow)%h%C(reset)%x20%s%C(auto)%d'
-	lpad = log --branches=* --graph --decorate --abbrev-commit --date=short --pretty=format:'%C(bold yellow)%h%C(bold red) %ae%C(bold green)%x09%ad%C(reset)%x20%s%C(auto)%d'
-	lpr = log --reverse --decorate --abbrev-commit --date=short --pretty=format:'%C(bold yellow)%h%C(bold red) %ae%C(bold green)%x09%ad%C(reset)%x20%s%C(auto)%d'
-	lpra = log --branches=* --reverse --decorate --abbrev-commit --date=short --pretty=format:'%C(bold yellow)%h%C(bold red) %ae%C(bold green)%x09%ad%C(reset)%x20%s%C(auto)%d'
+	lpad = log --branches=* --graph --decorate --abbrev-commit --date=short --pretty=format:'%C(bold yellow)%h%C(bold red) %<(8,trunc)%aN%C(bold green)%x09%ad%C(reset)%x20%s%C(auto)%d'
+	lpr = log --reverse --decorate --abbrev-commit --date=short --pretty=format:'%C(bold yellow)%h%C(bold red) %<(8,trunc)%aN%C(bold green)%x09%ad%C(reset)%x20%s%C(auto)%d'
+	lpra = log --branches=* --reverse --decorate --abbrev-commit --date=short --pretty=format:'%C(bold yellow)%h%C(bold red) %<(8,trunc)%aN%C(bold green)%x09%ad%C(reset)%x20%s%C(auto)%d'
 	cvp = commit -vp
 	cvpa = commit -vp --amend
 	cam = commit --amend
