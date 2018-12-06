@@ -90,3 +90,5 @@
 	smtpuser = scorphus@gmail.com
 	chainreplyto = false
 	from = Pablo Santiago Blum de Aguiar <scorphus@gmail.com>
+[pull]
+	rebase = true
