@@ -10,7 +10,9 @@ package https://gitlab.globoi.com/pablo.aguiar/plugin-ostore.git
 package nvm
 package osx
 package peco
+package pyenv
 package python
+package rustup
 package rvm
 package shark
 package sublime
