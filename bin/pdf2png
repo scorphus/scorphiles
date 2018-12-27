@@ -1,4 +1,4 @@
 #!/bin/bash
 
 file=$1
-convert -density 300x300 "$file" "`echo $file|cut -f1 -d'.'`.png"
+convert -background white -density 300x300 "$file" "`echo $file|cut -f1 -d'.'`.png"
