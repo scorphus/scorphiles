@@ -17,7 +17,7 @@
 #   git checkout-pull-request 359 upstream pr-359
 #
 
-if [[ -z $1 ]]; then
+if [ -z $1 ]; then
     echo 'You need to provide the pull request ID. Ex.:'
     echo 'git checkout-pull-request 359'
     exit 1
@@ -25,13 +25,13 @@ else
     id=$1
 fi
 
-if [[ -z $2 ]]; then
+if [ -z $2 ]; then
     remote=origin
 else
     remote=$2
 fi
 
-if [[ -z $3 ]]; then
+if [ -z $3 ]; then
     branch="pull-request-$id"
 else
     branch=$3
