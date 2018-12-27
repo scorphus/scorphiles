@@ -1,33 +1,46 @@
 [global_config]
+  borderless = True
+  enabled_plugins = InactivityWatch, EditorPlugin, SearchPlugin, ActivityWatch, TerminalShot, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
   handle_size = 1
-  enabled_plugins = InactivityWatch, ActivityWatch, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
-  title_transmit_fg_color = "#000000"
+  title_font = Sans 8
+  title_hide_sizetext = True
+  title_inactive_bg_color = "#000000"
   title_inactive_fg_color = "#c0bebf"
   title_transmit_bg_color = "#c0bebf"
-  title_inactive_bg_color = "#000000"
+  title_transmit_fg_color = "#000000"
+  title_use_system_font = False
 [keybindings]
-  go_left = <Shift><Alt>Left
   go_down = <Shift><Alt>Down
+  go_left = <Shift><Alt>Left
   go_right = <Shift><Alt>Right
   go_up = <Shift><Alt>Up
-[profiles]
-  [[default]]
-    scrollbar_position = hidden
-    use_system_font = False
-    copy_on_selection = True
-    visible_bell = True
-    background_darkness = 0.9
-    background_type = transparent
-    background_image = None
-    font = Monoid Tight Light Semi-Condensed 9
-    background_color = "#151718"
 [layouts]
   [[default]]
     [[[child1]]]
-      type = Terminal
       parent = window0
       profile = default
+      type = Terminal
     [[[window0]]]
-      type = Window
       parent = ""
+      type = Window
 [plugins]
+  [[EditorPlugin]]
+    command = {filepath}
+    editor = code
+    match = [^ \t\n\r\f\v:]+?\.(ini|conf|me|txt|xml|json|py|go) *[\n:]?([0-9]+)*
+[profiles]
+  [[default]]
+    background_color = "#151718"
+    background_darkness = 0.9
+    background_type = transparent
+    copy_on_selection = True
+    cursor_color = "#aaaaaa"
+    custom_command = /usr/bin/fish
+    font = Fira Code 9
+    scrollback_lines = 1000
+    scrollbar_position = hidden
+    use_custom_command = True
+    use_system_font = False
+    visible_bell = True
+  [[EditorPlugin]]
+    cursor_color = "#aaaaaa"
