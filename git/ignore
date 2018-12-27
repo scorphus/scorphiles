@@ -20,7 +20,7 @@ Temporary Items
 
 
 # Compiled source
-*.com
+# *.com
 *.class
 *.dll
 *.exe
@@ -73,6 +73,10 @@ Thumbs.db
 
 # VirtualFish auto-activation file
 .venv
+
+
+# Coverage
+.coverage
 
 
 # ~/.gitignore-global test
