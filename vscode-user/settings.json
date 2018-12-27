@@ -87,5 +87,6 @@
         "toolchain": "nightly-x86_64-apple-darwin",
         "nightlyToolchain": "nightly-x86_64-apple-darwin"
     },
-    "rust.mode": "legacy"
+    "rust.mode": "legacy",
+    "telemetry.enableTelemetry": false
 }
