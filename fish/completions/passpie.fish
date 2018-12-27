@@ -1,11 +1,11 @@
 # passpie completions for Fish Shell
 
 function _passpie_credentials
-  grep -EhriIo '[A-Z0-9._%+-]+@[A-Z0-9.-]+(@[A-Z0-9_\-\.]+)?' /Users/pablo/.passpie
+  grep -EhriIo '[A-Z0-9._%+-]+@[A-Z0-9.-]+(@[A-Z0-9_\-\.]+)?' $HOME/.passpie
 end
 
 function _passpie_credential_names
-  ls -1 /Users/pablo/.passpie
+  ls -1 $HOME/.passpie
 end
 
 function _passpie_needs_command
