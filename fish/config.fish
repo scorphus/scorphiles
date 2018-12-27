@@ -1,5 +1,5 @@
 # path
-set -gx PATH /usr/local/sbin $PATH
+set -gx PATH /usr/local/sbin $HOME/.local/bin $PATH
 
 # golang
 set -gx GOPATH $HOME/gocode
@@ -7,9 +7,9 @@ set -gx GOBIN $GOPATH/bin
 set -gx PATH $GOBIN $PATH
 
 # general purpose scripts
-set -x PATH $HOME/bin $PATH
-for dir in (basename (find $HOME/bin/ -type d -depth 1))
-    set -x PATH $HOME/bin/$dir $PATH
+# set -x PATH $HOME/bin $PATH
+for dir in (find $HOME/bin/ -mindepth 1 -maxdepth 1 -type d)
+    set -x PATH $dir $PATH
 end
 
 # Python stuff
