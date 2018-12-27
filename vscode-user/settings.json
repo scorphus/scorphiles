@@ -2,25 +2,30 @@
 {
     "editor.fontFamily": "Fira Code",
     "editor.fontSize": 11.5,
-    "editor.lineHeight": 12,
+    "editor.lineHeight": 11.0,
     "editor.fontLigatures": true,
     "editor.renderWhitespace": "all",
     "editor.renderControlCharacters": true,
     "editor.renderIndentGuides": true,
     "editor.renderLineHighlight": true,
     "editor.overviewRulerLanes": 2,
-    "editor.rulers": [80, 110],
+    "editor.rulers": [76, 80, 100, 110],
     "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?",
     "editor.detectIndentation": true,
+    "editor.formatOnSave": false,
 
     "files.trimTrailingWhitespace": true,
+    "[markdown]": {
+        "files.trimTrailingWhitespace": false
+    },
     "files.insertFinalNewline": true,
     "files.associations": {
-        "*.tpl": "html"
+        "*.tpl": "html",
+        "*.dat": "c"
     },
 
     "git.enabled": true,
-    "git.path": "/usr/local/bin/git",
+    "git.path": "/usr/bin/git",
 
     "go.buildOnSave": true,
     "go.lintOnSave": true,
@@ -35,7 +40,7 @@
     "go.formatOnSave": true,
     "go.formatTool": "goreturns",
     "go.formatFlags": [],
-    "go.gopath": "/Users/pablo/gocode",
+    // "go.gopath": "/Users/pablo/gocode",
     "go.gocodeAutoBuild": false,
 
     "python.linting.enabled": true,
@@ -44,13 +49,43 @@
     "python.linting.pylintEnabled": false,
     "python.linting.pylintCategorySeverity.convention": "Hint",
     "python.linting.pylintCategorySeverity.warning": "Error",
+    // "python.jediEnabled": true,
+    "python.analysis.watchSearchPaths": false,
 
     "python.linting.flake8Enabled": true,
 
-    "window.zoomLevel": 0,
-    "window.title": "${activeEditorShort}${separator}${activeEditorMedium}${separator}${rootName}",
+    "terminal.integrated.shell.osx": "/usr/local/bin/fish",
 
+    "window.zoomLevel": 0,
+    "window.title": "${rootName} ⚡ ${activeEditorShort} ★ ${activeEditorMedium}",
+    "window.restoreFullscreen": true,
+
+    "editor.minimap.enabled": false,
     "editor.wordWrap": false,
+
+    "gitlens.keymap": "alternate",
+
+    "terminal.integrated.rendererType": "dom",
+    "terminal.integrated.fontFamily": "Fira Code",
+    "terminal.integrated.fontSize": 11.5,
+    // "terminal.integrated.lineHeight": 11.0,
+
+    "gitlens.advanced.messages": {
+        "suppressShowKeyBindingsNotice": true,
+        "suppressWelcomeNotice": true
+    },
+
+    "window.menuBarVisibility": "toggle",
+
     "workbench.colorTheme": "One Dark+ (Sublime)",
-    "workbench.iconTheme": "vs-seti"
+    "workbench.editor.closeOnFileDelete": false,
+    "workbench.editor.enablePreview": false,
+    "workbench.iconTheme": "vs-seti",
+    "workbench.welcome.enabled": false,
+    "workbench.activityBar.visible": false,
+    "rust.rustup": {
+        "toolchain": "nightly-x86_64-apple-darwin",
+        "nightlyToolchain": "nightly-x86_64-apple-darwin"
+    },
+    "rust.mode": "legacy"
 }
