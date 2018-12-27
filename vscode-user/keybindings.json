@@ -35,5 +35,14 @@
     {
         "key": "ctrl+t",
         "command": "extension.transpose"
+    },
+
+    {
+        "key": "alt+n",
+        "command": ""
+    },
+    {
+        "key": "ctrl+m",
+        "command": "expand-selection-to-scope.expand"
     }
 ]
