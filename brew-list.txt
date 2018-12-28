@@ -1,4 +1,3 @@
-ab
 ack
 adns
 asciidoc
@@ -31,7 +30,6 @@ gnupg
 gnupg2
 gnuplot
 gnutls
-gpg-agent
 graphicsmagick
 grep
 gtksourceview4
@@ -58,12 +56,10 @@ lua@5.1
 luarocks
 lynx
 markdown
-meld
 mercurial
 nettle
 node
 npth
-ntfs-3g
 nvm
 openssl
 opus

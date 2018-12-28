@@ -1,2 +1,6 @@
+ab
+gpg-agent
 kitty
+meld
+osxfuse
 vlc
