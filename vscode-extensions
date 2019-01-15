@@ -2,10 +2,12 @@ akamud.vscode-theme-onedark
 azemoh.one-monokai
 bibhasdn.unique-lines
 bungcip.better-toml
+burkeholland.simple-react-snippets
 dbaeumer.vscode-eslint
 EditorConfig.EditorConfig
 eg2.tslint
 espresso3389.genuuid
+fosshaas.fontsize-shortcuts
 freakypie.code-python-isort
 gerane.Theme-Blackboard
 gerane.Theme-Bliss
@@ -28,6 +30,7 @@ robertohuertasm.vscode-icons
 ryu1kn.annotator
 samverschueren.final-newline
 shanoor.vscode-nginx
+skyapps.fish-vscode
 stkb.rewrap
 streetsidesoftware.code-spell-checker
 trixnz.vscode-lua
