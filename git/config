@@ -30,6 +30,7 @@
 	branch = cyan bold reverse
 [diff]
 	tool = meld
+	wsErrorHighlight = all
 [core]
 	editor = vim
 	whitespace = tab-in-indent,tabwidth=4
