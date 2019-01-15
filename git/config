@@ -2,6 +2,8 @@
 	name = Pablo Santiago Blum de Aguiar
 	email = scorphus@gmail.com
 	signingkey = D958916B
+[include]
+	path = groups.inc
 [color]
 	branch = true
 	decorate = true
