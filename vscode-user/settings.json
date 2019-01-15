@@ -1,8 +1,8 @@
 // Place your settings in this file to overwrite the default settings
 {
-    "editor.fontFamily": "Fira Code",
-    "editor.fontSize": 11.5,
-    "editor.lineHeight": 11.0,
+    "editor.fontFamily": "Fira Code iScript",
+    "editor.fontSize": 14,
+    "editor.lineHeight": 14,
     "editor.fontLigatures": true,
     "editor.renderWhitespace": "all",
     "editor.renderControlCharacters": true,
@@ -13,6 +13,8 @@
     "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?",
     "editor.detectIndentation": true,
     "editor.formatOnSave": false,
+    "editor.minimap.enabled": false,
+    "editor.wordWrap": false,
 
     "files.trimTrailingWhitespace": true,
     "[markdown]": {
@@ -23,6 +25,10 @@
         "*.tpl": "html",
         "*.dat": "c"
     },
+
+    "fontshortcuts.defaultFontSize": 12,
+    "fontshortcuts.defaultTerminalFontSize": 12,
+    "fontshortcuts.step": 1,
 
     "git.enabled": true,
     "git.path": "/usr/bin/git",
@@ -60,9 +66,6 @@
     "window.title": "${rootName} ⚡ ${activeEditorShort} ★ ${activeEditorMedium}",
     "window.restoreFullscreen": true,
 
-    "editor.minimap.enabled": false,
-    "editor.wordWrap": false,
-
     "gitlens.keymap": "alternate",
 
     "terminal.integrated.rendererType": "dom",
@@ -88,5 +91,6 @@
         "nightlyToolchain": "nightly-x86_64-apple-darwin"
     },
     "rust.mode": "legacy",
-    "telemetry.enableTelemetry": false
+    "telemetry.enableTelemetry": false,
+    "python.jediEnabled": false
 }
