@@ -14,3 +14,8 @@ alias v='vagrant'
 alias http-format='command http --style monokai --pretty=format'
 alias http-all='command http --style monokai --pretty=all'
 alias http='http --style monokai'
+
+if not test (uname) = Darwin
+  alias pbcopy='xclip -selection clipboard'
+  alias pbpaste='xclip -selection clipboard -o'
+end
