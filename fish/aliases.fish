@@ -11,5 +11,6 @@ alias subl..='subl ..'
 alias subl.='subl .'
 alias v='vagrant'
 
-alias http-format='http --pretty=format'
-alias http-all='http --pretty=all'
+alias http-format='command http --style monokai --pretty=format'
+alias http-all='command http --style monokai --pretty=all'
+alias http='http --style monokai'
