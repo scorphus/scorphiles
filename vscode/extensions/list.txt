@@ -1,9 +1,11 @@
 akamud.vscode-theme-onedark
+asvetliakov.snapshot-tools
 azemoh.one-monokai
 bibhasdn.unique-lines
 bungcip.better-toml
 burkeholland.simple-react-snippets
 dbaeumer.vscode-eslint
+dsznajder.es7-react-js-snippets
 EditorConfig.EditorConfig
 eg2.tslint
 espresso3389.genuuid
@@ -13,6 +15,7 @@ gerane.Theme-Blackboard
 gerane.Theme-Bliss
 Gruntfuggly.global-config
 haaaad.ansible
+himanoa.Python-autopep8
 HookyQR.beautify
 jkjustjoshing.vscode-text-pastry
 joshpeng.theme-onedark-sublime
