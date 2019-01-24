@@ -20,6 +20,9 @@
     "[markdown]": {
         "files.trimTrailingWhitespace": false
     },
+    "[jest-snapshot]": {
+        "files.trimTrailingWhitespace": false
+    },
     "files.insertFinalNewline": true,
     "files.associations": {
         "*.tpl": "html",
