@@ -34,7 +34,7 @@
 [core]
 	editor = vim
 	whitespace = tab-in-indent,tabwidth=4
-	pager = less -sFXRMW
+	pager = diff-so-fancy | less -FKMRX
 	commentChar = ";"
 [alias]
 	br = branch
