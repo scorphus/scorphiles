@@ -16,7 +16,13 @@
     "editor.minimap.enabled": false,
     "editor.wordWrap": "off",
 
+    "code-eol.newlineCharacter": "¬",
+    "code-eol.returnCharacter" : "¤",
+    "code-eol.crlfCharacter"   : "¤¬",
+
     "files.trimTrailingWhitespace": true,
+    "files.eol": "\n",
+
     "[markdown]": {
         "files.trimTrailingWhitespace": false
     },

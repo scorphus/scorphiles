@@ -42,6 +42,7 @@ kkalita.dark-plus-elixir
 lextudio.restructuredtext
 lunaryorn.fish-ide
 maxmellen.elixir-language-support
+medo64.render-crlf
 monokai.theme-monokai-pro-vscode
 mrmlnc.vscode-apache
 ms-azuretools.vscode-docker
