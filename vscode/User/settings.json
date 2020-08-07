@@ -1,8 +1,9 @@
 // Place your settings in this file to overwrite the default settings
 {
-    "editor.fontFamily": "Fira Code iScript",
-    "editor.fontSize": 14,
-    "editor.lineHeight": 14,
+    // "editor.fontFamily": "IBM Plex Mono",
+    "editor.fontFamily": "Fira Code",
+    "editor.fontSize": 12,
+    "editor.lineHeight": 13,
     "editor.fontLigatures": true,
     "editor.renderWhitespace": "all",
     "editor.renderControlCharacters": true,
@@ -23,6 +24,9 @@
     "files.trimTrailingWhitespace": true,
     "files.eol": "\n",
 
+    "[javascript]": {
+        "editor.formatOnSave": true
+    },
     "[markdown]": {
         "files.trimTrailingWhitespace": false
     },
@@ -31,6 +35,7 @@
     },
     "files.insertFinalNewline": true,
     "files.associations": {
+        "Dockerfile*": "dockerfile",
         "*.tpl": "html",
         "*.dat": "c"
     },
@@ -53,7 +58,7 @@
     "go.coverOnSave": false,
     "go.useCodeSnippetsOnFunctionSuggest": false,
     "go.formatOnSave": true,
-    "go.formatTool": "goreturns",
+    "go.formatTool": "goimports",
     "go.formatFlags": [],
     // "go.gopath": "/Users/pablo/gocode",
     "go.gocodeAutoBuild": false,
@@ -65,22 +70,29 @@
     "python.linting.pylintCategorySeverity.convention": "Hint",
     "python.linting.pylintCategorySeverity.warning": "Error",
     // "python.jediEnabled": true,
+    "python.jediEnabled": false,
     "python.analysis.watchSearchPaths": false,
-
+    "python.formatting.provider": "black",
+    // "python.formatting.blackArgs": ["--line-length", "99"],
+    "[python]": {
+        "editor.formatOnSave": false
+    },
     "python.linting.flake8Enabled": true,
+    "python.linting.flake8Args": ["--ignore=E203,W503"],
+    "python.linting.mypyEnabled": true,
 
     "terminal.integrated.shell.osx": "/usr/local/bin/fish",
 
-    "window.zoomLevel": 0,
-    "window.title": "${rootName} ⚡ ${activeEditorShort} ★ ${activeEditorMedium}",
+    "window.zoomLevel": 1,
+    "window.title": "${rootName} ⚡ ${activeEditorShort} ♻️ ${activeEditorMedium}",
     "window.restoreFullscreen": true,
 
     "gitlens.keymap": "alternate",
 
-    "terminal.integrated.rendererType": "dom",
+    // "terminal.integrated.rendertyoe": "dom",
     "terminal.integrated.fontFamily": "Fira Code",
-    "terminal.integrated.fontSize": 11.5,
-    // "terminal.integrated.lineHeight": 11.0,
+    "terminal.integrated.fontSize": 15,
+    // "terminal.integrated.lineHeight": 2,
 
     "gitlens.advanced.messages": {
         "suppressShowKeyBindingsNotice": true,
@@ -89,17 +101,41 @@
 
     "window.menuBarVisibility": "toggle",
 
-    "workbench.colorTheme": "One Dark+ (Sublime)",
     "workbench.editor.closeOnFileDelete": false,
     "workbench.editor.enablePreview": false,
-    "workbench.iconTheme": "vs-seti",
     "workbench.welcome.enabled": false,
     "workbench.activityBar.visible": false,
-    "rust.rustup": {
-        "toolchain": "nightly-x86_64-apple-darwin",
-        "nightlyToolchain": "nightly-x86_64-apple-darwin"
+    "workbench.colorCustomizations": {
+        "editorInfo.foreground": "#67A7DF"
     },
-    "rust.mode": "legacy",
+
     "telemetry.enableTelemetry": false,
-    "python.jediEnabled": false
+
+    // "rust.rustup": {
+    //     "toolchain": "nightly-x86_64-apple-darwin",
+    //     "nightlyToolchain": "nightly-x86_64-apple-darwin"
+    // },
+    // "rust.mode": "legacy",
+    "rust-client.enableMultiProjectSetup": null,
+
+    "editor.multiCursorModifier": "ctrlCmd",
+    "javascript.validate.enable": false,
+    "javascript.format.enable": false,
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "terminal.integrated.rendererType": "dom",
+    "vsicons.dontShowNewVersionMessage": true,
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "workbench.colorTheme": "Darcula theme for Elixir",
+    "go.useLanguageServer": true,
+    "[elixir]": {
+        // "editor.defaultFormatter": "JakeBecker.elixir-ls"
+        "editor.defaultFormatter": "maxmellen.elixir-language-support"
+    },
+    "window.newWindowDimensions": "inherit",
+    "python.languageServer": "Microsoft",
+    "python.showStartPage": false
 }
