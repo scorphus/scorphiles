@@ -7,14 +7,14 @@
     "editor.renderWhitespace": "all",
     "editor.renderControlCharacters": true,
     "editor.renderIndentGuides": true,
-    "editor.renderLineHighlight": true,
+    "editor.renderLineHighlight": "line",
     "editor.overviewRulerLanes": 2,
     "editor.rulers": [76, 80, 100, 110],
     "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?",
     "editor.detectIndentation": true,
     "editor.formatOnSave": false,
     "editor.minimap.enabled": false,
-    "editor.wordWrap": false,
+    "editor.wordWrap": "off",
 
     "files.trimTrailingWhitespace": true,
     "[markdown]": {
