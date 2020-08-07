@@ -98,3 +98,8 @@ node_modules
 htmlcov
 .byebug_history
 *.egg-info
+
+
+# Elixir/Erlang/BEAM
+*.beam
+*.dump
