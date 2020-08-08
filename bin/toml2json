@@ -1,0 +1,24 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import json
+import sys
+import toml
+
+
+def from_toml():
+    try:
+        if not sys.stdin.isatty():
+            return toml.load(sys.stdin)
+        with open(sys.argv[1]) as fd:
+            return toml.load(fd)
+    except Exception as err:
+        sys.stderr.write(f"Could not parse input: {err}")
+
+
+def to_json(data):
+    sys.stdout.write(json.dumps(data))
+
+
+if __name__ == "__main__":
+    to_json(from_toml())
