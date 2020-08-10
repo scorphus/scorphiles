@@ -44,16 +44,18 @@
 	ss = stash
 	df = diff
 	ds = diff --staged
+	s = show --stat
 	l = log -40 --branches=* --graph --decorate --abbrev-commit --oneline --all
 	ll = log --branches=* --graph --decorate --abbrev-commit
 	lo = log --branches=* --graph --decorate --abbrev-commit --oneline
-	la = !git log -$__git_available_lines --branches=* --graph --decorate --abbrev-commit --oneline --all
+	la = !git log -$(echo $__git_available_lines - 5 | bc) --branches=* --graph --decorate --abbrev-commit --oneline --all
 	laa = log --branches=* --graph --decorate --abbrev-commit --oneline --all
 	lg = log --color --graph --decorate --abbrev-commit --pretty=format:'%C(bold red)%h%Creset -%C(bold yellow)%d%Creset %s %C(bold green)(%cr) %C(bold blue)<%an>%Creset'
-	lp = !git log -$__git_available_lines --graph --decorate --abbrev-commit --date=relative --pretty=format:'%C(bold yellow)%h%C(bold red) %<(8,trunc)%aN%C(bold green) %<(7,trunc)%ad%C(reset) %s%C(auto)%d'
+	lp = !git log -$(echo $__git_available_lines - 5 | bc) --graph --decorate --abbrev-commit --date=relative --pretty=format:'%C(bold yellow)%h%C(bold red) %<(8,trunc)%aN%C(bold green) %<(7,trunc)%ad%C(reset) %s%C(auto)%d'
+	lpn = !git lp --color | nl -v0 -w3 -s' '
 	lpp = log --graph --decorate --abbrev-commit --date=relative --pretty=format:'%C(bold yellow)%h%C(bold red) %<(8,trunc)%aN%C(bold green) %<(7,trunc)%ad%C(reset) %s%C(auto)%d'
 	lpd = log --graph --decorate --abbrev-commit --date=short --pretty=format:'%C(bold yellow)%h%C(bold red) %<(8,trunc)%aN%C(bold green) %ad%C(reset)%x20%s%C(auto)%d'
-	lpa = !git log -$__git_available_lines --branches=* --graph --decorate --abbrev-commit --date=relative --pretty=format:'%C(bold yellow)%h%C(bold red) %<(8,trunc)%aN%C(bold green) %<(7,trunc)%ad%C(reset) %s%C(auto)%d'
+	lpa = !git log -$(echo $__git_available_lines - 5 | bc) --branches=* --graph --decorate --abbrev-commit --date=relative --pretty=format:'%C(bold yellow)%h%C(bold red) %<(8,trunc)%aN%C(bold green) %<(7,trunc)%ad%C(reset) %s%C(auto)%d'
 	lpas = !git log -$(echo $__git_available_lines - 5 | bc) --all --graph --decorate --abbrev-commit --date=relative --pretty=format:'%C(bold yellow)%h%C(bold red) %<(8,trunc)%aN%C(bold green) %<(7,trunc)%ad%C(reset) %s%C(auto)%d'
 	lpaa = log --branches=* --graph --decorate --abbrev-commit --date=relative --pretty=format:'%C(bold yellow)%h%C(bold red) %<(8,trunc)%aN%C(bold green) %<(7,trunc)%ad%C(reset) %s%C(auto)%d'
 	lpaas = log --all --graph --decorate --abbrev-commit --date=relative --pretty=format:'%C(bold yellow)%h%C(bold red) %<(8,trunc)%aN%C(bold green) %<(7,trunc)%ad%C(reset) %s%C(auto)%d'
