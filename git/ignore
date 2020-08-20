@@ -98,6 +98,8 @@ node_modules
 htmlcov
 .byebug_history
 *.egg-info
+.mypy_cache
+.python-version
 
 
 # Elixir/Erlang/BEAM
