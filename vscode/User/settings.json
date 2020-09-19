@@ -25,7 +25,8 @@
     "files.eol": "\n",
 
     "[javascript]": {
-        "editor.formatOnSave": true
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[markdown]": {
         "files.trimTrailingWhitespace": false
@@ -117,6 +118,9 @@
     // },
     // "rust.mode": "legacy",
     "rust-client.enableMultiProjectSetup": null,
+    "[rust]": {
+        "editor.defaultFormatter": "statiolake.vscode-rustfmt"
+    },
 
     "editor.multiCursorModifier": "ctrlCmd",
     "javascript.validate.enable": false,
@@ -129,13 +133,17 @@
     "[html]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "workbench.colorTheme": "Darcula theme for Elixir",
+    "workbench.colorTheme": "Atom One Dark",
     "go.useLanguageServer": true,
     "[elixir]": {
         // "editor.defaultFormatter": "JakeBecker.elixir-ls"
         "editor.defaultFormatter": "maxmellen.elixir-language-support"
     },
     "window.newWindowDimensions": "inherit",
-    "python.languageServer": "Microsoft",
-    "python.showStartPage": false
+    "python.languageServer": "Pylance",
+    "python.showStartPage": false,
+    "[erlang]": {
+        "editor.defaultFormatter": "pgourlain.erlang"
+    },
+    "rust.clippy_preference": "on"
 }
