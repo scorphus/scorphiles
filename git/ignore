@@ -102,6 +102,8 @@ htmlcov
 *.egg-info
 .mypy_cache
 .python-version
+coverage.json
+coverage.xml
 
 
 # Elixir/Erlang/BEAM
