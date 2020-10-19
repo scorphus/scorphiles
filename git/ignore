@@ -89,7 +89,9 @@ node_modules
 # Editor project and workspace files
 *.sublime-project
 *.sublime-workspace
+.vs
 .vscode
+.elixir_ls
 
 
 # Python stuff
