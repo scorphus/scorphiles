@@ -9,7 +9,7 @@
     "editor.renderIndentGuides": true,
     "editor.renderLineHighlight": "line",
     "editor.overviewRulerLanes": 2,
-    "editor.rulers": [76, 80, 100, 110],
+    "editor.rulers": [72, 76, 80, 100, 110],
     "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?",
     "editor.detectIndentation": true,
     "editor.formatOnSave": false,
