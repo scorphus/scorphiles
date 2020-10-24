@@ -1,9 +1,8 @@
 // Place your settings in this file to overwrite the default settings
 {
-    // "editor.fontFamily": "IBM Plex Mono",
     "editor.fontFamily": "Fira Code",
-    "editor.fontSize": 12,
-    "editor.lineHeight": 13,
+    "editor.fontSize": 13,
+    "editor.lineHeight": 14,
     "editor.fontLigatures": true,
     "editor.renderWhitespace": "all",
     "editor.renderControlCharacters": true,
