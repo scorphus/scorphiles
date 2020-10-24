@@ -144,5 +144,10 @@
     "[erlang]": {
         "editor.defaultFormatter": "pgourlain.erlang"
     },
-    "rust.clippy_preference": "on"
+    "rust.clippy_preference": "on",
+
+    "editor.cursorWidth": 3,
+    "editor.cursorSurroundingLines": 2,
+    "editor.cursorSmoothCaretAnimation": true,
+    "editor.cursorBlinking": "expand"
 }
