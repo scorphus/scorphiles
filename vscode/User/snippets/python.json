@@ -15,7 +15,7 @@
     "Set a breakpoint": {
         "prefix": "ipdb",
         "body": [
-            "import ipdb; ipdb.set_trace()  # BREAKPOINT ⚡️ $1"
+            "__import__(\"ipdb\").set_trace()  # FIXME: BREAKPOINT!!!$1"
         ],
         "description": "Set a breakpoint"
     },
