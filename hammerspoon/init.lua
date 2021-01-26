@@ -70,3 +70,6 @@ hs.hotkey.bind({"cmd", "alt", "ctrl"}, "M", function()
   f.h = max.h
   win:setFrame(f)
 end)
+
+hs.loadSpoon("MicMute")
+spoon.MicMute:bindHotkeys({toggle={{},"F1"}}, 0.75)
