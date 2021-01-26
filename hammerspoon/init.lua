@@ -73,3 +73,9 @@ end)
 
 hs.loadSpoon("MicMute")
 spoon.MicMute:bindHotkeys({toggle={{},"F1"}}, 0.75)
+
+hs.hotkey.bind({"ctrl", "alt"}, "C", function()
+  local file = assert(io.open("/tmp/pastebin.txt", "a"))
+  file:write(hs.pasteboard.getContents() .. "\n")
+  file:close()
+end)
