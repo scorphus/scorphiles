@@ -1,0 +1,81 @@
+general {
+        colors = true
+        # color_good = "#50FA7B"
+        color_good = "#448888"
+        color_degraded = "#F1FA8C"
+        color_bad = "#FF5555"
+        interval = 5
+        output_format = "i3bar"
+}
+
+# order += "ipv6"  # -3
+# order += "ethernet eth0"  # -2
+# order += "run_watch D"  # -1
+order += "wireless wlan0"  # 0
+order += "disk /home"  # 1
+order += "battery 0"  # 2
+order += "cpu_usage"  # 3
+order += "cpu_temperature 0"  # 4
+order += "memory"  # 5
+order += "memory"  # 6 -- swap!!!
+order += "load"  # 7
+order += "volume master"  # 8
+order += "tztime local"  # 9
+order += "tztime berlin"  # 10
+
+disk "/home" {
+        format = "%free"
+}
+
+wireless wlan0 {
+        format_up = "W: (%quality @ %essid, %bitrate) %ip"
+        format_down = "W: down"
+        format_quality = "%2d%s"
+}
+
+# ethernet eth0 {
+#         format_up = "E: %ip (%speed)"
+#         format_down = "E: down"
+# }
+
+battery 0 {
+        format = "%status %percentage %remaining %emptytime"
+        format_down = "No battery"
+        status_chr = "⚡ C"
+        status_bat = "🔋 B"
+        status_unk = "? U"
+        status_full = "☻ F"
+        path = "/sys/class/power_supply/BAT%d/uevent"
+        low_threshold = 10
+}
+
+# run_watch D {
+#         pidfile = "/var/run/dhclient*.pid"
+# }
+
+tztime local {
+        format = "%H:%M:%S%a%d%m"
+        hide_if_equals_localtime = true
+}
+
+tztime berlin {
+        format = "%H:%M:%S%a%d%m"
+        timezone = "Europe/Berlin"
+}
+
+load {
+        format = "%5min"
+}
+
+cpu_temperature 0 {
+        format = "T: %degrees °C"
+}
+
+memory {
+        format = "%used"
+        threshold_degraded = "10%"
+        format_degraded = "MEMORY: %free"
+}
+
+volume master {
+}
