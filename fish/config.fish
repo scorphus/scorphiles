@@ -1,5 +1,5 @@
 # path
-set -gx PATH /usr/local/sbin $HOME/.local/bin $PATH
+set -gx PATH $HOME/.local/bin $PATH /usr/local/sbin
 
 # golang
 set -gx GOPATH $HOME/gocode
