@@ -7,8 +7,7 @@ set -gx GOBIN $GOPATH/bin
 set -gx PATH $GOBIN $PATH
 
 # general purpose scripts
-# set -x PATH $HOME/bin $PATH
-for dir in (find $HOME/bin/ -mindepth 1 -maxdepth 1 -type d)
+for dir in (find -H $HOME/bin -maxdepth 1 -type d)
     set -x PATH $dir $PATH
 end
 
