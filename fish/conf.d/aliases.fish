@@ -19,3 +19,4 @@ if not test (uname) = Darwin
   alias pbcopy='xclip -selection clipboard'
   alias pbpaste='xclip -selection clipboard -o'
 end
+

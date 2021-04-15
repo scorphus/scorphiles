@@ -23,6 +23,3 @@ set -g Z_SCRIPT_PATH /usr/local/etc/profile.d/z.sh
 
 # gem omf pkg config
 set -x GEM_ROOT $HOME/.gem
-
-# Load aliases
-source $HOME/.config/fish/aliases.fish
