@@ -15,7 +15,7 @@ end
 set -xg PYTHONDONTWRITEBYTECODE 1  # Don't write bytecode files everywhere
 
 # TheFuck stuff
-set -xg TF_OVERRIDDEN_ALIASES 'cd,grep,ls,man,open,git'
+set -xg THEFUCK_OVERRIDDEN_ALIASES 'aws,cd,git,grep,ls,man,open,pyenv'
 
 # z omf pkg config
 set -g Z_SCRIPT_PATH /usr/local/etc/profile.d/z.sh
