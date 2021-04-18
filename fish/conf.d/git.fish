@@ -1,1 +1,1 @@
-set -gx LINES
+export LINES
