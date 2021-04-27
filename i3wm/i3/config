@@ -217,6 +217,9 @@ bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+space exec sleep 0.2 && xdotool type '    '
 bindsym $mod+BackSpace exec sleep 0.2 && xdotool key BackSpace && xdotool key BackSpace && xdotool key BackSpace && xdotool key BackSpace
 
+exec_always --no-startup-id ~/bin/i3wm/i3-cycle-focus.py --history 2
+bindsym Mod1+Tab exec --no-startup-id ~/bin/i3wm/i3-cycle-focus.py --switch
+
 floating_minimum_size 600 x 300
 floating_maximum_size 1250 x 600
 
