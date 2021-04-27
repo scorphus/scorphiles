@@ -11,7 +11,8 @@ do
     if [[ $line == ',['* ]]; then
         line="${line:1:${#line}-1}"
     fi
-    line=$(echo "$line" | jq -c '.[6] |= {"name":"swap","markup":"none","full_text":"0B"}') # || echo "$line,"
+    swap=$(swapon --show --noheadings | awk '{print $4}')
+    line=$(echo "$line" | jq -c '.[6] |= {"name":"swap","markup":"none","full_text":"'$swap'"}') # || echo "$line,"
     echo "$line,"
 done
 
