@@ -8,5 +8,10 @@
 #
 #   git nuke add-git-nuke
 
+remote=origin
+if [[ -n "$2" ]]; then
+    remote=$2
+fi
+
 git branch -D $1
-git push origin :$1
+git push $remote :$1
