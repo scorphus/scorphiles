@@ -36,16 +36,21 @@
 [diff]
 	tool = meld
 	wsErrorHighlight = all
+	colorMoved = zebra
 [core]
 	editor = vim
 	whitespace = tab-in-indent,tabwidth=4
 	pager = diff-so-fancy | less -FKMRX
 	commentChar = ";"
+	symlinks = true
+# [interactive]
+# 	diffFilter = diff-so-fancy --patch
 [alias]
 	br = branch
 	co = checkout
 	cc = checkout
 	st = status
+	sts = status -s
 	ss = stash
 	df = diff
 	ds = diff --staged
@@ -85,6 +90,12 @@
 	r = remote -v
 	fat = fetch --all --tags
 	fix-perm = "!f(){ git diff -p | grep -E '^(diff|old mode|new mode)' | sed -e 's/^old/NEW/;s/^new/old/;s/^NEW/new/' | git apply; }; f"
+	change = codereview change
+	gofmt = codereview gofmt
+	mail = codereview mail
+	pending = codereview pending
+	submit = codereview submit
+	sync = codereview sync
 [filter "lfs"]
 	clean = git lfs clean %f
 	smudge = git lfs smudge %f
@@ -107,3 +118,14 @@
 	cookiefile = /Users/pablo/.gitcookies
 [rerere]
 	enabled = true
+[help]
+	# autocorrect = 30
+[diff "nodiff"]
+	command = /usr/bin/true
+[credential]
+	helper = !aws codecommit credential-helper $@
+	UseHttpPath = true
+[init]
+	defaultBranch = main
+[blame]
+	ignoreRevsFile = .git-blame-ignore-revs
