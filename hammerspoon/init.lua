@@ -1,4 +1,4 @@
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Left", function()
+hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "Left", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
@@ -11,7 +11,20 @@ hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Left", function()
   win:setFrame(f)
 end)
 
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Right", function()
+hs.hotkey.bind({ "cmd", "alt", "ctrl", "shift" }, "Left", function()
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  f.x = max.x
+  f.y = f.y
+  f.w = max.w / 3
+  f.h = f.h
+  win:setFrame(f)
+end)
+
+hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "Right", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
@@ -24,7 +37,20 @@ hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Right", function()
   win:setFrame(f)
 end)
 
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Up", function()
+hs.hotkey.bind({ "cmd", "alt", "ctrl", "shift" }, "Right", function()
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  f.x = max.x + (2 * max.w / 3)
+  f.y = f.y
+  f.w = max.w / 3
+  f.h = f.h
+  win:setFrame(f)
+end)
+
+hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "Up", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
@@ -37,7 +63,7 @@ hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Up", function()
   win:setFrame(f)
 end)
 
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Down", function()
+hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "Down", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
@@ -50,54 +76,94 @@ hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Down", function()
   win:setFrame(f)
 end)
 
-hs.hotkey.bind({"cmd", "alt", "shift"}, "M", function()
-  local cmd="~/.pyenv/shims/mina show 1 -q"
-  local handle = io.popen(cmd)
-  local result = handle:read("*a")
-  handle:close()
-  hs.eventtap.keyStrokes(("%06d"):format(result))
-end)
+function moveWindowToDisplay(d)
+  return function()
+    local displays = hs.screen.allScreens()
+    local win = hs.window.focusedWindow()
+    win:moveToScreen(displays[d], false, true)
+  end
+end
 
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "M", function()
+hs.hotkey.bind({ "cmd", "alt", "ctrl", "shift" }, "Up", moveWindowToDisplay(1))
+hs.hotkey.bind({ "cmd", "alt", "ctrl", "shift" }, "Down", moveWindowToDisplay(2))
+
+-- hs.hotkey.bind({"cmd", "alt", "shift"}, "M", function()
+--   local cmd="~/.pyenv/shims/mina show 1 -q"
+--   local handle = io.popen(cmd)
+--   local result = handle:read("*a")
+--   handle:close()
+--   hs.eventtap.keyStrokes(("%06d"):format(result))
+-- end)
+
+hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "M", function()
   local win = hs.window.focusedWindow()
   win:moveToUnit('[0,0,100,100]')
+end)
+
+hs.hotkey.bind({ "cmd", "alt", "ctrl", "shift" }, "M", function()
+  local win = hs.window.focusedWindow()
+  win:moveToUnit('[33.3,0,66.7,100]')
 end)
 
 --- -- -- -- -- -- -- -- -- -- -- --
 -- Center window in display 50/50 --
 --- -- -- -- -- -- -- -- -- -- -- --
-hs.hotkey.bind({"cmd", "alt", "ctrl", "shift"}, "K", function()
+hs.hotkey.bind({ "cmd", "alt", "ctrl", "shift" }, "K", function()
+  local frame_width = hs.screen.mainScreen():frame().w
   local win = hs.window.focusedWindow()
-  win:moveToUnit('[25,25,75,75]')
+  if frame_width == 3840 then
+    win:moveToUnit('[25,25,75,75]')
+  else
+    win:moveToUnit('[15,7,85,82]')
+  end
 end)
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 -- Place window on a "nice to look at" position --
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "K", function()
+hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "K", function()
+  local frame_width = hs.screen.mainScreen():frame().w
   local win = hs.window.focusedWindow()
-  win:moveToUnit('[15,7,85,82]')
+  if frame_width == 3840 then
+    win:moveToUnit('[15,7,85,82]')
+  else
+    win:moveToUnit('[15,0,85,94]')
+  end
 end)
 
 -- -- -- -- -- -- -- -- -- --
 -- Mute microphone with F1 --
 -- -- -- -- -- -- -- -- -- --
 hs.loadSpoon("MicMute")
-spoon.MicMute:bindHotkeys({toggle={{},"F1"}}, 0.75)
+spoon.MicMute:bindHotkeys({ toggle = { {}, "F1" } }, 0.75)
 spoon.MicMute:bindVisibilitySetter(function(muted)
   spoon.MicMute.mute_menu:setTitle(muted and "📵" or "🎙")
 end)
+
+-- -- -- -- -- -- --
+-- -- ColorPicker --
+-- -- -- -- -- -- --
+-- hs.loadSpoon("ColorPicker")
+-- spoon.ColorPicker:start()
+-- spoon.ColorPicker:bindHotkeys({show={{"cmd", "shift", "ctrl"}, "P"}})
+
+-- --- -- -- -- -- --
+-- -- Time Tracker --
+-- --- -- -- -- -- --
+
+-- local clocking = require "Modules/clocking"
+-- dateTimeGarbageCollectorPreventer = clocking.init()
 
 --- -- -- -- -- -- ---
 -- Replace Caffeine --
 --- -- -- -- -- -- ---
 caffeine = require "Modules/caffeine"
 
-hs.hotkey.bind({"cmd", "alt"}, "V", function()
+hs.hotkey.bind({ "cmd", "alt" }, "V", function()
   hs.eventtap.keyStrokes(hs.pasteboard.getContents())
 end)
 
-hs.hotkey.bind({"ctrl", "alt"}, "C", function()
+hs.hotkey.bind({ "ctrl", "alt" }, "C", function()
   local file = assert(io.open("/tmp/pastebin.txt", "a"))
   file:write(hs.pasteboard.getContents() .. "\n")
   file:close()
@@ -161,10 +227,10 @@ function move_down()
   move_hor_ver(0, move_by)
 end
 
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Home", move_left_init, nil, move_left)
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "End", move_right_init, nil, move_right)
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "PageUp", move_up_init, nil, move_up)
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "PageDown", move_down_init, nil, move_down)
+hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "Home", move_left_init, nil, move_left)
+hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "End", move_right_init, nil, move_right)
+hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "PageUp", move_up_init, nil, move_up)
+hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "PageDown", move_down_init, nil, move_down)
 
 -- -- -- -- -- -- -- -- --
 -- Resize window around --
@@ -224,7 +290,25 @@ function resize_down()
   resize_hor_ver(0, resize_by)
 end
 
-hs.hotkey.bind({"cmd", "alt"}, "Home", resize_left_init, nil, resize_left)
-hs.hotkey.bind({"cmd", "alt"}, "End", resize_right_init, nil, resize_right)
-hs.hotkey.bind({"cmd", "alt"}, "PageUp", resize_up_init, nil, resize_up)
-hs.hotkey.bind({"cmd", "alt"}, "PageDown", resize_down_init, nil, resize_down)
+hs.hotkey.bind({ "cmd", "alt" }, "Home", resize_left_init, nil, resize_left)
+hs.hotkey.bind({ "cmd", "alt" }, "End", resize_right_init, nil, resize_right)
+hs.hotkey.bind({ "cmd", "alt" }, "PageUp", resize_up_init, nil, resize_up)
+hs.hotkey.bind({ "cmd", "alt" }, "PageDown", resize_down_init, nil, resize_down)
+
+-- hs.window.highlight.ui.overlay = false
+-- hs.window.highlight.ui.overlayColor = { 0.2, 0.05, 0, 0.2 }
+-- hs.window.highlight.start()
+
+
+-- -- -- -- -- -- -- --
+-- See more on Slack --
+-- -- -- -- -- -- -- --
+hs.hotkey.bind({"cmd", "alt", "ctrl"}, "S", function()
+    local slack = hs.application.find("Slack")
+    if slack then
+        hs.eventtap.keyStroke({}, "See more")  -- Try triggering it
+        hs.timer.doAfter(2, function()  -- Wait for UI update
+            hs.mouse.click(hs.mouse.getAbsolutePosition())  -- Click current mouse position
+        end)
+    end
+end)
