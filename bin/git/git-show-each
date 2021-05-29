@@ -1,0 +1,33 @@
+#!/bin/sh
+#
+# Show the commit of each sha1 passed either as an argument or from stdin.
+
+show_commit() {
+    clear
+    git show --pretty=fuller --color $1 | less -KMRX
+    [ $? -ne 0 ] && exit 1
+}
+
+# No args provided? Set them from stdin
+if [ $# -eq 0 ]; then
+    set -- $(cat -)
+fi
+
+# Convert arguments to an array
+sha1s=("$@")
+index=0
+
+while [ $index -lt ${#sha1s[@]} ]; do
+    show_commit ${sha1s[$index]}
+    read -p '[r-prev / *-next] ' -rsn1 key < /dev/tty
+    case "$key" in
+        r)
+            if [ $index -gt 0 ]; then
+                index=$((index - 1))
+            fi
+            ;;
+        *)
+            index=$((index + 1))
+            ;;
+    esac
+done
