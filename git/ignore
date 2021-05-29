@@ -43,7 +43,6 @@ Temporary Items
 
 # Logs and databases
 *.log
-*.sql
 *.sqlite
 
 
@@ -76,7 +75,7 @@ Thumbs.db
 
 
 # Coverage
-.coverage
+.coverage*
 
 
 # ~/.gitignore-global test
@@ -109,3 +108,40 @@ coverage.xml
 # Elixir/Erlang/BEAM
 *.beam
 *.dump
+_build
+
+
+# Clojure/Leiningen stuff
+.lein-failures
+target
+
+
+# Zig stuff
+zig-cache
+
+
+# CDK asset staging directory
+.cdk.staging
+cdk.out
+
+
+# Clojure and Leiningen
+.clj-kondo/
+.lein-repl-history
+.lsp/
+.nrepl-port
+
+
+# Secret stuff
+.secrets
+
+# Gleam, babe. Gleam.
+*.beam
+*.ez
+/build
+erl_crash.dump
+
+**/.claude/settings.local.json
+CLAUDE.md
+
+.zed
