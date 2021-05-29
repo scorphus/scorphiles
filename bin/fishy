@@ -1,0 +1,3 @@
+#!/bin/sh
+echo fish "$@" --features qmark-noglob
+exec fish "$@" --features qmark-noglob

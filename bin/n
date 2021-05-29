@@ -1,0 +1,15 @@
+#!/bin/sh
+messages=(
+    "Meh. Tough one."
+    "I know, it's hard."
+    "Don't worry, you'll get it next time."
+    "Quite a challenge, huh?"
+    "There is no try. Do or do not."
+    "Having a hard time? That's okay."
+    "Looks like you need a break."
+)
+num_messages=${#messages[@]}
+index=$(($RANDOM % $num_messages))
+message=${messages[$index]}
+cow=$(cowsay -l | tail -n +2 | tr ' ' '\n' | shuf | head -n 1)
+cowsay -t -f $cow $message

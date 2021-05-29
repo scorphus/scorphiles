@@ -1,0 +1,15 @@
+#!/bin/sh
+messages=(
+    "Yeah, boy! Keep it up!"
+    "Yeeeha! You're doing great!"
+    "YAY! That was awesome!"
+    "Yoooo! Let's goooo!"
+    "Yup, that's how the pros do it!"
+    "Yup, you got it!"
+    "Yeeeee! 🔥 🔥 🔥 🔥"
+)
+num_messages=${#messages[@]}
+index=$(($RANDOM % $num_messages))
+message=${messages[$index]}
+cow=$(cowsay -l | tail -n +2 | tr ' ' '\n' | shuf | head -n 1)
+cowsay -w -f $cow $message

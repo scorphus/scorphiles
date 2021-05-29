@@ -1,0 +1,17 @@
+#!/bin/sh
+messages=(
+    "Continue to work hard and you can get anything that you want."
+    "Keep pushing yourself to be the best version of yourself."
+    "Don't be afraid to ask for help when you need it."
+    "Don't just dream about success; work for it."
+    "Don't just think about your goals; work for them."
+    "Don't let your fears hold you back."
+    "Don't let your fears stand in the way of your dreams."
+    "Don't let your fears stop you from doing what you want."
+    "I know that you can do it. You know it too. So just do it."
+)
+num_messages=${#messages[@]}
+index=$(($RANDOM % $num_messages))
+message=${messages[$index]}
+cow=$(cowsay -l | tail -n +2 | tr ' ' '\n' | shuf | head -n 1)
+cowsay -t -f $cow $message
