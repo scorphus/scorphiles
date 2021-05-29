@@ -1,0 +1,10 @@
+#!/bin/sh
+#
+# Show the current branch name.
+
+if [[ -z $1 ]]; then
+    git st -s | awk '{print $NF}'
+    git st -s | awk '{print $NF}' | xargs code
+else
+    git diff-tree --no-commit-id --name-only -r $1 | xargs code
+fi
