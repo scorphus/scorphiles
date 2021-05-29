@@ -7,8 +7,9 @@ Mash two fonts together to get an Open Source variant of Operator Mono.
 ### Usage
 
 Put [workbench.main.css](workbench.main.css)'s contents on the top of
-`/Applications/Visual Studio
-Code.app/Contents/Resources/app/out/vs/workbench/workbench.main.css`.
+`/Applications/Visual Studio Code.app/Contents/Resources/app/out/vs/workbench/workbench.main.css`.
+
+Or, the first few lines of it `head -6 workbench.main.css | pbcopy`.
 
 ### Useful Links
 
