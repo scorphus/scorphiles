@@ -12,6 +12,42 @@
     //  ],
     //  "description": "Log output to console"
     // }
+    "try/exc": {
+        "prefix": "try/exc",
+        "body": [
+            "try:",
+            "except:",
+            "\tpass$1",
+        ],
+        "description": "try/exc"
+    },
+    "try/exc Exception": {
+        "prefix": "try/exc Exception",
+        "body": [
+            "try:",
+            "except Exception:",
+            "\tpass$1",
+        ],
+        "description": "try/exc Exception"
+    },
+    "try/exc as errr": {
+        "prefix": "try/exc Exception as err",
+        "body": [
+            "try:",
+            "except Exception as err:",
+            "\tpass$1",
+        ],
+        "description": "try/exc Exception as err"
+    },
+    "try/exc ? as err": {
+        "prefix": "try/exc Exception as err",
+        "body": [
+            "try:",
+            "except Exception$1 as err:",
+            "\tpass",
+        ],
+        "description": "try/exc ? as err"
+    },
     "Set a breakpoint": {
         "prefix": "ipdb",
         "body": [

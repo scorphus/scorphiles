@@ -1,20 +1,27 @@
 // Place your settings in this file to overwrite the default settings
 {
-    "editor.fontFamily": "Fira Code",
-    "editor.fontSize": 13,
-    "editor.lineHeight": 14,
+    // "editor.fontFamily": "Fira Code",
+    "editor.fontFamily": "JetBrains Mono",
+    // "editor.fontFamily": "JetBrains Mono NL",
+    // "editor.fontSize": 21,
+    "editor.fontSize": 15,
+    "editor.lineHeight": 18,
     "editor.fontLigatures": true,
     "editor.renderWhitespace": "all",
     "editor.renderControlCharacters": true,
-    "editor.renderIndentGuides": true,
     "editor.renderLineHighlight": "line",
     "editor.overviewRulerLanes": 2,
-    "editor.rulers": [72, 76, 80, 100, 110],
+    "editor.rulers": [72, 76, 80, 90, 100, 110, 120],
     "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?",
     "editor.detectIndentation": true,
     "editor.formatOnSave": false,
     "editor.minimap.enabled": false,
     "editor.wordWrap": "off",
+    "editor.hover": {
+        "enabled": true,
+        "delay": 750,
+        "sticky": true
+    },
 
     "code-eol.newlineCharacter": "¬",
     "code-eol.returnCharacter" : "¤",
@@ -28,16 +35,21 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[markdown]": {
-        "files.trimTrailingWhitespace": false
+        "files.trimTrailingWhitespace": false,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[tsv]": {
+        "files.trimTrailingWhitespace": false,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[jest-snapshot]": {
         "files.trimTrailingWhitespace": false
     },
-    "files.insertFinalNewline": true,
     "files.associations": {
         "Dockerfile*": "dockerfile",
         "*.tpl": "html",
-        "*.dat": "c"
+        "*.dat": "c",
+        "*.zwo": "xml"
     },
 
     "fontshortcuts.defaultFontSize": 12,
@@ -47,9 +59,9 @@
     "git.enabled": true,
     "git.path": "/usr/bin/git",
 
-    "go.buildOnSave": true,
-    "go.lintOnSave": true,
-    "go.vetOnSave": true,
+    "go.buildOnSave": "package",
+    "go.lintOnSave": "package",
+    "go.vetOnSave": "package",
     "go.buildTags": "",
     "go.buildFlags": [],
     "go.lintTool": "golint",
@@ -63,27 +75,26 @@
     // "go.gopath": "/Users/pablo/gocode",
     "go.gocodeAutoBuild": false,
 
-    "python.linting.enabled": true,
-    "python.linting.lintOnSave": true,
-
-    "python.linting.pylintEnabled": false,
-    "python.linting.pylintCategorySeverity.convention": "Hint",
-    "python.linting.pylintCategorySeverity.warning": "Error",
     // "python.jediEnabled": true,
     "python.jediEnabled": false,
     "python.analysis.watchSearchPaths": false,
-    "python.formatting.provider": "black",
+    // "python.formatting.provider": "black",
     // "python.formatting.blackArgs": ["--line-length", "99"],
     "[python]": {
-        "editor.formatOnSave": false
+        "editor.formatOnSave": false,
+        "editor.defaultFormatter": "ms-python.black-formatter"
     },
-    "python.linting.flake8Enabled": true,
-    "python.linting.flake8Args": ["--ignore=E203,W503"],
-    "python.linting.mypyEnabled": true,
 
-    "terminal.integrated.shell.osx": "/usr/local/bin/fish",
+    // "terminal.integrated.shell.osx": "/usr/local/bin/fish",
+    // the above is doesn't work anymore, caraio de vscode
+    // I want to use fish as my default shell
+    "terminal.integrated.profiles.osx": {
+      "fish": {
+        "path": "/usr/local/bin/fish"
+      }
+    },
+    // "terminal.integrated.defaultProfile.osx": "fish"
 
-    "window.zoomLevel": 1,
     "window.title": "${rootName} ⚡ ${activeEditorShort} ♻️ ${activeEditorMedium}",
     "window.restoreFullscreen": true,
 
@@ -91,7 +102,7 @@
 
     // "terminal.integrated.rendertyoe": "dom",
     "terminal.integrated.fontFamily": "Fira Code",
-    "terminal.integrated.fontSize": 15,
+    "terminal.integrated.fontSize": 12,
     // "terminal.integrated.lineHeight": 2,
 
     "gitlens.advanced.messages": {
@@ -102,11 +113,14 @@
     "window.menuBarVisibility": "toggle",
 
     "workbench.editor.closeOnFileDelete": false,
-    "workbench.editor.enablePreview": false,
+    "workbench.editor.enablePreview": true,
     "workbench.welcome.enabled": false,
-    "workbench.activityBar.visible": false,
     "workbench.colorCustomizations": {
-        "editorInfo.foreground": "#67A7DF"
+        // "editorInfo.foreground": "#ffff00",
+        // "editor.wordHighlightBackground": "#ff0000",
+        // "editor.wordHighlightStrongBackground": "#ff0000",
+        "editor.selectionBackground": "#ff0000c0", //Current SELECTED text
+        "editor.selectionHighlightBackground": "#00000080", //same content as the selection
     },
 
     "telemetry.enableTelemetry": false,
@@ -117,22 +131,23 @@
     // },
     // "rust.mode": "legacy",
     "rust-client.enableMultiProjectSetup": null,
+    "rust-analyzer.inlayHints.typeHints.enable": false,
+    "rust.clippy_preference": "on",
+
     "[rust]": {
         "editor.defaultFormatter": "statiolake.vscode-rustfmt"
     },
-
-    "editor.multiCursorModifier": "ctrlCmd",
     "javascript.validate.enable": false,
     "javascript.format.enable": false,
     "[json]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "vscode.json-language-features"
     },
     "terminal.integrated.rendererType": "dom",
     "vsicons.dontShowNewVersionMessage": true,
     "[html]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "workbench.colorTheme": "Atom One Dark",
+    // "workbench.colorTheme": "Atom One Dark",
     "go.useLanguageServer": true,
     "[elixir]": {
         // "editor.defaultFormatter": "JakeBecker.elixir-ls"
@@ -141,13 +156,113 @@
     "window.newWindowDimensions": "inherit",
     "python.languageServer": "Pylance",
     "python.showStartPage": false,
+
     "[erlang]": {
         "editor.defaultFormatter": "pgourlain.erlang"
     },
-    "rust.clippy_preference": "on",
 
     "editor.cursorWidth": 3,
     "editor.cursorSurroundingLines": 2,
-    "editor.cursorSmoothCaretAnimation": true,
-    "editor.cursorBlinking": "expand"
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.cursorBlinking": "expand",
+
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+          {
+            "scope": [
+              //following will be in italic (=FlottFlott)
+              "comment",
+              "entity.name.type.class", //class names
+              "keyword", //import, export, return…
+              "constant", //String, Number, Boolean…, this, super
+              "storage.modifier", //static keyword
+              "storage.type.class.js", //class keyword
+            ],
+            "settings": {
+              "fontStyle": "italic"
+            }
+          },
+          {
+            "scope": [
+              //following will be excluded from italics (VSCode has some defaults for italics)
+              "invalid",
+              "keyword.operator",
+              "constant.numeric.css",
+              "keyword.other.unit.px.css",
+              "constant.numeric.decimal.js",
+              "constant.numeric.json"
+            ],
+            "settings": {
+              "fontStyle": ""
+            }
+          }
+        ]
+      },
+      "editor.suggestSelection": "first",
+      "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+      "python.formatting.blackPath": "/usr/local/bin/black",
+      "liveshare.authenticationProvider": "GitHub",
+      "liveshare.anonymousGuestApproval": "accept",
+      "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+      },
+      "go.toolsManagement.autoUpdate": true,
+      "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+      },
+      "editor.inlineSuggest.enabled": true,
+      "github.copilot.enable": {
+        "*": true,
+        "plaintext": true,
+        "markdown": true,
+        "scminput": false,
+        "yaml": true,
+        "clojure": false,
+        "ruby": true,
+        "racket": true
+      },
+    "[jsonc]": {
+      "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "notebook.cellToolbarLocation": {
+      "default": "right",
+      "jupyter-notebook": "right"
+    },
+    "calva.keybindingsEnabled": false,
+
+    "ruby.useBundler": true, //run non-lint commands with bundle exec
+    "ruby.useLanguageServer": true, // use the internal language server (see below)
+    "ruby.lint": {
+      "rubocop": {
+        "command": "myrubocop"
+      },
+      "reek": {
+        "useBundler": true // enable reek via bundler
+      }
+    },
+    "ruby.format": "rubocop",
+    "cSpell.enableFiletypes": [
+      "ruby"
+    ],
+    "editor.guides.indentation": true,
+    "[racket]": {
+      // "editor.defaultFormatter": "evzen-wybitul.magic-racket"
+      "editor.defaultFormatter": "lishizhen.racket-fmt"
+    },
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "[toml]": {
+      "editor.defaultFormatter": "tamasfe.even-better-toml"
+    },
+    "workbench.activityBar.location": "hidden",
+    "zig.initialSetupDone": true,
+    "zig.path": "",
+    "zig.zls.path": "",
+    "redhat.telemetry.enabled": false,
+    "github.copilot.editor.enableAutoCompletions": true,
+    "window.zoomLevel": 0,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "pylint.path": ["pylint"],
 }
