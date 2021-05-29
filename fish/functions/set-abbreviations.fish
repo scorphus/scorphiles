@@ -1,4 +1,5 @@
 function set-abbreviations -d "Set default abbreviations"
+  # TODO: remove existing abbreviations first
   abbr -a gcam git commit --amend
   abbr -a gcamn git commit --amend --no-edit
   abbr -a gco git checkout
