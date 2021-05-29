@@ -1,0 +1,46 @@
+# The syntax is "key = value". The whitespace around the
+# equals doesn't matter.
+background = 000000
+foreground = ebebeb
+
+# Comments start with a `#` and are only valid on their own line.
+# Blank lines are ignored!
+
+# keybind = "ctrl+z=close_surface"
+# keybind = "ctrl+d=new_split:right"
+
+# Empty values reset the configuration to the default value
+# font-family = JetBrains Mono
+font-family = Victor Mono
+font-style = bold
+font-style-bold = heavy
+
+background-opacity = 0.8
+
+command = "/opt/homebrew/bin/fish -li"
+
+window-decoration = false
+
+copy-on-select = clipboard
+
+theme = Brogrammer
+theme = Builtin Pastel Dark
+theme = Cobalt2
+theme = Dark+
+theme = Darkside
+theme = Dimidium
+theme = Espresso
+theme = Everblush
+theme = Hopscotch
+theme = LiquidCarbonTransparentInverse
+theme = Mariana
+theme = Neutron
+theme = Obsidian
+theme = OneHalfLight
+theme = PaleNightHC
+theme = Pandora
+theme = Paraiso Dark
+theme = Peppermint
+
+### last one that didn't work:
+# theme = Piatto Light
