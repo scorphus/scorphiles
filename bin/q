@@ -1,0 +1,171 @@
+#!/usr/bin/env python
+
+import random
+
+questions_and_answers: list[tuple[str, str]] = [
+    (
+        "What is the difference between a process and a thread?",
+        "A process is a self-contained execution environment and a thread is a single execution sequence within a process.",
+    ),
+    (
+        "What is the difference between a mutex and a semaphore?",
+        "A mutex is used for mutual exclusion and a semaphore is used for synchronization.",
+    ),
+    (
+        "What is the difference between a stack and a heap?",
+        "A stack is used for static memory allocation and a heap is used for dynamic memory allocation.",
+    ),
+    (
+        "What is the difference between a call by value and a call by reference?",
+        "Call by value passes a copy of the value to the function and call by reference passes the address of the value to the function.",
+    ),
+    (
+        "What is the difference between a shallow copy and a deep copy?",
+        "A shallow copy copies the references to the objects and a deep copy copies the objects themselves.",
+    ),
+    (
+        "What is the difference between a compiler and an interpreter?",
+        "A compiler translates the code into machine code before execution and an interpreter translates the code into machine code during execution.",
+    ),
+    (
+        "What is the difference between a static library and a dynamic library?",
+        "A static library is linked at compile time and a dynamic library is linked at runtime.",
+    ),
+    (
+        "What is the difference between a class and an object?",
+        "A class is a blueprint for an object and an object is an instance of a class.",
+    ),
+    (
+        "What is the difference between a superclass and a subclass?",
+        "A superclass is a class that is inherited from and a subclass is a class that inherits from another class.",
+    ),
+    (
+        "What is the difference between a stack and a queue?",
+        "A stack is a last in, first out data structure and a queue is a first in, first out data structure.",
+    ),
+    (
+        "What is the difference between a binary tree and a binary search tree?",
+        "A binary tree is a tree data structure and a binary search tree is a binary tree with the property that the left subtree of a node contains only nodes with keys less than the node's key and the right subtree of a node contains only nodes with keys greater than the node's key.",
+    ),
+    (
+        "What is the difference between a breadth-first search and a depth-first search?",
+        "A breadth-first search explores all the neighbor nodes at the present depth prior to moving on to the nodes at the next depth level and a depth-first search explores as far as possible along each branch before backtracking.",
+    ),
+    (
+        "What is a closure?",
+        "A closure is a function that captures the environment in which it was created.",
+    ),
+    (
+        "What is a monad?",
+        "A monad is a design pattern used to represent computations as a series of steps.",
+    ),
+    (
+        "What is a lambda function?",
+        "A lambda function is an anonymous function that can have any number of parameters but can only have one expression.",
+    ),
+    (
+        "What is a decorator?",
+        "A decorator is a design pattern that allows behavior to be added to individual objects, either statically or dynamically, without affecting the behavior of other objects from the same class.",
+    ),
+    (
+        "What is a singleton?",
+        "A singleton is a design pattern that restricts the instantiation of a class to one object.",
+    ),
+    (
+        "What is a factory method?",
+        "A factory method is a method that creates objects without specifying the exact class of object that will be created.",
+    ),
+    (
+        "What is a design pattern?",
+        "A design pattern is a general repeatable solution to a commonly occurring problem in software design.",
+    ),
+    (
+        "What is a deadlock?",
+        "A deadlock is a situation in which two or more competing actions are each waiting for the other to finish, preventing any of the actions from completing.",
+    ),
+    (
+        "What is the difference between an abstract class and an interface?",
+        "An abstract class can have both complete and incomplete methods, while an interface can only have incomplete methods (i.e., method signatures) and all methods in an interface are implicitly public and abstract.",
+    ),
+    (
+        "What is the difference between polymorphism and inheritance?",
+        "Inheritance allows a class to inherit properties and methods from another class, while polymorphism allows objects of different classes to be treated as objects of a common superclass, particularly through method overriding.",
+    ),
+    (
+        "What is tail recursion and why is it important?",
+        "Tail recursion is a type of recursion where the recursive call is the last operation in the function. It is important because it allows the compiler to optimize the recursive call, reducing the risk of a stack overflow.",
+    ),
+    (
+        "What is a race condition?",
+        "A race condition occurs when the behavior of a software system depends on the relative timing of events, such as the sequence of execution in multiple threads, leading to unpredictable outcomes.",
+    ),
+    (
+        "What is the difference between horizontal and vertical scaling in distributed systems?",
+        "Horizontal scaling involves adding more machines to a system, while vertical scaling involves adding more resources (like CPU or memory) to an existing machine.",
+    ),
+    (
+        "What is eventual consistency in distributed systems?",
+        "Eventual consistency is a consistency model used in distributed systems where updates to a distributed database may not be immediately visible to all nodes, but all updates will propagate eventually, and the system will become consistent over time.",
+    ),
+    (
+        "What is the CAP theorem in distributed systems?",
+        "The CAP theorem states that in a distributed system, it is impossible to simultaneously guarantee Consistency, Availability, and Partition Tolerance. You can only achieve two out of the three at any given time.",
+    ),
+    (
+        "What is the difference between optimistic and pessimistic concurrency control?",
+        "Optimistic concurrency control assumes multiple transactions can frequently complete without interfering with each other, so checks for conflicts are only done at commit. Pessimistic concurrency control, on the other hand, prevents conflicts by locking resources before making changes.",
+    ),
+    (
+        "What is a consensus algorithm, and why is it important in distributed systems?",
+        "A consensus algorithm is a process used in distributed systems to achieve agreement on a single data value among distributed processes or systems, critical for ensuring consistency and reliability in decentralized environments.",
+    ),
+    (
+        "What is the difference between eventual consistency and strong consistency?",
+        "Eventual consistency guarantees that, given enough time, all replicas in a distributed system will become consistent, while strong consistency ensures that any read operation will return the most recent write, essentially synchronizing all replicas immediately.",
+    ),
+    (
+        "What is the difference between synchronous and asynchronous communication in distributed systems?",
+        "Synchronous communication requires both the sender and receiver to be active and ready to communicate at the same time, leading to tight coupling. Asynchronous communication allows the sender and receiver to communicate without both being active at the same time, enabling more loose coupling.",
+    ),
+    (
+        "What is two-phase commit (2PC) and how does it work?",
+        "Two-phase commit is a protocol used in distributed systems to ensure all participating nodes in a transaction either commit or abort the transaction, maintaining consistency. It works in two phases: a prepare phase where each node votes to commit or abort, and a commit phase where the decision is made based on the votes.",
+    ),
+    (
+        "What is a Byzantine fault and how is it different from other types of faults?",
+        "A Byzantine fault refers to a situation where a component in a distributed system fails in arbitrary or malicious ways, providing incorrect or inconsistent information to different parts of the system. This is different from other faults, which typically assume honest failures such as crashes or network partitions.",
+    ),
+    (
+        "What is a microservices architecture, and how does it differ from a monolithic architecture?",
+        "Microservices architecture structures an application as a collection of loosely coupled services, each responsible for a specific business function, allowing for independent deployment and scaling. Monolithic architecture, on the other hand, is a single, unified system where all components are interconnected and interdependent, making changes and scaling more challenging.",
+    ),
+    (
+        "What are the SOLID principles in object-oriented design, and why are they important?",
+        "SOLID is an acronym for five design principles intended to make software designs more understandable, flexible, and maintainable: Single Responsibility Principle (SRP) states that a class should have only one reason to change; Open/Closed Principle (OCP) says that software entities should be open for extension but closed for modification; Liskov Substitution Principle (LSP) dictates that objects of a superclass should be replaceable with objects of a subclass without affecting the correctness of the program; Interface Segregation Principle (ISP) recommends that no client should be forced to depend on methods it does not use; and Dependency Inversion Principle (DIP) suggests that high-level modules should not depend on low-level modules but both should depend on abstractions. These principles are crucial for creating scalable, maintainable, and robust software systems.",
+    ),
+    (
+        "What is Hexagonal Architecture, and how does it differ from traditional layered architecture?",
+        "Hexagonal Architecture, also known as the Ports and Adapters pattern, is an architectural style that promotes the separation of concerns by isolating the core logic of an application from external dependencies such as databases, user interfaces, and third-party services. The core application is surrounded by adapters that interface with the outside world through well-defined ports. This contrasts with traditional layered architecture, where dependencies typically flow from higher layers (like the UI) down to lower layers (like the database), leading to tight coupling and less flexibility in replacing or modifying external components. Hexagonal Architecture enables easier testing, greater flexibility, and a more maintainable codebase by ensuring that the core logic is independent of the external systems.",
+    ),
+    (
+        "How does Hexagonal Architecture facilitate the implementation of Domain-Driven Design (DDD), and what are the potential pitfalls when combining these two concepts?",
+        "Hexagonal Architecture facilitates Domain-Driven Design (DDD) by providing a clear separation between the domain logic and the infrastructure, aligning with DDD's emphasis on a rich, domain-focused model. In Hexagonal Architecture, the domain model resides at the core, surrounded by ports (interfaces) that define interactions with the outside world, and adapters that implement these interactions, such as repositories or APIs. This alignment allows for a clean, decoupled design where domain logic is free from infrastructural concerns, making it easier to evolve and maintain. However, potential pitfalls include over-complicating the architecture by introducing too many abstractions, which can lead to excessive boilerplate code, or misinterpreting the boundaries between the domain and infrastructure, leading to a breakdown in the separation of concerns. Additionally, integrating DDD with Hexagonal Architecture requires a deep understanding of both, as improper application can result in rigid, hard-to-change systems rather than the intended flexibility and clarity.",
+    ),
+    (
+        "In a microservices architecture, how would you implement a distributed transaction that spans multiple services without using a traditional two-phase commit (2PC) protocol, and how would you handle failure scenarios to ensure data consistency? Discuss the challenges and trade-offs of your approach.",
+        """
+        Implementing a distributed transaction in a microservices architecture without using the traditional two-phase commit (2PC) protocol often involves adopting the Saga pattern. A Saga breaks a transaction into a series of smaller, isolated steps, each of which is managed by a separate microservice. Each step completes a portion of the transaction and triggers the next step. If any step fails, compensating transactions are executed to undo the work completed by the previous steps, ensuring eventual consistency across the services.
+
+        The challenges of this approach include designing effective compensation logic, which can be complex and error-prone, especially when dealing with interdependent data and side effects. Additionally, since Sagas rely on eventual consistency, there is an inherent trade-off between consistency and availability, as per the CAP theorem. Handling failure scenarios such as partial failures, network partitions, or retries can further complicate the system, requiring robust monitoring and error-handling mechanisms.
+
+        Trade-offs include the potential for increased latency, as each step in the Saga must wait for the previous one to complete, and the complexity of managing and coordinating distributed states across multiple services. Furthermore, achieving idempotency in operations to safely retry failed transactions is critical but challenging, especially when side effects or external systems are involved. Despite these challenges, the Saga pattern provides a scalable and resilient approach to managing distributed transactions in a microservices environment, but it requires careful design to avoid pitfalls such as data inconsistency, service dependency issues, and excessive complexity.""",
+    ),
+]
+
+
+print("~~ Welcome to the Computer Science Q&A! ~~")
+question, answer = random.choice(questions_and_answers)
+print(f"> {question}")
+input("Press Enter to reveal the answer.")
+print(answer)
+print("Thank you for playing! Have a great day! 😊")

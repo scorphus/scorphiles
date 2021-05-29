@@ -1,0 +1,4 @@
+#!/usr/bin/env bash -li
+
+arg_file=(${@//\'/})
+rubocop -s ${arg_file[1]} -f json --force-exclusion
