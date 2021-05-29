@@ -1,4 +1,5 @@
 function md2pdf -a md pdf -d "Convert Markdown to PDF"
+    test (uname) = Darwin; and alias mktemp gmktemp
     if not type pandoc > /dev/null 2>&1
         echo "Install pandoc"
         return
@@ -7,10 +8,11 @@ function md2pdf -a md pdf -d "Convert Markdown to PDF"
         echo "Install wkhtmltopdf"
         return
     end
-    type gmktemp > /dev/null 2>&1; or alias mktemp=gmktemp
     test -z "$pdf"; and set pdf "-"
-    set -l tmp (gmktemp -t md2pdf_XXXXXXXX.html)
+    set -l tmp (mktemp -t md2pdf_XXXXXXXX.html)
+    mv $tmp .
+    set tmp (basename $tmp)
     pandoc --standalone --from markdown --to html -o $tmp $md
     wkhtmltopdf $tmp $pdf
-    rm -f $tmp
+    rm $tmp
 end
