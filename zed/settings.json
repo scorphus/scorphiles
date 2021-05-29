@@ -7,41 +7,60 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "features": {
+    "edit_prediction_provider": "copilot"
+    // "edit_prediction_provider": "zed"
+  },
   "auto_update": false,
-  "assistant": {
+  "agent": {
+    "default_profile": "write",
     "default_model": {
       "provider": "copilot_chat",
-      "model": "gpt-4o"
-    },
-    "version": "2"
+      "model": "gpt-4.1"
+    }
   },
   "telemetry": {
     "diagnostics": false,
     "metrics": false
   },
-  "ui_font_size": 17,
+  "ui_font_size": 16,
+  // "buffer_font_family": "Victor Mono",
   "buffer_font_family": "Zed Plex Mono",
-  // "buffer_font_family": "Menlo",
   // "buffer_font_family": "JetBrains Mono",
-  "buffer_font_size": 15,
+  "buffer_font_size": 13.0,
   "buffer_line_height": "standard",
   "theme": {
     "mode": "system",
     "light": "Ayu Light",
-    "dark": "Summercamp"
+    "dark": "Zedokai Darker (Filter Spectrum)"
   },
+  "experimental.theme_overrides": {
+    "syntax": {
+      "comment": {
+        "font_style": "italic"
+      }
+    }
+  },
+  // "tab_size": 2,
   "cursor_blink": false,
-  "format_on_save": "on",
-  "show_whitespaces": "all",
+  "format_on_save": "off",
+  // "show_whitespaces": "all",
+  // "show_whitespaces": "all",
   "wrap_guides": [80, 88, 109, 119],
   "languages": {
+    // "*": {
+    //   "language_servers": ["typos"]
+    // },
     "Gleam": {
-      "show_inline_completions": true
+      "show_edit_predictions": true
     },
     "Markdown": {
-      "remove_trailing_whitespace_on_save": false
+      "remove_trailing_whitespace_on_save": false,
+      "soft_wrap": "editor_width"
     },
     "Python": {
+      "show_edit_predictions": true,
+      "format_on_save": "off",
       "formatter": [
         {
           "external": {
@@ -57,6 +76,9 @@
         }
       ],
       "language_servers": ["pyright", "python-refactoring", "ruff"]
+    },
+    "Vue.js": {
+      "tab_size": 2
     }
   },
   "lsp": {
