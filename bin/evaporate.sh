@@ -1,7 +1,7 @@
 #!/bin/sh
 
 days=10
-path=$HOME/Volatile
+path=$HOME/Volatile/deleteme
 
 test -d $path || exit 1
 
