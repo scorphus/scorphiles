@@ -5,6 +5,9 @@ set -g theme_display_node yes
 set -g theme_display_pwd_on_second_line yes
 set -g theme_display_git_on_first_line yes
 
+# Set the virtualenv prompt to be disabled
+set -g VIRTUAL_ENV_DISABLE_PROMPT yes
+
 # Path to Oh My Fish install.
 set -q XDG_DATA_HOME
   and set -gx OMF_PATH "$XDG_DATA_HOME/omf"

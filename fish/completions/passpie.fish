@@ -1,7 +1,7 @@
 # passpie completions for Fish Shell
 
 function _passpie_credentials
-  grep -EhriIo '[A-Z0-9._%+-]+@[A-Z0-9.-]+(@[A-Z0-9_\-\.]+)?' $HOME/.passpie
+  grep -EhriIo --exclude-dir=.git '[A-Z0-9._%+-]+@[A-Z0-9.-]+(@[A-Z0-9_\-\.]+)?' $HOME/.passpie
 end
 
 function _passpie_credential_names
