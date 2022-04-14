@@ -79,6 +79,9 @@ hs.hotkey.bind({"cmd", "alt", "ctrl"}, "K", function()
   win:moveToUnit('[15,5,85,80]')
 end)
 
+-- -- -- -- -- -- -- -- -- --
+-- Mute microphone with F1 --
+-- -- -- -- -- -- -- -- -- --
 hs.loadSpoon("MicMute")
 spoon.MicMute:bindHotkeys({toggle={{},"F1"}}, 0.75)
 
