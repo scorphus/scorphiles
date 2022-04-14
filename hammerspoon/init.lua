@@ -85,6 +85,11 @@ end)
 hs.loadSpoon("MicMute")
 spoon.MicMute:bindHotkeys({toggle={{},"F1"}}, 0.75)
 
+--- -- -- -- -- -- ---
+-- Replace Caffeine --
+--- -- -- -- -- -- ---
+amphetamine = require "Modules/caffeine"
+
 hs.hotkey.bind({"cmd", "alt"}, "V", function()
   hs.eventtap.keyStrokes(hs.pasteboard.getContents())
 end)
