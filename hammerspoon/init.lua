@@ -60,15 +60,7 @@ end)
 
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "M", function()
   local win = hs.window.focusedWindow()
-  local f = win:frame()
-  local screen = win:screen()
-  local max = screen:frame()
-
-  f.x = max.x
-  f.y = max.y
-  f.w = max.w
-  f.h = max.h
-  win:setFrame(f)
+  win:moveToUnit('[0,0,100,100]')
 end)
 
 --- -- -- -- -- -- -- -- -- -- -- --
@@ -76,31 +68,15 @@ end)
 --- -- -- -- -- -- -- -- -- -- -- --
 hs.hotkey.bind({"cmd", "alt", "ctrl", "shift"}, "K", function()
   local win = hs.window.focusedWindow()
-  local f = win:frame()
-  local screen = win:screen()
-  local max = screen:frame()
-
-  f.x = max.w / 4
-  f.y = max.h / 4
-  f.w = max.w / 2
-  f.h = max.h / 2
-  win:setFrame(f)
+  win:moveToUnit('[25,25,75,75]')
 end)
 
---- -- -- -- -- -- -- -- -- -- -- -- -- -- -- ---
--- Center window in display with 4/5 of height --
---- -- -- -- -- -- -- -- -- -- -- -- -- -- -- ---
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+-- Place window on a "nice to look at" position --
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "K", function()
   local win = hs.window.focusedWindow()
-  local f = win:frame()
-  local screen = win:screen()
-  local max = screen:frame()
-
-  f.x = max.w / 4
-  f.y = max.h / 10 - 25
-  f.w = max.w / 2
-  f.h = 4 * max.h / 5 + 5
-  win:setFrame(f)
+  win:moveToUnit('[15,5,85,80]')
 end)
 
 hs.loadSpoon("MicMute")
