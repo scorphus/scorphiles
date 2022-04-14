@@ -103,32 +103,6 @@ hs.hotkey.bind({"cmd", "alt", "ctrl"}, "K", function()
   win:setFrame(f)
 end)
 
--- hs.hotkey.bind({"cmd", "alt", "ctrl"}, "M", function()
---   MicMute:toggleMicMute()
--- end)
-
--- hs.hotkey.bind({}, "Tab", function()
---   local windowTitle = hs.window.focusedWindow():title()
---   if string.find(windowTitle, " - Google Docs") then
---     hs.eventtap.keyStrokes("    ")
---   else
---     hs.eventtap.keyStroke({}, "Tab")
---   end
--- end)
-
--- doKeyStroke = function(modifiers, character)
---   local event = require("hs.eventtap").event
---   event.newKeyEvent(modifiers, string.lower(character), true):post()
---   event.newKeyEvent(modifiers, string.lower(character), false):post()
--- end
-
--- hs.hotkey.bind({"Alt"}, "Tab", function()
---   doKeyStroke({}, "Delete")
---   doKeyStroke({}, "Delete")
---   doKeyStroke({}, "Delete")
---   doKeyStroke({}, "Delete")
--- end)
-
 hs.loadSpoon("MicMute")
 spoon.MicMute:bindHotkeys({toggle={{},"F1"}}, 0.75)
 
