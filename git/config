@@ -79,6 +79,7 @@
 	rup = remote update -p
 	r = remote -v
 	fat = fetch --all --tags
+	fix-perm = "!f(){ git diff -p | grep -E '^(diff|old mode|new mode)' | sed -e 's/^old/NEW/;s/^new/old/;s/^NEW/new/' | git apply; }; f"
 [filter "lfs"]
 	clean = git lfs clean %f
 	smudge = git lfs smudge %f
