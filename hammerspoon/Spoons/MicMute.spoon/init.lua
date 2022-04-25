@@ -14,14 +14,30 @@ obj.author = "dctucker <dctucker@github.com>"
 obj.homepage = "https://dctucker.com"
 obj.license = "MIT - https://opensource.org/licenses/MIT"
 
-function obj:updateMicMute(muted)
-	if muted == -1 then
-		muted = hs.audiodevice.defaultInputDevice():muted()
-	end
+obj.set_visibility_callback = nil
+
+--- MicMute:setVisibility(muted)
+--- Method
+--- Set visibility options
+---
+--- Parameters:
+---  * muted - Boolean flag indicating whether the mic is muted or not.
+function obj:setVisibility(muted)
 	if muted then
 		obj.mute_menu:setTitle("📵 Muted")
 	else
 		obj.mute_menu:setTitle("🎙 On")
+	end
+end
+
+function obj:updateMicMute(muted)
+	if muted == -1 then
+		muted = hs.audiodevice.defaultInputDevice():muted()
+	end
+	if obj.set_visibility_callback ~= nil then
+		obj.set_visibility_callback(muted)
+	else
+		obj:setVisibility(muted)
 	end
 end
 
@@ -89,6 +105,10 @@ function obj:bindHotkeys(mapping, latch_timeout)
 	return self
 end
 
+function obj:bindVisibilitySetter(callback)
+	obj.set_visibility_callback = callback
+	obj:updateMicMute(-1)
+end
 
 function obj:init()
 	obj.time_since_mute = 0
