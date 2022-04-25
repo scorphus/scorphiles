@@ -20,6 +20,8 @@ if status is-interactive
 
     # z omf pkg config
     set -g Z_SCRIPT_PATH /usr/local/etc/profile.d/z.sh
+    test -f $Z_SCRIPT_PATH
+        or set -g Z_SCRIPT_PATH /opt/homebrew/etc/profile.d/z.sh
 
     # gem omf pkg config
     set -x GEM_ROOT $HOME/.gem
