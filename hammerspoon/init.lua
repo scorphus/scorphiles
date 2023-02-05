@@ -76,7 +76,7 @@ end)
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "K", function()
   local win = hs.window.focusedWindow()
-  win:moveToUnit('[15,5,85,80]')
+  win:moveToUnit('[15,7,85,82]')
 end)
 
 -- -- -- -- -- -- -- -- -- --
