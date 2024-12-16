@@ -7,6 +7,14 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "auto_update": false,
+  "assistant": {
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-4o"
+    },
+    "version": "2"
+  },
   "telemetry": {
     "diagnostics": false,
     "metrics": false
@@ -19,19 +27,80 @@
   "buffer_line_height": "standard",
   "theme": {
     "mode": "system",
-    "light": "One Light",
-    "dark": "One Dark"
+    "light": "Ayu Light",
+    "dark": "Summercamp"
   },
+  "cursor_blink": false,
   "format_on_save": "on",
+  "show_whitespaces": "all",
+  "wrap_guides": [80, 88, 109, 119],
   "languages": {
+    "Gleam": {
+      "show_inline_completions": true
+    },
+    "Markdown": {
+      "remove_trailing_whitespace_on_save": false
+    },
     "Python": {
-      "formatter": {
-        "external": {
-          "command": "black",
-          "arguments": ["-"]
+      "formatter": [
+        {
+          "external": {
+            "command": "black",
+            "arguments": ["-"]
+          }
+        },
+        {
+          "external": {
+            "command": "isort",
+            "arguments": ["-"]
+          }
         }
-      },
-      "show_whitespaces": "all"
+      ],
+      "language_servers": ["pyright", "python-refactoring", "ruff"]
     }
-  }
+  },
+  "lsp": {
+    "ruff": {
+      "initialization_options": {
+        "settings": {
+          "lineLength": 120
+          // "targetVersion": "3.11"
+        }
+      }
+    },
+    "typos": {
+      "initialization_options": {
+        // Path to your typos config file, .typos.toml by default.
+        // "config": ".typos.toml",
+        // Path to your typos-lsp executable, takes $PATH into account.
+        // "path": "typos-lsp",
+        // Diagnostic severity within Zed. "Error" by default, can be:
+        // "Error", "Hint", "Information", "Warning"
+        "diagnosticSeverity": "Hint"
+        // Minimum logging level for the LSP, displayed in Zed's logs. "info" by default, can be:
+        // "debug", "error", "info", "off", "trace", "warn"
+        // "logLevel": "debug",
+        // Traces the communication between ZED and the language server. Recommended for debugging only. "off" by default, can be:
+        // "messages", "off", "verbose"
+        // "trace.server": "verbose"
+      }
+    }
+  },
+  "terminal": {
+    "shell": {
+      "with_arguments": {
+        "program": "/opt/homebrew/bin/fish",
+        // "program": "/bin/zsh",
+        "args": ["-li"]
+      }
+    },
+    "copy_on_select": true,
+    "line_height": "standard"
+  },
+  "indent_guides": {
+    "enabled": true,
+    "coloring": "indent_aware",
+    "active_line_width": 2
+  },
+  "unnecessary_code_fade": 0.75
 }
