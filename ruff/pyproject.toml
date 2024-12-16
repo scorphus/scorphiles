@@ -1,0 +1,22 @@
+[tool.ruff]
+# Set the minimum Python version to target
+# See https://docs.astral.sh/ruff/settings/#target-version for a list of all available versions
+target-version = "py311"
+line-length = 120
+
+[tool.ruff.lint]
+# See https://docs.astral.sh/ruff/rules for a list of all available rules
+
+# Add "I", "Q" and "UP" to the list of enabled rules
+# select = ["E4", "E7", "E9", "F", "I", "Q", "UP"]
+# ignore = ["COM812"]
+
+select = ["ALL"]
+ignore = [
+    "D1",     # Missing docstring
+    "ANN",    # flake8-annotations
+    "S101",   # Use of assert detected
+    "T201",   # print found
+    "COM812", # Trailing comma missing
+    "TRY400", # Use logging.exception instead of logging.error
+]
