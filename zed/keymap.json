@@ -10,7 +10,7 @@
     "context": "Workspace",
     "bindings": {
       "shift shift": "file_finder::Toggle",
-      "g g": "go_to_line::Toggle"
+      "G G": "go_to_line::Toggle"
     }
   },
   {
@@ -29,7 +29,11 @@
 
       // Syntax selection
       "ctrl-shift-right": "editor::SelectLargerSyntaxNode",
-      "ctrl-shift-left": "editor::SelectSmallerSyntaxNode"
+      "ctrl-shift-left": "editor::SelectSmallerSyntaxNode",
+
+      // transpose
+      "ctrl-t": "editor::RotateForward",
+      "ctrl-shift-t": "editor::RotateBackward"
     }
   }
 ]
