@@ -44,8 +44,7 @@
   // "tab_size": 2,
   "cursor_blink": false,
   "format_on_save": "off",
-  // "show_whitespaces": "all",
-  // "show_whitespaces": "all",
+  "show_whitespaces": "all",
   "wrap_guides": [80, 88, 109, 119],
   "languages": {
     // "*": {
@@ -124,5 +123,5 @@
     "coloring": "indent_aware",
     "active_line_width": 2
   },
-  "unnecessary_code_fade": 0.75
+  "unnecessary_code_fade": 0.4
 }
