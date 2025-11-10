@@ -19,6 +19,7 @@ ignore = [
     "T201",   # print found
     "COM812", # Trailing comma missing
     "TRY400", # Use logging.exception instead of logging.error
+    "TRY300", # Checks for return statements in try blocks.
     "RUF012", # Checks for mutable default values in class attributes
 
     "BLE001", # Do not catch blind exception: `Exception`
@@ -37,4 +38,6 @@ ignore = [
     "D213", # Keep D212 instead (summary on first line)
 
     "E501", # Line too long (use line-length to configure maximum allowed line length)
+
+    "I", # Please, do not fight isort, ruff! Just don't.
 ]
