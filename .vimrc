@@ -36,3 +36,4 @@ set shiftround
 set expandtab
 set smarttab
 set nowrap
+set colorcolumn=72
