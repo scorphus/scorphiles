@@ -4,7 +4,7 @@
 
 show_commit() {
     clear
-    git show --pretty=fuller --color $1 | less -KMRX
+    git show --pretty=fuller --color $ws_flag $1 | less -KMRX
     [ $? -ne 0 ] && exit 1
 }
 
@@ -15,15 +15,25 @@ fi
 
 # Convert arguments to an array
 sha1s=("$@")
-index=0
 
+# Set the whitespace flag
+ws_flag="-w"  # ignore whitespace by default
+
+index=0
 while [ $index -lt ${#sha1s[@]} ]; do
     show_commit ${sha1s[$index]}
-    read -p '[r-prev / *-next] ' -rsn1 key < /dev/tty
+    read -p '[r-prev / w-toggle-ws / *-next] ' -rsn1 key < /dev/tty
     case "$key" in
         r)
             if [ $index -gt 0 ]; then
                 index=$((index - 1))
+            fi
+            ;;
+        w)
+            if [ -z "$ws_flag" ]; then
+                ws_flag="-w"
+            else
+                ws_flag=""
             fi
             ;;
         *)
