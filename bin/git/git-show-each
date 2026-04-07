@@ -5,7 +5,7 @@
 show_commit() {
     clear
     git show --pretty=fuller --color $ws_flag $1 | less -KMRX
-    [ $? -ne 0 ] && exit 1
+    return $?
 }
 
 # No args provided? Set them from stdin
@@ -21,7 +21,13 @@ ws_flag="-w"  # ignore whitespace by default
 
 index=0
 while [ $index -lt ${#sha1s[@]} ]; do
+    trap : INT
     show_commit ${sha1s[$index]}
+    if [ $? -eq 0 ]; then
+        index=$((index + 1))
+        continue
+    fi
+    trap - INT
     read -p '[r-prev / w-toggle-ws / q-quit / *-next] ' -rsn1 key < /dev/tty
     case "$key" in
         r)
