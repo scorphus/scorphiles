@@ -22,7 +22,7 @@ ws_flag="-w"  # ignore whitespace by default
 index=0
 while [ $index -lt ${#sha1s[@]} ]; do
     show_commit ${sha1s[$index]}
-    read -p '[r-prev / w-toggle-ws / *-next] ' -rsn1 key < /dev/tty
+    read -p '[r-prev / w-toggle-ws / q-quit / *-next] ' -rsn1 key < /dev/tty
     case "$key" in
         r)
             if [ $index -gt 0 ]; then
@@ -35,6 +35,9 @@ while [ $index -lt ${#sha1s[@]} ]; do
             else
                 ws_flag=""
             fi
+            ;;
+        q)
+            break
             ;;
         *)
             index=$((index + 1))
