@@ -4,17 +4,24 @@
 
 show_commit() {
     clear
-    git show --pretty=fuller --color $ws_flag $1 | less -KMRX
+    git show --pretty=fuller --color $ws_flag "${extra_args[@]}" $1 | less -KMRX
     return $?
 }
 
-# No args provided? Set them from stdin
-if [ $# -eq 0 ]; then
-    set -- $(cat -)
-fi
+# Split arguments into pass-through flags and SHA1s
+extra_args=()
+sha1s=()
+for arg in "$@"; do
+    case "$arg" in
+        -*) extra_args+=("$arg") ;;
+        *)  sha1s+=("$arg") ;;
+    esac
+done
 
-# Convert arguments to an array
-sha1s=("$@")
+# No SHA1s provided? Read them from stdin
+if [ ${#sha1s[@]} -eq 0 ]; then
+    sha1s=($(cat -))
+fi
 
 # Set the whitespace flag
 ws_flag="-w"  # ignore whitespace by default
