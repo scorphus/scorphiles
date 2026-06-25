@@ -337,3 +337,17 @@ local apps = {
 for key, app in pairs(apps) do
   hs.hotkey.bind({ "cmd", "ctrl" }, key, function() hs.application.launchOrFocus(app) end)
 end
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+-- Auto-reload config when any .lua changes --
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+local function reloadConfig(files)
+  for _, file in pairs(files) do
+    if file:sub(-4) == ".lua" then
+      hs.reload()
+      return
+    end
+  end
+end
+configWatcher = hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig):start()
+hs.alert.show("Hammerspoon config loaded")
