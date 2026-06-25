@@ -1,3 +1,6 @@
 # Compiled color-picker helper (build from helpers/colorpicker.swift):
 #   swiftc -O helpers/colorpicker.swift -o helpers/colorpicker
 helpers/colorpicker
+
+# Clipboard history (may contain sensitive data) — never commit
+pastebin.txt
