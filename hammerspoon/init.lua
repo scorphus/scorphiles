@@ -428,20 +428,9 @@ local function showWindowHints()
   local iconSize, pad, fontSize, letterW = 64, 14, 48, 48
   local boxW = pad + iconSize + pad + letterW + pad
   local boxH = iconSize + pad * 2
-  local taken = {}
+  local gap = 8
 
-  for i, win in ipairs(hs.window.orderedWindows()) do
-    local ch = hintChars[i]
-    if not ch then break end
-
-    local f = win:frame()
-    local x = f.x + f.w / 2 - boxW / 2
-    local y = f.y + f.h / 2 - boxH / 2
-    for _, p in ipairs(taken) do  -- nudge down if it lands on an existing hint
-      if math.abs(p.x - x) < boxW and math.abs(p.y - y) < boxH then y = p.y + boxH + 6 end
-    end
-    taken[#taken + 1] = { x = x, y = y }
-
+  local function drawHint(win, ch, x, y)
     local c = hs.canvas.new({ x = x, y = y, w = boxW, h = boxH })
     c[#c + 1] = {
       type = "rectangle", action = "fill",
@@ -466,6 +455,29 @@ local function showWindowHints()
       clearHints()
       win:focus()
     end)
+  end
+
+  -- Assign a letter per window (z-order) and group windows by shared centre
+  local groups, order = {}, {}
+  for i, win in ipairs(hs.window.orderedWindows()) do
+    local ch = hintChars[i]
+    if not ch then break end
+    local f = win:frame()
+    local cx, cy = f.x + f.w / 2, f.y + f.h / 2
+    local key = math.floor(cx / 20) .. "," .. math.floor(cy / 20)
+    local g = groups[key]
+    if not g then g = { cx = cx, cy = cy, items = {} }; groups[key] = g; order[#order + 1] = g end
+    g.items[#g.items + 1] = { win = win, ch = ch }
+  end
+
+  -- Draw each group stacked vertically, centred on the shared centre
+  for _, g in ipairs(order) do
+    local n = #g.items
+    local totalH = n * boxH + (n - 1) * gap
+    local startY = g.cy - totalH / 2
+    for idx, it in ipairs(g.items) do
+      drawHint(it.win, it.ch, g.cx - boxW / 2, startY + (idx - 1) * (boxH + gap))
+    end
   end
 
   if #hintCanvases == 0 then return end
