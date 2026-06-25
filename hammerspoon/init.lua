@@ -319,3 +319,21 @@ hs.hotkey.bind({ "cmd", "alt" }, "PageDown", resize_down_init, nil, resize_down)
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 hs.hints.showTitleThresh = 0
 hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "H", hs.hints.windowHints)
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+-- App launcher / focus  (⌘⌃ + key)           --
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+local apps = {
+  ["Return"] = "Ghostty",   -- ⌘⌃↵  terminal
+  ["B"]      = "Firefox",   -- ⌘⌃B  browser
+  ["F"]      = "Firefox",   -- ⌘⌃F  browser (alias)
+  ["E"]      = "Zed",       -- ⌘⌃E  editor
+  ["Z"]      = "Zed",       -- ⌘⌃Z  editor (alias)
+  ["S"]      = "Slack",     -- ⌘⌃S  chat
+  ["L"]      = "Linear",    -- ⌘⌃L  issues
+  ["M"]      = "Spotify",   -- ⌘⌃M  music
+  ["P"]      = "Preview",   -- ⌘⌃P  preview
+}
+for key, app in pairs(apps) do
+  hs.hotkey.bind({ "cmd", "ctrl" }, key, function() hs.application.launchOrFocus(app) end)
+end
