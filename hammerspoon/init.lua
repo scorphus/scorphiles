@@ -312,3 +312,10 @@ hs.hotkey.bind({ "cmd", "alt" }, "PageDown", resize_down_init, nil, resize_down)
 -- hs.window.highlight.ui.overlay = false
 -- hs.window.highlight.ui.overlayColor = { 0.2, 0.05, 0, 0.2 }
 -- hs.window.highlight.start()
+
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+-- Window hints: label every window, type to focus --
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+hs.hints.showTitleThresh = 0
+hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "H", hs.hints.windowHints)
