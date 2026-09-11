@@ -1,0 +1,66 @@
+{
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "permissions": {
+    "defaultMode": "auto"
+  },
+  "model": "fable[1m]",
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "input=$(cat); [ -n \"$CC_STOP_HOOK_INNER\" ] && exit 0; sid=$(jq -r .session_id <<<\"$input\"); last=$(jq -r '.last_assistant_message // \"\"' <<<\"$input\"); f=$(grep -l \"$sid\" ~/.claude/sessions/*.json 2>/dev/null | head -1); name=unnamed; tmuxloc=\"\"; if [ -n \"$f\" ]; then name=$(jq -r '.name // \"unnamed\"' \"$f\"); tmuxloc=$(jq -r '.tmux // \"\"' \"$f\"); fi; if [ -n \"$tmuxloc\" ]; then t=${tmuxloc#*:}; win=${t%.*}; ( for i in 1 2 3 4 5; do tmux set-option -w -t \"$win\" window-status-style 'bg=red,fg=white,bold'; tmux set-option -w -t \"$win\" window-status-current-style 'bg=red,fg=white,bold'; sleep 0.25; tmux set-option -w -u -t \"$win\" window-status-style; tmux set-option -w -u -t \"$win\" window-status-current-style; sleep 0.25; done ) & fi; doing=$(CC_STOP_HOOK_INNER=1 claude -p --model haiku \"Output only a gerund phrase of at most 6 words, no punctuation, describing the task just completed, based on this final assistant message: ${last:0:1500}\"); afplay /System/Library/Sounds/Hero.aiff; say \"Claude code is done with ${doing:-the task} in session ${name//-/ }\"",
+            "async": true
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash /Users/pablo/.claude/statusline-command.sh"
+  },
+  "enabledPlugins": {
+    "clangd-lsp@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": true,
+    "swift-lsp@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true
+  },
+  "effortLevel": "high",
+  "tui": "default",
+  "skipDangerousModePermissionPrompt": true,
+  "skipWorkflowUsageWarning": true,
+  "switchModelsOnFlag": false,
+  "skipAutoPermissionPrompt": true,
+  "autoMode": {
+    "environment": [
+      "### Org-wide",
+      "**Organization**: None configured",
+      "**Cloud provider(s)**: None configured",
+      "**Repository visibility**: Not queryable (no remotes in this repo) — assume private until confirmed",
+      "**Internal sharing / snippet hosting**: None configured — treat public paste/gist services as outside the trust boundary",
+      "**Secrets management**: None configured",
+      "**Default / protected branches**: unknown — this repo has no remotes and no tracked files (origin/HEAD unset)",
+      "**CI/CD deploy targets**: None configured",
+      "**Network posture**: None configured",
+      "**Source control**: The trusted repo only — this repo currently has no remotes configured",
+      "**Trusted internal domains**: None configured",
+      "**Trusted cloud buckets**: None configured",
+      "**Key internal services**: None configured",
+      "**Internal package registry**: None configured",
+      "**Sensitive data locations & audiences**: any file or store holding personal data, confidential business data, credentials, regulated data, or similarly sensitive material; preserve exact handles when known and share only with audiences cleared at the [named+specifics] bar",
+      "**Data retention / declassification**: None configured",
+      "**Sensitive remote targets**: any namespace, host, or container whose name carries `prod` or `production` as a whole word or name segment",
+      "**Protected deployment namespaces / environments**: None configured — fall back to the Sensitive remote targets heuristic",
+      "**Protected IaC scopes**: IAM, RBAC, networking, quota, and node-pool resources; anything whose name or tag carries `prod` or `production` as a whole word or name segment",
+      "### User-specific",
+      "**Primary use of Claude Code**: software development",
+      "**Org-specific CLIs**: None configured"
+    ]
+  }
+}
