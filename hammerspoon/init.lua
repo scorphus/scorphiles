@@ -1,3 +1,5 @@
+require("hs.ipc")
+
 hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "Left", function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
