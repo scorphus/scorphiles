@@ -493,6 +493,8 @@ hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "H", showWindowHints)
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 local apps = {
   ["Return"] = "Ghostty",   -- ⌘⌃↵  terminal
+  ["T"]      = "Ghostty",   -- ⌘⌃T  terminal
+  ["`"]      = "Ghostty",   -- ⌘⌃`  terminal
   ["B"]      = "Firefox",   -- ⌘⌃B  browser
   ["F"]      = "Firefox",   -- ⌘⌃F  browser (alias)
   ["E"]      = "Zed",       -- ⌘⌃E  editor
