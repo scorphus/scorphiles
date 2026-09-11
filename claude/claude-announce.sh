@@ -1,4 +1,6 @@
 #!/bin/bash
+# usage: claude-announce.sh done|waiting  (Stop and Notification hooks)
+mode=${1:-done}
 input=$(cat)
 sid=$(jq -r .session_id <<<"$input")
 
@@ -31,9 +33,16 @@ if [ -n "$pane" ]; then
     ) &
 fi
 
-afplay /System/Library/Sounds/Hero.aiff &
+if [ "$mode" = waiting ]; then
+    sound=Basso
+    msg="Hey bro, I'm waiting for you in session '${name//-/ }'"
+else
+    sound=Hero
+    msg="I'm done in session '${name//-/ }'"
+fi
 
-msg="Hey bro, I'm done in session '${name//-/ }'"
+afplay "/System/Library/Sounds/$sound.aiff" &
+
 esc=$(printf '%s' "$msg" | sed 's/\\/\\\\/g; s/"/\\"/g')
 hs -c "hs.alert.show(\"$esc\", { textSize = 20, radius = 12 }, hs.screen.mainScreen(), 5)" >/dev/null 2>&1 &
 say -r 200 "$msg" &
