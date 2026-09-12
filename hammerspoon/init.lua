@@ -158,10 +158,39 @@ end
 
 hs.hotkey.bind({"cmd", "shift", "ctrl"}, "P", pickColor)
 
-colorPickerMenu = hs.menubar.new()
-colorPickerMenu:setTitle("🎨")
-colorPickerMenu:setTooltip("Pick a color (⌘⇧⌃P)")
-colorPickerMenu:setClickCallback(pickColor)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+-- Tools menu: color picker + Claude announcement mute      --
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+local announceMuteFlag = os.getenv("HOME") .. "/.claude/announce-muted"
+
+local function announcementsMuted()
+  return hs.fs.attributes(announceMuteFlag) ~= nil
+end
+
+toolsMenu = hs.menubar.new()
+
+local function refreshToolsMenuTitle()
+  toolsMenu:setTitle(announcementsMuted() and "🔕" or "🎛")
+end
+
+toolsMenu:setMenu(function()
+  return {
+    { title = "Pick color (⌘⇧⌃P)", fn = pickColor },
+    {
+      title = "Mute Claude announcements",
+      checked = announcementsMuted(),
+      fn = function()
+        if announcementsMuted() then
+          os.remove(announceMuteFlag)
+        else
+          io.open(announceMuteFlag, "w"):close()
+        end
+        refreshToolsMenuTitle()
+      end,
+    },
+  }
+end)
+refreshToolsMenuTitle()
 
 -- --- -- -- -- -- --
 -- -- Time Tracker --
