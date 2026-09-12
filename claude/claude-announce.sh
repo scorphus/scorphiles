@@ -50,4 +50,4 @@ afplay "/System/Library/Sounds/$sound.aiff" &
 
 esc=$(printf '%s' "$msg" | sed 's/\\/\\\\/g; s/"/\\"/g')
 hs -c "hs.alert.show(\"$esc\", { textSize = 20, radius = 12 }, hs.screen.mainScreen(), 5)" >/dev/null 2>&1 &
-say -r 200 "$msg" &
+say "$msg" &
