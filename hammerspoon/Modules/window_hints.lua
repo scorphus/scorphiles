@@ -1,3 +1,4 @@
+local hotkey = require "Modules/hotkey"
 -- Home-row-first key order
 local hintChars = {
   "A", "S", "D", "F", "J", "K", "L", "E", "I", "G", "H", "C", "M",
@@ -79,4 +80,4 @@ local function showWindowHints()
   hintModal:enter()
 end
 
-hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "H", showWindowHints)
+hotkey.bind({ "cmd", "alt", "ctrl" }, "H", "Window hints", showWindowHints)

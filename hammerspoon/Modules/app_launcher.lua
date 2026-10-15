@@ -1,3 +1,4 @@
+local hotkey = require "Modules/hotkey"
 local apps = {
   ["Return"] = "Ghostty",   -- ⌘⌃↵  terminal
   ["T"]      = "Ghostty",   -- ⌘⌃T  terminal
@@ -12,12 +13,12 @@ local apps = {
   ["P"]      = "Preview",   -- ⌘⌃P  preview
 }
 for key, app in pairs(apps) do
-  hs.hotkey.bind({ "cmd", "ctrl" }, key, function() hs.application.launchOrFocus(app) end)
+  hotkey.bind({ "cmd", "ctrl" }, key, app, function() hs.application.launchOrFocus(app) end)
 end
 
 -- Cheat sheet: ⌃⌘/ lists the app-launcher shortcuts
 local keyLabel = { Return = "↵" }
-hs.hotkey.bind({ "cmd", "ctrl" }, "/", function()
+hotkey.bind({ "cmd", "ctrl" }, "/", "App launcher cheat sheet", function()
   local lines = {}
   for key, app in pairs(apps) do
     table.insert(lines, "⌃⌘ " .. (keyLabel[key] or key) .. "   " .. app)
