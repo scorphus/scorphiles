@@ -1,8 +1,8 @@
 local hotkey = require "Modules/hotkey"
--- Home-row-first key order
+-- Right hand first, home row then the rows above and below, then the left hand the same way.
 local hintChars = {
-  "A", "S", "D", "F", "J", "K", "L", "E", "I", "G", "H", "C", "M",
-  "R", "U", "W", "O", "V", "N", "T", "Y", "B", "P", "Q", "X", "Z",
+  "J", "K", "L", "H", "U", "I", "O", "P", "Y", "N", "M",
+  "F", "D", "S", "A", "G", "R", "E", "W", "Q", "T", "V", "C", "X", "Z", "B",
 }
 
 local hintCanvases = {}
