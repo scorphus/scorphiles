@@ -1,0 +1,92 @@
+hs.hotkey.bind({ "cmd", "alt" }, "V", function()
+  hs.eventtap.keyStrokes(hs.pasteboard.getContents())
+end)
+
+local pastebin = hs.configdir .. "/pastebin.txt"
+local CLIP_SEP = "\30\n"  -- record separator (\30) + newline: multi-line-safe, still readable
+
+-- Read all history entries (original order), oldest first
+local function readClipEntries()
+  local file = io.open(pastebin, "r")
+  if not file then return {} end
+  local data = file:read("*a")
+  file:close()
+  local entries = {}
+  for entry in data:gmatch("(.-)" .. CLIP_SEP) do
+    table.insert(entries, entry)
+  end
+  return entries
+end
+
+-- Overwrite the history file with the given entries
+local function writeClipEntries(entries)
+  local file = assert(io.open(pastebin, "w"))
+  for _, entry in ipairs(entries) do
+    file:write(entry .. CLIP_SEP)
+  end
+  file:close()
+end
+
+-- Build chooser rows: most-recent first, de-duped, single-line preview
+local function buildClipChoices(entries)
+  local seen, choices = {}, {}
+  for i = #entries, 1, -1 do
+    local clip = entries[i]
+    if clip ~= "" and not seen[clip] then
+      seen[clip] = true
+      local preview = clip:gsub("%s+", " "):gsub("^%s+", "")
+      if #preview > 80 then preview = preview:sub(1, 80) .. "…" end
+      table.insert(choices, { text = preview, clip = clip })
+    end
+  end
+  return choices
+end
+
+-- Save the current clipboard to the history file
+hs.hotkey.bind({ "ctrl", "alt" }, "C", function()
+  local clip = hs.pasteboard.getContents()
+  if not clip or clip == "" then return end
+  local file = assert(io.open(pastebin, "a"))
+  file:write(clip .. CLIP_SEP)
+  file:close()
+  hs.alert.show("Saved to clipboard history")
+end)
+
+-- Pick an entry from the history; selection is copied back to the clipboard
+local clipChoices = {}
+local clipChooser = hs.chooser.new(function(choice)
+  if choice then
+    hs.pasteboard.setContents(choice.clip)
+    hs.alert.show("Copied to clipboard")
+  end
+end)
+
+-- While the chooser is open: Backspace on an empty query deletes the
+-- highlighted entry from the history (with text in the query it edits the query)
+local clipDeleteTap = hs.eventtap.new({ hs.eventtap.event.types.keyDown }, function(e)
+  if e:getKeyCode() ~= hs.keycodes.map["delete"] then return false end
+  if (clipChooser:query() or "") ~= "" then return false end
+  local item = clipChoices[clipChooser:selectedRow()]
+  if not item then return true end
+  local kept = {}
+  for _, entry in ipairs(readClipEntries()) do
+    if entry ~= item.clip then table.insert(kept, entry) end
+  end
+  writeClipEntries(kept)
+  clipChoices = buildClipChoices(kept)
+  clipChooser:choices(clipChoices)
+  return true
+end)
+clipChooser:showCallback(function() clipDeleteTap:start() end)
+clipChooser:hideCallback(function() clipDeleteTap:stop() end)
+
+hs.hotkey.bind({ "ctrl", "alt" }, "V", function()
+  clipChoices = buildClipChoices(readClipEntries())
+  if #clipChoices == 0 then
+    hs.alert.show("No clipboard history yet")
+    return
+  end
+  clipChooser:choices(clipChoices)
+  clipChooser:query("")
+  clipChooser:show()
+end)
