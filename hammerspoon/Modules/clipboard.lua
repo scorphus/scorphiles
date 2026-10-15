@@ -1,4 +1,5 @@
-hs.hotkey.bind({ "cmd", "alt" }, "V", function()
+local hotkey = require "Modules/hotkey"
+hotkey.bind({ "cmd", "alt" }, "V", "Type the clipboard as keystrokes", function()
   hs.eventtap.keyStrokes(hs.pasteboard.getContents())
 end)
 
@@ -43,7 +44,7 @@ local function buildClipChoices(entries)
 end
 
 -- Save the current clipboard to the history file
-hs.hotkey.bind({ "ctrl", "alt" }, "C", function()
+hotkey.bind({ "ctrl", "alt" }, "C", "Save clipboard to history", function()
   local clip = hs.pasteboard.getContents()
   if not clip or clip == "" then return end
   local file = assert(io.open(pastebin, "a"))
@@ -80,7 +81,7 @@ end)
 clipChooser:showCallback(function() clipDeleteTap:start() end)
 clipChooser:hideCallback(function() clipDeleteTap:stop() end)
 
-hs.hotkey.bind({ "ctrl", "alt" }, "V", function()
+hotkey.bind({ "ctrl", "alt" }, "V", "Clipboard history", function()
   clipChoices = buildClipChoices(readClipEntries())
   if #clipChoices == 0 then
     hs.alert.show("No clipboard history yet")

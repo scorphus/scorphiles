@@ -1,3 +1,4 @@
+local hotkey = require "Modules/hotkey"
 local module = {}
 
 local function pickColor()
@@ -11,7 +12,7 @@ local function pickColor()
   end):start()
 end
 
-hs.hotkey.bind({ "cmd", "shift", "ctrl" }, "P", pickColor)
+hotkey.bind({ "cmd", "shift", "ctrl" }, "P", "Pick a colour", pickColor)
 
 module.pickColor = pickColor
 return module

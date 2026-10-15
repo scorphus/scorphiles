@@ -1,3 +1,4 @@
+local hotkey = require "Modules/hotkey"
 local move_by_min = 1
 local move_by_max = 25
 local move_by = 1
@@ -53,10 +54,10 @@ function move_down()
   move_hor_ver(0, move_by)
 end
 
-hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "Home", move_left_init, nil, move_left)
-hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "End", move_right_init, nil, move_right)
-hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "PageUp", move_up_init, nil, move_up)
-hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "PageDown", move_down_init, nil, move_down)
+hotkey.bind({ "cmd", "alt", "ctrl" }, "Home", "Nudge window left", move_left_init, nil, move_left)
+hotkey.bind({ "cmd", "alt", "ctrl" }, "End", "Nudge window right", move_right_init, nil, move_right)
+hotkey.bind({ "cmd", "alt", "ctrl" }, "PageUp", "Nudge window up", move_up_init, nil, move_up)
+hotkey.bind({ "cmd", "alt", "ctrl" }, "PageDown", "Nudge window down", move_down_init, nil, move_down)
 
 local resize_by_min = 1
 local resize_by_max = 25
@@ -113,7 +114,7 @@ function resize_down()
   resize_hor_ver(0, resize_by)
 end
 
-hs.hotkey.bind({ "cmd", "alt" }, "Home", resize_left_init, nil, resize_left)
-hs.hotkey.bind({ "cmd", "alt" }, "End", resize_right_init, nil, resize_right)
-hs.hotkey.bind({ "cmd", "alt" }, "PageUp", resize_up_init, nil, resize_up)
-hs.hotkey.bind({ "cmd", "alt" }, "PageDown", resize_down_init, nil, resize_down)
+hotkey.bind({ "cmd", "alt" }, "Home", "Resize window left", resize_left_init, nil, resize_left)
+hotkey.bind({ "cmd", "alt" }, "End", "Resize window right", resize_right_init, nil, resize_right)
+hotkey.bind({ "cmd", "alt" }, "PageUp", "Resize window up", resize_up_init, nil, resize_up)
+hotkey.bind({ "cmd", "alt" }, "PageDown", "Resize window down", resize_down_init, nil, resize_down)
