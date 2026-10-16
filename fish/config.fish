@@ -3,9 +3,9 @@ if status is-interactive
     set -gx PATH $HOME/.local/bin $PATH /usr/local/sbin
 
     # golang
-    # set -gx GOPATH $HOME/gocode
-    # set -gx GOBIN $GOPATH/bin
-    # set -gx PATH $GOBIN $PATH
+    set -gx GOPATH $HOME/go
+    set -gx GOBIN $GOPATH/bin
+    set -gx PATH $GOBIN $PATH
 
     # general purpose scripts
     for dir in (find -H $HOME/bin -maxdepth 1 -type d | sort)
