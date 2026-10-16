@@ -47,4 +47,6 @@ copy-on-select = clipboard
 ### last one that didn't work:
 # theme = Piatto Light
 
+cursor-style = block
+
 # theme = tokyonight_moon
