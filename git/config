@@ -127,8 +127,6 @@
 	UseHttpPath = true
 [init]
 	defaultBranch = main
-[blame]
-	ignoreRevsFile = .git-blame-ignore-revs
 [merge]
     conflictStyle = diff3
 [merge "mergiraf"]
