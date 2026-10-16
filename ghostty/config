@@ -1,7 +1,7 @@
 # The syntax is "key = value". The whitespace around the
 # equals doesn't matter.
-background = 000000
-foreground = ebebeb
+# background = 000000
+# foreground = ebebeb
 
 # Comments start with a `#` and are only valid on their own line.
 # Blank lines are ignored!
