@@ -115,7 +115,7 @@
 [pull]
 	rebase = true
 [http]
-	cookiefile = /Users/pablo/.gitcookies
+	cookiefile = ~/.gitcookies
 [rerere]
 	enabled = true
 [help]
