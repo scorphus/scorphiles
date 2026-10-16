@@ -1,3 +1,10 @@
 sublime-text-3-packages-user/GoSublime/osx-x64/log.txt
 .pypirc
 vscode/User/History
+
+# machine-private: tokens, cloud keys, per-machine env
+fish/conf.d/*.local.fish
+fish_history
+
+# expect scratch scripts
+*.exp
