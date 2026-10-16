@@ -145,3 +145,6 @@ erl_crash.dump
 CLAUDE.md
 
 .zed
+
+# Meeting transcripts
+transcript-*.txt
