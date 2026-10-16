@@ -25,24 +25,26 @@ window-decoration = false
 
 copy-on-select = clipboard
 
-theme = Brogrammer
-theme = Builtin Pastel Dark
-theme = Cobalt2
-theme = Dark+
-theme = Darkside
-theme = Dimidium
-theme = Espresso
-theme = Everblush
-theme = Hopscotch
-theme = LiquidCarbonTransparentInverse
-theme = Mariana
-theme = Neutron
-theme = Obsidian
-theme = OneHalfLight
-theme = PaleNightHC
-theme = Pandora
-theme = Paraiso Dark
-theme = Peppermint
+# theme = Brogrammer
+# theme = Builtin Pastel Dark
+# theme = Cobalt2
+# theme = Dark+
+# theme = Darkside
+# theme = Dimidium
+# theme = Espresso
+# theme = Everblush
+# theme = Hopscotch
+# theme = LiquidCarbonTransparentInverse
+# theme = Mariana
+# theme = Neutron
+# theme = Obsidian
+# theme = OneHalfLight
+# theme = PaleNightHC
+# theme = Pandora
+# theme = Paraiso Dark
+# theme = Peppermint
 
 ### last one that didn't work:
 # theme = Piatto Light
+
+# theme = tokyonight_moon
