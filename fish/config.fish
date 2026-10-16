@@ -1,3 +1,7 @@
+# The following lines were added by Docker Desktop to add commands to your PATH.
+export PATH="$PATH:$HOME/.docker/bin"
+# End of Docker Desktop section.
+
 if status is-interactive
     # path
     set -gx PATH $HOME/.local/bin $PATH /usr/local/sbin
