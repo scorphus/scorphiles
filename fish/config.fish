@@ -27,4 +27,7 @@ if status is-interactive
     set -x GEM_ROOT $HOME/.gem
 
     set -g fish_greeting
+
+    # editor yay
+    set -x EDITOR "zed --wait"
 end
