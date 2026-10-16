@@ -6,8 +6,12 @@ local hotkey = require "Modules/hotkey"
 --                   attached, a Ghostty window without tmux scrolls that pane too.
 --   other apps:     at the pointer if it's inside the focused window,
 --                   otherwise at the center of the focused window
+-- ⌃⌥⇧ J / K: same scroll, once, in a much bigger chunk
 
 local M = { hotkeys = {} }
+
+local PAGE_LINES = 20   -- tmux: roughly a screenful
+local PAGE_PIXELS = 600 -- other apps: a big jump
 
 local mods = { "ctrl", "alt" }
 
@@ -190,5 +194,49 @@ end
 
 M.hotkeys.j = hotkey.bind(mods, "j", "Scroll down while held", function() start(-1) end, stop)
 M.hotkeys.k = hotkey.bind(mods, "k", "Scroll up while held", function() start(1) end, stop)
+
+---------------------------------------------------------------------------
+-- Page scroll: same targeting as the line scroll, in a much bigger chunk,
+-- repeating at its own (slower) pace while held
+
+local PAGE_TICK = 0.05 -- seconds between page jumps
+
+local pageTimer
+
+local function stopPage()
+  if pageTimer then
+    pageTimer:stop()
+    pageTimer = nil
+  end
+end
+
+local function startPage(direction)
+  stopPage()
+  local win = hs.window.focusedWindow()
+  if not win then return end
+
+  local tick
+  local app = win:application()
+  if app and app:bundleID() == GHOSTTY then
+    local pane = M.tmuxPane()
+    if pane then
+      tick = function() M.tmuxStep(pane, direction, PAGE_LINES) end
+    end
+  end
+  if not tick then
+    local target = M.target(win)
+    tick = function() M.step(target, direction * PAGE_PIXELS) end
+  end
+
+  local started = hs.timer.secondsSinceEpoch()
+  tick()
+  pageTimer = hs.timer.doEvery(PAGE_TICK, function()
+    if hs.timer.secondsSinceEpoch() - started > MAX_SECONDS then return stopPage() end
+    tick()
+  end)
+end
+
+M.hotkeys.pageDown = hotkey.bind({ "ctrl", "alt", "shift" }, "j", "Scroll down a page", function() startPage(-1) end, stopPage)
+M.hotkeys.pageUp = hotkey.bind({ "ctrl", "alt", "shift" }, "k", "Scroll up a page", function() startPage(1) end, stopPage)
 
 return M

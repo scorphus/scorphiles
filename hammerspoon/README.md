@@ -16,8 +16,9 @@ Everything else lives in `Modules/`.
   Backspace).
 - `window_nudge.lua` — repeating move/resize binds on Home/End/PageUp/PageDown.
 - `window_hints.lua` — the icon+letter window overlay picker (`⌘⌥⌃H`).
-- `scroll.lua` — smooth scroll on `⌃⌥J`/`⌃⌥K` while held; scrolls the active
-  tmux pane directly when the focused window is Ghostty.
+- `scroll.lua` — smooth scroll on `⌃⌥J`/`⌃⌥K` while held, and a bigger jump
+  per tick on `⌃⌥⇧J`/`⌃⌥⇧K`; scrolls the active tmux pane directly when the
+  focused window is Ghostty.
 - `app_launcher.lua` — the app launch/focus table (`⌘⌃<key>`) and its cheat
   sheet (`⌘⌃/`).
 - `config_reload.lua` — the watcher that reloads the config whenever a `.lua`
