@@ -17,7 +17,7 @@ font-size = 15
 # font-style = bold
 # font-style-bold = heavy
 
-background-opacity = 0.8
+background-opacity = 0.95
 
 command = "/opt/homebrew/bin/fish -li"
 
