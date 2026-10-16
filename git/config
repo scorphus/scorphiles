@@ -134,3 +134,5 @@
     driver = mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L
 [beads]
 	role = maintainer
+[push]
+	useForceIfIncludes = true
