@@ -11,9 +11,10 @@
 
 # Empty values reset the configuration to the default value
 # font-family = JetBrains Mono
-font-family = Victor Mono
-font-style = bold
-font-style-bold = heavy
+# font-family = Victor Mono
+# font-family = JetBrainsMono Nerd Font Mono
+# font-style = bold
+# font-style-bold = heavy
 
 background-opacity = 0.8
 
