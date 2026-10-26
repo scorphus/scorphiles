@@ -24,7 +24,7 @@ if [ ${#sha1s[@]} -eq 0 ]; then
 fi
 
 # Set the whitespace flag
-ws_flag="-w"  # ignore whitespace by default
+ws_flag=""  # show whitespace changes by default; w toggles -w
 
 index=0
 while [ $index -lt ${#sha1s[@]} ]; do
