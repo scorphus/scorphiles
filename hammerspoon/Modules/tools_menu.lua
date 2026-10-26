@@ -1,32 +1,53 @@
 local colorPicker = require "Modules/color_picker"
 
-local announceMuteFlag = os.getenv("HOME") .. "/.claude/announce-muted"
+-- read by ~/.claude/claude-announce.sh: no file = full, "ping" or "mute"
+local announceModeFile = os.getenv("HOME") .. "/.claude/announce-mode"
 
-local function announcementsMuted()
-  return hs.fs.attributes(announceMuteFlag) ~= nil
+local function announceMode()
+  local f = io.open(announceModeFile, "r")
+  if not f then return "full" end
+  local mode = f:read("l")
+  f:close()
+  return mode
 end
+
+local function setAnnounceMode(mode)
+  if mode == "full" then
+    os.remove(announceModeFile)
+  else
+    local f = io.open(announceModeFile, "w")
+    f:write(mode, "\n")
+    f:close()
+  end
+end
+
+local titles = { full = "🎛", ping = "🔔", mute = "🔕" }
 
 toolsMenu = hs.menubar.new()
 
 local function refreshToolsMenuTitle()
-  toolsMenu:setTitle(announcementsMuted() and "🔕" or "🎛")
+  toolsMenu:setTitle(titles[announceMode()] or titles.full)
+end
+
+local function modeItem(mode, title)
+  return {
+    title = title,
+    checked = announceMode() == mode,
+    fn = function()
+      setAnnounceMode(mode)
+      refreshToolsMenuTitle()
+    end,
+  }
 end
 
 toolsMenu:setMenu(function()
   return {
     { title = "Pick color (⌘⇧⌃P)", fn = colorPicker.pickColor },
-    {
-      title = "Mute Claude announcements",
-      checked = announcementsMuted(),
-      fn = function()
-        if announcementsMuted() then
-          os.remove(announceMuteFlag)
-        else
-          io.open(announceMuteFlag, "w"):close()
-        end
-        refreshToolsMenuTitle()
-      end,
-    },
+    { title = "-" },
+    { title = "Claude announcements", disabled = true },
+    modeItem("full", "Sound and speech"),
+    modeItem("ping", "Sound only"),
+    modeItem("mute", "Muted"),
   }
 end)
 refreshToolsMenuTitle()
