@@ -46,12 +46,12 @@ else
     msg="I'm done in session '${name//-/ }'"
 fi
 
-# the Hammerspoon menubar toggle creates this flag; muted = no sound and no
-# speech, but the tmux flag/flash and the overlay above stay on
-mute=~/.claude/announce-muted
+# set from the Hammerspoon menubar: no file = sound and speech, "ping" = sound
+# only, "mute" = neither; the tmux flag/flash and the overlay stay on in all three
+mode=$(cat ~/.claude/announce-mode 2>/dev/null)
 
-[ -e "$mute" ] || afplay "/System/Library/Sounds/$sound.aiff" &
+[ "$mode" = mute ] || afplay "/System/Library/Sounds/$sound.aiff" &
 
 esc=$(printf '%s' "$msg" | sed 's/\\/\\\\/g; s/"/\\"/g')
 hs -c "hs.alert.show(\"$esc\", { textSize = 20, radius = 12 }, hs.screen.mainScreen(), 5)" >/dev/null 2>&1 &
-[ -e "$mute" ] || say "$msg" &
+[ "$mode" = mute ] || [ "$mode" = ping ] || say "$msg" &
