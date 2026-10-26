@@ -18,16 +18,15 @@ pane="${TMUX_PANE:-}"
 [ -z "$pane" ] && [ -n "$tmuxloc" ] && pane=${tmuxloc##*.}
 if [ -n "$pane" ]; then
     win=$(tmux display-message -p -t "$pane" '#{window_id}' 2>/dev/null)
-    # a bell flags the window (styled red by window-status-bell-style) until it is visited
+    # a bell flags the window (the tmux window formats paint it red) until it is visited
     ptty=$(tmux display-message -p -t "$pane" '#{pane_tty}' 2>/dev/null)
     [ -n "$ptty" ] && [ -w "$ptty" ] && printf '\a' > "$ptty"
+    # @flash makes the window formats blink the window's capsule
     [ -n "$win" ] && (
         for i in 1 2 3 4 5; do
-            tmux set-option -w -t "$win" window-status-style 'bg=red,fg=white,bold'
-            tmux set-option -w -t "$win" window-status-current-style 'bg=red,fg=white,bold'
+            tmux set-option -w -t "$win" @flash 1
             sleep 0.25
-            tmux set-option -w -u -t "$win" window-status-style
-            tmux set-option -w -u -t "$win" window-status-current-style
+            tmux set-option -w -u -t "$win" @flash
             sleep 0.25
         done
     ) &
