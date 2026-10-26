@@ -37,13 +37,13 @@ if [ "$mode" = waiting ]; then
     sound=Basso
     ntype=$(jq -r '.notification_type // ""' <<<"$input")
     case $ntype in
-        permission_prompt) msg="Hey bro, I need your permission in session '${name//-/ }'" ;;
-        idle_prompt)       msg="Hey bro, I'm still waiting for you in session '${name//-/ }'" ;;
-        *)                 msg="Hey bro, I'm waiting for you in session '${name//-/ }'" ;;
+        permission_prompt) msg="Need permission in session '${name//-/ }'" ;;
+        idle_prompt)       msg="Still waiting in session '${name//-/ }'" ;;
+        *)                 msg="Waiting in session '${name//-/ }'" ;;
     esac
 else
     sound=Hero
-    msg="I'm done in session '${name//-/ }'"
+    msg="Done in session '${name//-/ }'"
 fi
 
 # set from the Hammerspoon menubar: no file = sound and speech, "ping" = sound
