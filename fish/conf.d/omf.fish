@@ -4,6 +4,7 @@ set -g theme_display_rust yes
 set -g theme_display_node yes
 set -g theme_display_pwd_on_second_line yes
 set -g theme_display_git_on_first_line yes
+set -g theme_display_right_prompt no
 
 # Set the virtualenv prompt to be disabled
 set -g VIRTUAL_ENV_DISABLE_PROMPT yes
