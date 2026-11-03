@@ -30,6 +30,18 @@ copy-on-select = clipboard
 keybind = ctrl+tab=csi:27;5;9~
 keybind = ctrl+shift+tab=csi:27;6;9~
 
+# Cmd+§ and Cmd+1..9 send Ctrl+0..9, which select tmux windows 0-9
+keybind = super+§=csi:27;5;48~
+keybind = super+digit_1=csi:27;5;49~
+keybind = super+digit_2=csi:27;5;50~
+keybind = super+digit_3=csi:27;5;51~
+keybind = super+digit_4=csi:27;5;52~
+keybind = super+digit_5=csi:27;5;53~
+keybind = super+digit_6=csi:27;5;54~
+keybind = super+digit_7=csi:27;5;55~
+keybind = super+digit_8=csi:27;5;56~
+keybind = super+digit_9=csi:27;5;57~
+
 # theme = Brogrammer
 # theme = Builtin Pastel Dark
 # theme = Cobalt2
