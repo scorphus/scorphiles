@@ -37,7 +37,7 @@ session=$(tmux display-message -p '#S')
 used=$(( ${#session} + 3 + 18 ))
 while read -r w; do
     used=$(( used + ${#w} + 3 ))
-done < <(tmux list-windows -F '#I#W#{?window_zoomed_flag, Z,}')
+done < <(tmux list-windows -F '#I#W')
 room=$(( $(tmux display-message -p '#{client_width}') - used ))
 out=""
 while read -r _ len entry; do
