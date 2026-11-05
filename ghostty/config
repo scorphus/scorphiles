@@ -69,3 +69,5 @@ cursor-style = block
 # theme = tokyonight_moon
 
 # link = super+shift+exec:/usr/local/bin/zed=(?:[\w.-]+/)+[\w.-]+(?::\d+)*
+
+window-padding-balance = equal
