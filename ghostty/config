@@ -25,7 +25,7 @@ window-decoration = false
 
 copy-on-select = clipboard
 
-# send Ctrl+Tab and Ctrl+Shift+Tab to tmux, which cycles its windows with them;
+# send Ctrl+Tab and Ctrl+Shift+Tab to tmux, which has bindings for them;
 # unbound, macOS takes them to move focus and the terminal never sees them
 keybind = ctrl+tab=csi:27;5;9~
 keybind = ctrl+shift+tab=csi:27;6;9~
