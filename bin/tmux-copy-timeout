@@ -1,0 +1,10 @@
+#!/bin/bash
+# leaves copy mode in pane $1 after $2 seconds, unless this was called again
+# for that pane in the meantime
+pane=$1
+token=$RANDOM$RANDOM
+tmux set -p -t "$pane" @copy_timer "$token"
+sleep "$2"
+[ "$(tmux show -pqv -t "$pane" @copy_timer)" = "$token" ] || exit 0
+tmux set -pu -t "$pane" @copy_timer
+tmux send -X -t "$pane" cancel 2>/dev/null
