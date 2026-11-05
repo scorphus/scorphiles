@@ -1,0 +1,16 @@
+#!/bin/bash
+# pop a tmux menu of the session's windows; picking one jumps to it
+args=(-T "Windows")
+while IFS=$'\x1f' read -r index active claude name; do
+    case $claude in
+        busy) mark=⦁ ;;
+        "")   mark=◦ ;;
+        *)    mark=⚬ ;;
+    esac
+    label="$index$mark$name"
+    [ "$active" = 1 ] && label="#[bold]$label"
+    key=""
+    [ "$index" -le 9 ] && key=$index
+    args+=("$label" "$key" "select-window -t :$index")
+done < <(tmux list-windows -F $'#{window_index}\x1f#{window_active}\x1f#{@claude}\x1f#{window_name}')
+tmux display-menu "${args[@]}"
