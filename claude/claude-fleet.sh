@@ -17,10 +17,12 @@ for f in ~/.claude/sessions/*.json; do
         *)     dot="#[fg=colour245]○#[default]" ;;
     esac
     updated=$(jq -r '.statusUpdatedAt // 0' "$f")
-    entries+="$updated ${#name} $dot ${name:0:12}  "$'\n'
-
     pane=$(jq -r '.tmux // ""' "$f")
-    win=$(tmux display-message -p -t "${pane##*.}" '#{window_id}' 2>/dev/null) || continue
+    pane=${pane##*.}
+    # a click on the entry reports the pane in mouse_status_range
+    entries+="$updated ${#name} $dot #[range=user|$pane]${name:0:12}#[norange]  "$'\n'
+
+    win=$(tmux display-message -p -t "$pane" '#{window_id}' 2>/dev/null) || continue
     [ "$status" = busy ] && busy+="$win " || idle+="$win "
 done
 for win in $(tmux list-windows -a -F '#{window_id}'); do
