@@ -42,6 +42,13 @@ keybind = super+digit_7=csi:27;5;55~
 keybind = super+digit_8=csi:27;5;56~
 keybind = super+digit_9=csi:27;5;57~
 
+# Cmd+Opt+← and Cmd+Opt+K send Shift+↑, Cmd+Opt+→ and Cmd+Opt+J send Shift+↓,
+# which select the previous and next tmux window
+keybind = super+alt+arrow_left=csi:1;2A
+keybind = super+alt+k=csi:1;2A
+keybind = super+alt+arrow_right=csi:1;2B
+keybind = super+alt+j=csi:1;2B
+
 # theme = Brogrammer
 # theme = Builtin Pastel Dark
 # theme = Cobalt2
