@@ -18,6 +18,13 @@ function M.bind(mods, key, description, ...)
   local hotkey = hs.hotkey.bind(mods, key, table.unpack(args, first, args.n))
   hotkey.msg = hotkey.idx .. ": " .. description
   hotkey.tags = tags
+  -- for the shortcut panel (⌃⌥⌘/): its label, and what ⏎ runs there
+  hotkey.mods, hotkey.key = mods, key
+  local pressed, released = args[first], args[first + 1]
+  hotkey.run = function()
+    if pressed then pressed() end
+    if released then released() end
+  end
   return hotkey
 end
 
