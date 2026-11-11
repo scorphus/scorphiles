@@ -1,5 +1,5 @@
 local hotkey = require "Modules/hotkey"
-hotkey.bind({ "cmd", "alt", "ctrl" }, "Left", "Window to left half", function()
+hotkey.bind({ "cmd", "alt", "ctrl" }, "Left", "Window to left half", { "windows", "snap" }, function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
@@ -12,7 +12,7 @@ hotkey.bind({ "cmd", "alt", "ctrl" }, "Left", "Window to left half", function()
   win:setFrame(f)
 end)
 
-hotkey.bind({ "cmd", "alt", "ctrl", "shift" }, "Left", "Window to left third", function()
+hotkey.bind({ "cmd", "alt", "ctrl", "shift" }, "Left", "Window to left third", { "windows", "snap" }, function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
@@ -25,7 +25,7 @@ hotkey.bind({ "cmd", "alt", "ctrl", "shift" }, "Left", "Window to left third", f
   win:setFrame(f)
 end)
 
-hotkey.bind({ "cmd", "alt", "ctrl" }, "Right", "Window to right half", function()
+hotkey.bind({ "cmd", "alt", "ctrl" }, "Right", "Window to right half", { "windows", "snap" }, function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
@@ -38,7 +38,7 @@ hotkey.bind({ "cmd", "alt", "ctrl" }, "Right", "Window to right half", function(
   win:setFrame(f)
 end)
 
-hotkey.bind({ "cmd", "alt", "ctrl", "shift" }, "Right", "Window to right third", function()
+hotkey.bind({ "cmd", "alt", "ctrl", "shift" }, "Right", "Window to right third", { "windows", "snap" }, function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
@@ -51,7 +51,7 @@ hotkey.bind({ "cmd", "alt", "ctrl", "shift" }, "Right", "Window to right third",
   win:setFrame(f)
 end)
 
-hotkey.bind({ "cmd", "alt", "ctrl" }, "Up", "Window to top half", function()
+hotkey.bind({ "cmd", "alt", "ctrl" }, "Up", "Window to top half", { "windows", "snap" }, function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
@@ -64,7 +64,7 @@ hotkey.bind({ "cmd", "alt", "ctrl" }, "Up", "Window to top half", function()
   win:setFrame(f)
 end)
 
-hotkey.bind({ "cmd", "alt", "ctrl" }, "Down", "Window to bottom half", function()
+hotkey.bind({ "cmd", "alt", "ctrl" }, "Down", "Window to bottom half", { "windows", "snap" }, function()
   local win = hs.window.focusedWindow()
   local f = win:frame()
   local screen = win:screen()
@@ -85,15 +85,15 @@ function moveWindowToDisplay(d)
   end
 end
 
-hotkey.bind({ "cmd", "alt", "ctrl", "shift" }, "Up", "Window to display 1", moveWindowToDisplay(1))
-hotkey.bind({ "cmd", "alt", "ctrl", "shift" }, "Down", "Window to display 2", moveWindowToDisplay(2))
+hotkey.bind({ "cmd", "alt", "ctrl", "shift" }, "Up", "Window to display 1", { "windows", "display", "monitor" }, moveWindowToDisplay(1))
+hotkey.bind({ "cmd", "alt", "ctrl", "shift" }, "Down", "Window to display 2", { "windows", "display", "monitor" }, moveWindowToDisplay(2))
 
-hotkey.bind({ "cmd", "alt", "ctrl" }, "M", "Window full screen", function()
+hotkey.bind({ "cmd", "alt", "ctrl" }, "M", "Window full screen", { "windows", "snap" }, function()
   local win = hs.window.focusedWindow()
   win:moveToUnit('[0,0,100,100]')
 end)
 
-hotkey.bind({ "cmd", "alt", "ctrl", "shift" }, "M", "Window to right two thirds", function()
+hotkey.bind({ "cmd", "alt", "ctrl", "shift" }, "M", "Window to right two thirds", { "windows", "snap" }, function()
   local win = hs.window.focusedWindow()
   win:moveToUnit('[33.3,0,66.7,100]')
 end)
@@ -101,7 +101,7 @@ end)
 --- -- -- -- -- -- -- -- -- -- -- --
 -- Center window in display 50/50 --
 --- -- -- -- -- -- -- -- -- -- -- --
-hotkey.bind({ "cmd", "alt", "ctrl", "shift" }, "K", "Window centred, small", function()
+hotkey.bind({ "cmd", "alt", "ctrl", "shift" }, "K", "Window centred, small", { "windows", "snap" }, function()
   local frame_width = hs.screen.mainScreen():frame().w
   local win = hs.window.focusedWindow()
   if frame_width == 3840 then
@@ -114,7 +114,7 @@ end)
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 -- Place window on a "nice to look at" position --
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-hotkey.bind({ "cmd", "alt", "ctrl" }, "K", "Window centred, large", function()
+hotkey.bind({ "cmd", "alt", "ctrl" }, "K", "Window centred, large", { "windows", "snap" }, function()
   local frame_width = hs.screen.mainScreen():frame().w
   local win = hs.window.focusedWindow()
   if frame_width == 3840 then

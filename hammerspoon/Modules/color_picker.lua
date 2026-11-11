@@ -12,7 +12,7 @@ local function pickColor()
   end):start()
 end
 
-hotkey.bind({ "cmd", "shift", "ctrl" }, "P", "Pick a colour", pickColor)
+hotkey.bind({ "cmd", "shift", "ctrl" }, "P", "Pick a colour", { "color", "eyedropper" }, pickColor)
 
 module.pickColor = pickColor
 return module

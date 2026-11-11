@@ -80,4 +80,4 @@ local function showWindowHints()
   hintModal:enter()
 end
 
-hotkey.bind({ "cmd", "alt", "ctrl" }, "H", "Window hints", showWindowHints)
+hotkey.bind({ "cmd", "alt", "ctrl" }, "H", "Window hints", { "windows", "focus", "switch" }, showWindowHints)
