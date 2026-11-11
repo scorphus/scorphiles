@@ -236,7 +236,7 @@ local function startPage(direction)
   end)
 end
 
-M.hotkeys.pageDown = hotkey.bind({ "ctrl", "alt", "shift" }, "j", "Scroll down a page", function() startPage(-1) end, stopPage)
-M.hotkeys.pageUp = hotkey.bind({ "ctrl", "alt", "shift" }, "k", "Scroll up a page", function() startPage(1) end, stopPage)
+M.hotkeys.pageDown = hotkey.bind({ "ctrl", "alt", "shift" }, "j", "Scroll down a page", { "page" }, function() startPage(-1) end, stopPage)
+M.hotkeys.pageUp = hotkey.bind({ "ctrl", "alt", "shift" }, "k", "Scroll up a page", { "page" }, function() startPage(1) end, stopPage)
 
 return M

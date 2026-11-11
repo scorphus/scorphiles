@@ -23,10 +23,13 @@ local function keystroke(idx)
 end
 local hotkeyList = hs.chooser.new(function() end)
 hotkeyList:placeholderText("Hotkeys")
-require("Modules/hotkey").bind({ "ctrl", "alt", "cmd" }, "/", "Hotkey list", function()
+hotkeyList:searchSubText(true)
+require("Modules/hotkey").bind({ "ctrl", "alt", "cmd" }, "/", "Hotkey list", { "help" }, function()
   local choices = {}
   for _, hotkey in ipairs(hs.hotkey.getHotkeys()) do
-    table.insert(choices, { text = keystroke(hotkey.idx), subText = (hotkey.msg or ""):gsub("^.-: ", "", 1) })
+    local subText = (hotkey.msg or ""):gsub("^.-: ", "", 1)
+    if hotkey.tags and #hotkey.tags > 0 then subText = subText .. "  · " .. table.concat(hotkey.tags, ", ") end
+    table.insert(choices, { text = keystroke(hotkey.idx), subText = subText })
   end
   table.sort(choices, function(a, b) return a.text < b.text end)
   hotkeyList:choices(choices)
