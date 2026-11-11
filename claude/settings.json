@@ -40,6 +40,18 @@
           }
         ]
       }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash|Monitor|PowerShell",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/claude-guard.sh",
+            "timeout": 10
+          }
+        ]
+      }
     ]
   },
   "disableAgentView": true,

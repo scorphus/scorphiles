@@ -1,0 +1,87 @@
+# command guard, from Michael Borisov's dotfiles
+# https://github.com/SecTedd/dotfiles
+#
+# Licensed under the MIT license:
+# http://www.opensource.org/licenses/mit-license
+# Copyright (c) 2026 Michael Borisov
+#
+# Commands that need your approval before Claude Code runs them, also in auto mode:
+# claude-guard.sh answers "ask" and the prompt shows the matched text.
+# One extended regex per line, matched against the whole command text; # starts a comment.
+# Add freely: a match only costs a prompt. Catastrophic commands are refused via guard-deny.
+
+# Installing packages, running arbitrary ones
+\b(npm|pnpm|yarn|bun)\s+(install|i|add|ci|update|up|upgrade|link)\b
+\b(npx|bunx|uvx)\b
+\b(pnpm|yarn)\s+dlx\b
+\bpip3?\s+(install|download)\b
+\bpipx\s+(install|run)\b
+\buv\s+(add|sync|tool\s+(install|run)|pip\s+install)\b
+\bbrew\s+(install|reinstall|uninstall|upgrade|tap|link)\b
+\b(gem|cargo|go|rustup|nvm|pyenv)\s+install\b
+\bclaude\s+(update|--update)\b
+\b--dangerously-skip-permissions\b
+
+# Code from the network straight into a shell, and installer scripts
+\b(curl|wget)\b.*\|\s*(sudo\s+)?(ba|z|da|k)?sh\b
+\b(ba|z)?sh\s+<\(\s*(curl|wget)\b
+\bsource\s+<\(\s*(curl|wget)\b
+\b[a-zA-Z0-9_./-]*(install|setup|bootstrap)\.sh\b
+
+# Sending data out: uploads and publishing (GitHub and npm are reachable from inside the sandbox)
+\bcurl\b[^;&|]*\s(-[a-zA-Z]*[TdF]\b|--(data\S*|form|upload-file)\b|(-X|--request)\s+(POST|PUT|PATCH|DELETE)\b)
+\bwget\b[^;&|]*\s--(post-data|post-file|method=(POST|PUT|PATCH|DELETE))\b
+\b(npm|pnpm|yarn|bun)\s+publish\b
+\b(cargo|gem)\s+(publish|push)\b
+\btwine\s+upload\b
+\bgh\s+(gist\s+create|release\s+(create|upload)|pr\s+(create|merge)|repo\s+(create|delete))\b
+
+# Cloud and infrastructure
+\b(gcloud|gsutil|bq|kubectl|helm|terraform|pulumi|aws|az|docker|docker-compose|colima|flyctl|vercel|wrangler)\b
+(^|[;&|(])\s*just( |$)   # a recipe runs anything, outside the sandbox (settings.json excludes just)
+
+# Deleting and rewriting files from the shell
+\brm\b
+\b(rmdir|unlink|shred|truncate)\b
+\bfind\b[^;&|]*\s(-delete|-exec\s+rm)\b
+\bxargs\b[^;&|]*\brm\b
+\b(sed|perl)\s+-[a-zA-Z]*i
+\bch(mod|own|flags)\b
+\b(cp|mv|ln)\b[^;&|]*\s/(System|Library|usr|etc|var|private|Applications)\b
+\bdd\b
+\bdiskutil\b
+
+# Processes and the system
+\b(kill|killall|pkill)\b
+\btmux\s+kill-(server|session)\b
+\b(shutdown|reboot|halt)\b
+\bsudo\b
+\b(launchctl|crontab|osascript|tccutil|spctl|csrutil|nvram|pmset|networksetup|scutil)\b
+\bdefaults\s+(write|delete)\b
+\bxattr\b.*quarantine
+
+# git: anything that leaves the machine, rewrites history or discards work
+\bgit\s+push\b
+\bgit\s+(reset\s+--hard|clean\s+-[a-zA-Z]*f|branch\s+-D|filter-branch|filter-repo|rebase|commit\s+--amend)\b
+\bgit\s+(checkout\s+--|restore|switch\s+--discard-changes|stash\s+(drop|clear)|tag\s+-d)\b
+\bgit\s+remote\s+(add|set-url|remove|rm)\b
+
+# Secrets and credentials
+\.ssh/
+\.npmrc\b
+\.netrc\b
+\.aws/
+\.config/gcloud
+\.gnupg/
+\.kube/
+\.docker/config
+\.env(\.[a-z]+)?\b
+\bsecurity\s+(find|add|delete|dump|export|import|set|unlock|list)
+\b(printenv|gpg|openssl)\b
+\bssh-(add|keygen|copy-id)\b
+
+# Remote access and raw sockets
+\bssh\b
+\b(scp|sftp)\b
+\brsync\b.*\S+:
+\b(nc|ncat|netcat|telnet)\b
