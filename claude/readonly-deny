@@ -1,0 +1,32 @@
+# read-only Claude, from Michael Borisov's dotfiles
+# https://github.com/SecTedd/dotfiles
+#
+# Licensed under the MIT license:
+# http://www.opensource.org/licenses/mit-license
+# Copyright (c) 2026 Michael Borisov
+#
+# Commands refused while Claude's tmux pane is read-only (prefix R): their purpose
+# is to write or to change state. One extended regex per line, matched like the
+# lines of readonly-allow and after them, so a read-only subcommand listed there
+# wins. A segment matching neither file asks you.
+
+# Files and folders
+^(rm|rmdir|unlink|shred|mv|cp|rsync|scp|sftp|ditto|install|mkdir|mkfifo|mknod|touch|ln|chmod|chown|chgrp|chflags|xattr|tee|dd|truncate|patch|split|csplit|wget)( |$)
+^(tar|zip|unzip|gzip|gunzip|bzip2|xz|7zz?|hdiutil|diskutil)( |$)
+^(nvim|vim|vi|view|nano|emacs|ed|ex|code|subl)( |$)
+
+# Installing, building, publishing
+^(npm|pnpm|yarn|bun|npx|bunx|pip3?|pipx|uv|uvx|brew|cargo|rustup|gem|bundle|go|make|cmake|ninja|swiftc|gcc|cc|clang|tsc|esbuild|vite|webpack|mvn|gradle|ya|omf|stow|just)( |$)
+^(nvm +(install|uninstall|use|alias|unalias|exec|run|cache)|pyenv +(install|uninstall|global|local|shell|rehash|virtualenv|exec)|claude +(update|upgrade))( |$)
+
+# git: everything that changes the repo, its refs or its settings
+^git +(add|am|apply|checkout|cherry-pick|clean|clone|commit|init|merge|mv|pull|push|rebase|reset|restore|revert|rm|switch|gc|prune|repack)( |$)
+^git +(filter-branch|filter-repo|update-ref|update-index|write-tree|commit-tree|read-tree|checkout-index|replace|maintenance|fast-import)( |$)
+^git +(stash|tag|branch|remote|worktree|submodule|notes|bisect|config|symbolic-ref)( |$)
+
+# tmux and Hammerspoon state, processes, the system
+^tmux( |$)
+^hs +-r
+^(sudo|doas|su|kill|killall|pkill|shutdown|reboot|halt|crontab|tccutil|csrutil|nvram|systemsetup|networksetup +-set|scutil +--set)( |$)
+^launchctl +(load|unload|bootstrap|bootout|kickstart|enable|disable)( |$)
+^defaults +(write|delete|import)( |$)

@@ -33,4 +33,9 @@ if [ -n "$five_pct" ] || [ -n "$week_pct" ]; then
   line=$(printf "%s  %s" "$line" "$rate_parts")
 fi
 
+# a red lock while this pane's Claude is read-only (tmux prefix+R)
+if [ -n "$TMUX_PANE" ] && [ "$(tmux show-options -pqv -t "$TMUX_PANE" @claude_readonly 2>/dev/null)" = 1 ]; then
+  line=$(printf "%s  \033[31m\363\260\214\276 read-only\033[0m" "$line")
+fi
+
 printf "%s" "$line"
