@@ -1,0 +1,27 @@
+# command guard, from Michael Borisov's dotfiles
+# https://github.com/SecTedd/dotfiles
+#
+# Licensed under the MIT license:
+# http://www.opensource.org/licenses/mit-license
+# Copyright (c) 2026 Michael Borisov
+#
+# Commands Claude Code must never run: claude-guard.sh refuses them, no prompt.
+# One extended regex per line, matched against the whole command text; # starts a comment.
+# Everything less than catastrophic belongs in guard-ask (a prompt, your decision).
+
+# rm aimed at a root (also quoted): /, /*, ~, $HOME, /Users, /System, /Library, /usr, /etc, /var, /private, /Applications
+\brm\b[^;&|]*\s["']?(/|/\*|~|\$HOME|\$\{HOME\}|/Users|/Users/\*|/System|/Library|/usr|/etc|/var|/private|/Applications)/?["']?(\s|$)
+
+# raw bytes onto a disk device
+\bdd\b.*\bof=/dev/r?disk
+>\s*/dev/r?disk
+
+# wiping or reformatting disks
+\bdiskutil\s+(eraseDisk|eraseVolume|reformat|partitionDisk|zeroDisk|randomDisk|secureErase)\b
+\b(mkfs|newfs)[._a-z]*\b
+
+# chmod / chown -R on a root
+\bch(mod|own)\b[^;&|]*\s-[a-zA-Z]*R[a-zA-Z]*\s[^;&|]*\s/(\s|$)
+
+# fork bomb
+:\(\)\s*\{\s*:\s*\|\s*:\s*&\s*\}\s*;\s*:
