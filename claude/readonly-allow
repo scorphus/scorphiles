@@ -1,0 +1,59 @@
+# read-only Claude, from Michael Borisov's dotfiles
+# https://github.com/SecTedd/dotfiles
+#
+# Licensed under the MIT license:
+# http://www.opensource.org/licenses/mit-license
+# Copyright (c) 2026 Michael Borisov
+#
+# Commands Claude may run while its tmux pane is read-only (prefix R). One extended
+# regex per line, matched against the start of each command segment (split at
+# ; && || | & and newlines) after leading keywords, assignments, `env`, `xargs`
+# and git's -C / --no-pager are dropped. A segment matching no line here but one
+# of readonly-deny is refused, any other asks you. Redirections, substitutions
+# and in-place edits are refused by claude-readonly.sh itself.
+
+# Looking at files and folders
+^(ls|eza|tree|cat|bat|head|tail|less|more|wc|sort|uniq|cut|tr|column|paste|fold|nl|tac|rev|expand)( |$)
+^(diff|cmp|comm|file|stat|du|df|basename|dirname|realpath|readlink|strings|xxd|od|hexdump|md5|shasum|cksum)( |$)
+^(grep|rg|ugrep|egrep|fgrep|zgrep|find|fd|jq|yq|awk|gawk|fzf|mdfind|mdls)( |$)
+^sed +(-[nEr]+ +)*[^-]
+^(tar +-?t|unzip +-l|7zz? +l|plutil +-p|lipo +-info|otool)( |$)
+
+# Shell words that run nothing by themselves
+^(echo|printf|true|false|test|\[|\[\[|yes|seq|expr|bc|sleep|wait|type|which|command +-v|whereis)( |$)
+^(for +[A-Za-z_][A-Za-z0-9_]* +in|case +\S+ +in|then|else|do|done|fi|esac|\}|\)+|;;)( |$)
+
+# Where am I, what is this Mac
+^(pwd|cd|pushd|popd|dirs|whoami|id|groups|hostname|date|cal|uname|sw_vers|arch|locale|tty|uptime|env|printenv)( |$)
+^(ps|pgrep|lsof|vm_stat|system_profiler|sysctl +-n|pmset +-g|defaults +read|xcode-select +-p|xcrun +--find|crontab +-l)( |$)
+^(man|info|apropos|whatis|tldr)( |$)
+^(dig|nslookup|host|ping +-c +[0-9]+|traceroute|whois)( |$)
+
+# Web lookups (GET only: curl's upload and output flags are refused by the hook)
+^curl( |$)
+
+# git, reading only
+^git +(status|log|diff|show|blame|grep|describe|shortlog|reflog|whatchanged|range-diff|cherry)( |$)
+^git +(rev-parse|rev-list|ls-files|ls-tree|ls-remote|cat-file|name-rev|merge-base|show-ref|for-each-ref)( |$)
+^git +(diff-tree|diff-index|count-objects|fsck|var|version|--version|help|check-ignore|check-attr)( |$)
+^git +(worktree +list|submodule +status|stash +(list|show)|notes +(list|show)|remote( +-v)?$|remote +(show|get-url))( |$)
+^git +branch( +(-[avrl]+|-vv|--all|--list|--verbose|--remotes|--show-current|--contains +\S+|--merged( +\S+)?|--no-merged( +\S+)?|--points-at +\S+|--format=\S+|--sort=\S+|--no-color))*$
+^git +tag$
+^git +tag +(-l|--list|-n[0-9]*|--contains +\S+|--points-at +\S+|--sort=\S+)( |$)
+^git +config +(--get|--get-all|--get-regexp|--list|-l|--show-origin|--show-scope)( |$)
+^git +config( +--(global|local|system))? +[A-Za-z][A-Za-z0-9.-]*$
+
+# Tools, read-only subcommands
+^tmux( +-[LS] +\S+)? +(list-[a-z]+|show[a-z-]*|display(-message)? +-p|info|-V)( |$)
+^brew +(list|ls|info|outdated|deps|uses|leaves|search|desc|options|config|doctor|cat|home|formulae|casks|bundle +check|--prefix|--version|--cellar|--repository)( |$)
+^npm +(ls|list|view|info|show|outdated|explain|why|root|prefix|bin|search|docs|repo|version$|-v$|--version$|config +(get|list|ls)|audit( +--\S+)*$)( |$)
+^(pip3?|uv +pip|pipx) +(list|show|freeze|check|inspect|--version|-V)( |$)
+^uv +(tree|--version)( |$)
+^(nvm +(ls|list|current|which|version|--version|ls-remote)|pyenv +(versions|version|which|whence|root|prefix|--version|version-name|global$|local$|shell$))( |$)
+^(docker +(ps|images|logs|inspect|version|info|top|port|diff|history)|kubectl +(get|describe|logs|version|explain|api-resources|top|config +(view|current-context|get-contexts)))( |$)
+^just +(--list|-l|--summary|--show|-s|--dump|--variables|--groups|--help|-h)( |$)
+^(gcloud +(config +(list|get-value)|auth +list|projects +(list|describe)|version|--version)|gsutil +(ls|cat|stat))( |$)
+^gh +(pr +(view|list|diff|checks|status)|issue +(view|list)|repo +view|release +(view|list)|run +(view|list)|auth +status|--version)( |$)
+^(ya +pkg +list|lazygit +--print-config-dir|omf +(list|theme$|channel$|doctor)|fish_config +theme +(list|show|dump)|stow +(--simulate|-n)|claude +(--help|-h))( |$)
+^(node|python3?|ruby|perl|php|java|go|rustc|cargo|swift|swiftc|fish|bash|zsh|sh|nvim|vim|tmux|claude|jq|fzf|rg|fd|bat|eza|delta|lazygit|yazi|stow|hs|luajit|lua|npm|pnpm|yarn|bun|brew|pip3?|uv|docker|kubectl|gcloud|gh|git|omf|ya|just) +(--version|-version|-V|version)$
+^(bash|fish|zsh|sh) +-n( |$)

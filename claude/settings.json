@@ -51,6 +51,16 @@
             "timeout": 10
           }
         ]
+      },
+      {
+        "matcher": "Edit|Write|NotebookEdit|EnterWorktree|Bash|Monitor|PowerShell",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/claude-readonly.sh",
+            "timeout": 10
+          }
+        ]
       }
     ]
   },
