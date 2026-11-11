@@ -49,6 +49,10 @@ keybind = super+alt+k=csi:1;2A
 keybind = super+alt+arrow_right=csi:1;2B
 keybind = super+alt+j=csi:1;2B
 
+# Cmd+K sends Ctrl+Alt+K, which tmux binds to clear the pane and its history;
+# Ghostty's own clear_screen does nothing visible inside tmux
+keybind = super+k=csi:27;7;107~
+
 # theme = Brogrammer
 # theme = Builtin Pastel Dark
 # theme = Cobalt2
