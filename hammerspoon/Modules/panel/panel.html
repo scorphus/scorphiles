@@ -243,6 +243,8 @@
     const k = event.key;
     if (k === "ArrowDown" || (ctrl && (k === "j" || k === "n"))) { select(selected + 1); }
     else if (k === "ArrowUp" || (ctrl && (k === "k" || k === "p"))) { select(selected - 1); }
+    else if (k === "PageDown" || (ctrl && k === "J")) { select(selected + MAX_ROWS); }
+    else if (k === "PageUp" || (ctrl && k === "K")) { select(selected - MAX_ROWS); }
     else if (k === "Enter") { run(selected); }
     else if (k === "Escape") { post({ action: "close" }); }
     else return; // anything else goes to the search field
