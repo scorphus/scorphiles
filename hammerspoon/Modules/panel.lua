@@ -9,6 +9,7 @@
 --
 --   type          filter (fzf, fuzzy and ranked; keys also by name: "ctrl l", "cmd space", "enter")
 --   ⌃J ⌃K ⌃N ⌃P   move (arrows work too)
+--   ⌃⇧J ⌃⇧K       move a page (PgDn and PgUp work too)
 --   ⏎ / click     run it. Hammerspoon: the action; tmux: the keys go to your active
 --                 tmux client; fish (and copy-mode keys): copied to the clipboard
 --   Esc, click outside, ⌃⌥⌘/   close
