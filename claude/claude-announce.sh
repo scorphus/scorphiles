@@ -36,12 +36,12 @@ if [ "$mode" = waiting ]; then
     sound=Basso
     ntype=$(jq -r 'if .hook_event_name == "PermissionRequest" then "permission_prompt" else .notification_type // "" end' <<<"$input")
     case $ntype in
-        permission_prompt) msg="Need permission in session '${name//-/ }'" ;;
+        permission_prompt) sound=Funk; msg="Need permission in session '${name//-/ }'" ;;
         idle_prompt)       msg="Still waiting in session '${name//-/ }'" ;;
         *)                 msg="Waiting in session '${name//-/ }'" ;;
     esac
 else
-    sound=Hero
+    sound=Glass
     msg="Done in session '${name//-/ }'"
 fi
 
