@@ -39,9 +39,9 @@ cmd=$(jq -r '.tool_input.command // ""') || decide ask "guard: could not read th
 
 match=$(first_match "$DENY"); status=$?
 [ $status -eq 2 ] && decide ask "guard: a line of ~/.claude/guard-deny is not a valid regex"
-[ $status -eq 0 ] && decide deny "guard: never run this (matched \"$match\" in ~/.claude/guard-deny)"
+[ $status -eq 0 ] && decide deny "guard: never run this (matched ▶ $match ◀ in ~/.claude/guard-deny)"
 
 match=$(first_match "$ASK"); status=$?
 [ $status -eq 2 ] && decide ask "guard: a line of ~/.claude/guard-ask is not a valid regex"
-[ $status -eq 0 ] && decide ask "guard: matched \"$match\" (~/.claude/guard-ask)"
+[ $status -eq 0 ] && decide ask "guard: matched ▶ $match ◀ (~/.claude/guard-ask)"
 exit 0
