@@ -52,5 +52,5 @@ mode=$(cat ~/.claude/announce-mode 2>/dev/null)
 [ "$mode" = mute ] || afplay "/System/Library/Sounds/$sound.aiff" &
 
 esc=$(printf '%s' "$msg" | sed 's/\\/\\\\/g; s/"/\\"/g')
-hs -c "hs.alert.show(\"$esc\", { textSize = 20, radius = 12 }, hs.screen.mainScreen(), 5)" >/dev/null 2>&1 &
+hs -c "banner(\"$esc\", 5)" >/dev/null 2>&1 &
 [ "$mode" = mute ] || [ "$mode" = ping ] || say "$msg" &
