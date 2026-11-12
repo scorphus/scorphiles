@@ -34,12 +34,31 @@ command -v jq >/dev/null || {
     printf '{"hookSpecificOutput":{"hookEventName":"PreToolUse","permissionDecision":"ask","permissionDecisionReason":"guard: jq is missing"}}'
     exit 0
 }
-cmd=$(jq -r '.tool_input.command // ""') || decide ask "guard: could not read the command"
+input=$(cat)
+cmd=$(jq -r '.tool_input.command // ""' <<<"$input") || decide ask "guard: could not read the command"
 [ -r "$ASK" ] && [ -r "$DENY" ] || decide ask "guard: ~/.claude/guard-ask or guard-deny is missing"
 
 match=$(first_match "$DENY"); status=$?
 [ $status -eq 2 ] && decide ask "guard: a line of ~/.claude/guard-deny is not a valid regex"
 [ $status -eq 0 ] && decide deny "guard: never run this (matched ▶ $match ◀ in ~/.claude/guard-deny)"
+
+# git push runs only on the user's "A: <hash>", the hash being the md5 of the current Unix
+# time rounded up to the minute: the last message the user typed must carry "A: <hash>"
+# for this minute, anywhere in it. A push combined with other commands still asks.
+if printf '%s\n' "$cmd" | /usr/bin/grep -qE '\bgit\s+push\b'; then
+    transcript=$(jq -r '.transcript_path // ""' <<<"$input")
+    said=$(jq -c 'select(.type == "user" and (.isMeta | not)) | .message.content
+        | if type == "string" then . else map(select(.type == "text") | .text) | join("\n") end
+        | select(length > 0)' "$transcript" 2>/dev/null | tail -1 | jq -r .)
+    hash=$(printf '%s\n' "$said" | /usr/bin/grep -oE '\bA:[[:space:]]*[0-9a-f]{32}\b' | head -1 | /usr/bin/grep -oE '[0-9a-f]{32}')
+    now=$(date +%s)
+    [ -n "$hash" ] && [ "$hash" = "$(printf '%s' $(((now + 59) / 60 * 60)) | md5)" ] ||
+        decide deny "guard: git push needs the user's \"A: <hash>\" for this minute; ask the user for it, do not push otherwise"
+    case $cmd in
+        *[\;\&\|]*) decide ask "guard: confirmed push, but combined with other commands" ;;
+    esac
+    decide allow "guard: push confirmed by the user's A: hash"
+fi
 
 match=$(first_match "$ASK"); status=$?
 [ $status -eq 2 ] && decide ask "guard: a line of ~/.claude/guard-ask is not a valid regex"
