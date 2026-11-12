@@ -38,7 +38,8 @@
             "command": "bash ~/.claude/claude-announce.sh waiting",
             "async": true
           }
-        ]
+        ],
+        "matcher": "idle_prompt|elicitation_dialog"
       }
     ],
     "PreToolUse": [
@@ -59,6 +60,17 @@
             "type": "command",
             "command": "bash ~/.claude/claude-readonly.sh",
             "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/claude-announce.sh waiting",
+            "async": true
           }
         ]
       }
