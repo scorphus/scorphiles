@@ -21,6 +21,21 @@ local function setAnnounceMode(mode)
   end
 end
 
+-- read by ~/.claude/claude-guard.sh: while it exists, the ask and deny lists are skipped
+local guardOffFile = os.getenv("HOME") .. "/.claude/guard-off"
+
+local function guardOff()
+  return hs.fs.attributes(guardOffFile) ~= nil
+end
+
+local function toggleGuard()
+  if guardOff() then
+    os.remove(guardOffFile)
+  else
+    io.open(guardOffFile, "w"):close()
+  end
+end
+
 local outline = { { strokeColor = { white = 0 }, fillColor = { alpha = 0 } } }
 
 local icons = {
@@ -72,9 +87,36 @@ c....a.....
 }
 
 toolsMenu = hs.menubar.new(true, "tools")
+-- its own item, so the red ⚠ is an icon as wide as the others, not text with padding
+guardMenu = hs.menubar.new(true, "guard")
+
+local warningIcon = hs.image.imageFromASCII([[ASCII:
+......1......
+.............
+.............
+.............
+......a......
+.............
+.............
+.............
+......a......
+.............
+......b......
+......b......
+3...........2
+]], {
+  { fillColor = { red = 1 }, strokeColor = { red = 1 }, shouldClose = true },
+  { strokeColor = { white = 1 }, lineWidth = 2 },
+  { strokeColor = { white = 1 }, lineWidth = 2 },
+})
 
 local function refreshToolsMenuTitle()
-  toolsMenu:setIcon(icons[announceMode()] or icons.full)
+  local mode, off = announceMode(), guardOff()
+  -- an item without an icon takes no room; removing and re-adding items made macOS lose them
+  guardMenu:setIcon(off and warningIcon or nil, false)
+  -- the full icon only shows when nothing else does, so the menu stays clickable
+  local icon = mode ~= "full" and icons[mode] or (not off and icons.full) or nil
+  toolsMenu:setIcon(icon)
 end
 
 local function modeItem(mode, title)
@@ -88,7 +130,7 @@ local function modeItem(mode, title)
   }
 end
 
-toolsMenu:setMenu(function()
+local function menuItems()
   return {
     { title = "Pick color (⌘⇧⌃P)", fn = colorPicker.pickColor },
     { title = "-" },
@@ -96,6 +138,13 @@ toolsMenu:setMenu(function()
     modeItem("full", "Sound and speech"),
     modeItem("ping", "Sound only"),
     modeItem("mute", "Muted"),
+    { title = "-" },
+    { title = "Skip the command guard (pushes still need the hash)", checked = guardOff(), fn = function()
+      toggleGuard()
+      refreshToolsMenuTitle()
+    end },
   }
-end)
+end
+toolsMenu:setMenu(menuItems)
+guardMenu:setMenu(menuItems)
 refreshToolsMenuTitle()
