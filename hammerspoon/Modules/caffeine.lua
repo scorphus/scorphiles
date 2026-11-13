@@ -48,3 +48,4 @@ menu:setClickCallback(clickCallback)
 setIcon(hs.caffeinate.get("displayIdle"))
 
 module.menu = menu
+return module
