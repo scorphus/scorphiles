@@ -71,7 +71,7 @@ c....a.....
 ]], outline),
 }
 
-toolsMenu = hs.menubar.new()
+toolsMenu = hs.menubar.new(true, "tools")
 
 local function refreshToolsMenuTitle()
   toolsMenu:setIcon(icons[announceMode()] or icons.full)

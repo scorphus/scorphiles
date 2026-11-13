@@ -34,7 +34,7 @@ bcc.........
 
 local module = {}
 
-local menu = hs.menubar.new()
+local menu = hs.menubar.new(true, "caffeine")
 
 function setIcon(state)
   menu:setIcon(state and iconOn or iconOff)
