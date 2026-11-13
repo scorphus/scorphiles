@@ -41,10 +41,14 @@ function setIcon(state)
 end
 
 function clickCallback()
-  setIcon(hs.caffeinate.toggle("displayIdle"))
+  local state = hs.caffeinate.toggle("displayIdle")
+  -- a reload drops the sleep assertion, so the state is kept in hs.settings
+  hs.settings.set("caffeine", state)
+  setIcon(state)
 end
 
 menu:setClickCallback(clickCallback)
+if hs.settings.get("caffeine") then hs.caffeinate.set("displayIdle", true) end
 setIcon(hs.caffeinate.get("displayIdle"))
 
 module.menu = menu
