@@ -16,6 +16,8 @@
 set -u -o pipefail
 ASK=~/.claude/guard-ask
 DENY=~/.claude/guard-deny
+# set from the Hammerspoon menubar: skips the ask and deny lists, never the push hash
+OFF=~/.claude/guard-off
 
 # decide <allow|ask|deny> <reason>: answer Claude Code and stop
 decide() {
@@ -38,9 +40,11 @@ input=$(cat)
 cmd=$(jq -r '.tool_input.command // ""' <<<"$input") || decide ask "guard: could not read the command"
 [ -r "$ASK" ] && [ -r "$DENY" ] || decide ask "guard: ~/.claude/guard-ask or guard-deny is missing"
 
-match=$(first_match "$DENY"); status=$?
-[ $status -eq 2 ] && decide ask "guard: a line of ~/.claude/guard-deny is not a valid regex"
-[ $status -eq 0 ] && decide deny "guard: never run this (matched ▶ $match ◀ in ~/.claude/guard-deny)"
+if [ ! -e "$OFF" ]; then
+    match=$(first_match "$DENY"); status=$?
+    [ $status -eq 2 ] && decide ask "guard: a line of ~/.claude/guard-deny is not a valid regex"
+    [ $status -eq 0 ] && decide deny "guard: never run this (matched ▶ $match ◀ in ~/.claude/guard-deny)"
+fi
 
 # git push runs only on the user's "A: <hash>", the hash being the md5 of the current Unix
 # time rounded up to the minute: the last message the user typed must carry "A: <hash>"
@@ -60,6 +64,7 @@ if printf '%s\n' "$cmd" | /usr/bin/grep -qE '\bgit\s+push\b'; then
     decide allow "guard: push confirmed by the user's A: hash"
 fi
 
+[ -e "$OFF" ] && exit 0
 match=$(first_match "$ASK"); status=$?
 [ $status -eq 2 ] && decide ask "guard: a line of ~/.claude/guard-ask is not a valid regex"
 [ $status -eq 0 ] && decide ask "guard: matched ▶ $match ◀ (~/.claude/guard-ask)"
