@@ -33,6 +33,14 @@ if [ -n "$five_pct" ] || [ -n "$week_pct" ]; then
   line=$(printf "%s  %s" "$line" "$rate_parts")
 fi
 
+# the Bash sandbox: on in the user settings, switched per project by /sandbox in .claude/settings.local.json
+project=$(echo "$input" | jq -r '.workspace.project_dir // .cwd // empty')
+sandbox=$(cat ~/.claude/settings.json "$project/.claude/settings.json" "$project/.claude/settings.local.json" 2>/dev/null |
+  jq -s 'map(.sandbox.enabled | select(. != null)) | last // false')
+if [ "$sandbox" = true ]; then
+  line=$(printf "%s  \033[32msandboxed\033[0m" "$line")
+fi
+
 # a red lock while this pane's Claude is read-only (tmux prefix+R)
 if [ -n "$TMUX_PANE" ] && [ "$(tmux show-options -pqv -t "$TMUX_PANE" @claude_readonly 2>/dev/null)" = 1 ]; then
   line=$(printf "%s  \033[31m\363\260\214\276 read-only\033[0m" "$line")
