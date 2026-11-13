@@ -148,3 +148,6 @@ CLAUDE.md
 
 # Meeting transcripts
 transcript-*.txt
+
+# Claude Code creates this in any project folder while its sandbox is on
+.claude/.cc-writes/
