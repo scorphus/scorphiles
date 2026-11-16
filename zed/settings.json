@@ -7,32 +7,81 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "features": {
-    "edit_prediction_provider": "copilot"
-    // "edit_prediction_provider": "zed"
+  // undo the AI-first layout: file tree back on the left
+  // also check `block` and `sidebar_sied` in `agent`
+  "disable_ai": true,
+  "project_panel": { "dock": "left" },
+  "outline_panel": { "dock": "left" },
+  "collaboration_panel": { "dock": "left" },
+  // "new_window" maps to MatchSubpaths, which excludes worktree roots from
+  // matching, so "zed ." on an already-open project always opened a new
+  // window instead of reusing it.
+  "cli_default_open_behavior": "existing_window",
+  // "cli_default_open_behavior": "new_window",
+  "agent_buffer_font_size": 13.0,
+  "agent_ui_font_size": 16.0,
+  "edit_predictions": {
+    "provider": "copilot"
   },
   "auto_update": false,
   "agent": {
+    "dock": "right",
+    "sidebar_side": "right",
+    "terminal_init_command": "",
     "default_profile": "write",
     "default_model": {
+      "effort": "high",
+      "enable_thinking": true,
       "provider": "copilot_chat",
-      "model": "gpt-4.1"
+      "model": "gpt-5.3-codex"
     }
   },
   "telemetry": {
     "diagnostics": false,
     "metrics": false
   },
-  "ui_font_size": 16,
-  // "buffer_font_family": "Victor Mono",
-  "buffer_font_family": "Zed Plex Mono",
-  // "buffer_font_family": "JetBrains Mono",
+  "markdown_preview": {
+    "max_width": 3582.0
+    // "limit_content_width": false
+  },
+
+  "markdown_preview_font_size": 16,
   "buffer_font_size": 13.0,
+  "buffer_font_family": "RobotoMono Nerd Font Mono",
+  // "buffer_font_family": "JetBrainsMono Nerd Font Mono",
+  // "buffer_font_family": "JetBrains Maple Mono",
+  // "buffer_font_family": "Lilex Nerd Font Propo",
+  // "buffer_font_family": "Lilex Nerd Font Mono",
+  // "buffer_font_family": "Lilex",
+  // "buffer_font_family": "Menlo",
+  // "buffer_font_family": "MesloLGL Nerd Font",
+  // "buffer_font_family": "Monaspace Neon",
+  // "buffer_font_family": "Victor Mono",
+  // "buffer_font_family": "VictorMono Nerd Font Mono",
+  // == ~> ~~> ==> !=
   "buffer_line_height": "standard",
   "theme": {
     "mode": "system",
     "light": "Ayu Light",
-    "dark": "Zedokai Darker (Filter Spectrum)"
+    // "dark": "One Dark"
+    "dark": "Ayu Dark"
+    // "dark": "Ayu Mirage"
+    // "dark": "Gruvbox Dark"
+    // "dark": "Gruvbox Dark Hard"
+    // "dark": "Gruvbox Dark Soft"
+    // "dark": "Zedokai"
+    // "dark": "Zedokai Classic"
+    // "dark": "Zedokai (Filter Octagon)"
+    // "dark": "Zedokai (Filter Ristretto)"
+    // "dark": "Zedokai (Filter Spectrum)"
+    // "dark": "Zedokai (Filter Machine)"
+    // "dark": "Zedokai Darker"
+    // "dark": "Zedokai Darker Classic"
+    // "dark": "Zedokai Darker (Filter Octagon)"
+    // "dark": "Zedokai Darker (Filter Ristretto)"
+    // "dark": "Zedokai Darker (Filter Spectrum)"
+    // "dark": "Zedokai Darker (Filter Machine)"
+    // "dark": "zedokai-darkest-machine"
   },
   "experimental.theme_overrides": {
     "syntax": {
@@ -47,9 +96,6 @@
   "show_whitespaces": "all",
   "wrap_guides": [80, 88, 109, 119],
   "languages": {
-    // "*": {
-    //   "language_servers": ["typos"]
-    // },
     "Gleam": {
       "show_edit_predictions": true
     },
@@ -60,24 +106,21 @@
     "Python": {
       "show_edit_predictions": true,
       "format_on_save": "off",
-      "formatter": [
-        {
-          "external": {
-            "command": "black",
-            "arguments": ["-"]
-          }
-        },
-        {
-          "external": {
-            "command": "isort",
-            "arguments": ["-"]
-          }
+      "formatter": {
+        "language_server": {
+          "name": "ruff"
         }
-      ],
-      "language_servers": ["pyright", "python-refactoring", "ruff"]
+      },
+      "code_actions_on_format": {
+        "source.organizeImports.ruff": true
+      },
+      "language_servers": ["pyright", "python-refactoring", "ruff" , "todohighlight"]
     },
     "Vue.js": {
       "tab_size": 2
+    },
+    "Go": {
+      "language_servers": ["gopls", "golangci-lint" , "todohighlight"]
     }
   },
   "lsp": {
@@ -105,13 +148,39 @@
         // "messages", "off", "verbose"
         // "trace.server": "verbose"
       }
+    },
+    "gopls": {
+        "initialization_options": {
+          "hints": {
+              "assignVariableTypes": true,
+              "compositeLiteralFields": true,
+              "compositeLiteralTypes": true,
+              "constantValues": true,
+              "functionTypeParameters": true,
+              "parameterNames": true,
+              "rangeVariableTypes": true
+          }
+        }
+    },
+    "golangci-lint": {
+      "binary": { "path": "golangci-lint-langserver" },
+      "initialization_options": {
+        "command": [
+          "golangci-lint", "run",
+          "--output.json.path=stdout",
+          "--issues-exit-code=1",
+          "--show-stats=false"
+        ]
+      }
+    },
+    "todohighlight": {
+      "initialization_options": { "severity": "warning" }
     }
   },
   "terminal": {
     "shell": {
       "with_arguments": {
         "program": "/opt/homebrew/bin/fish",
-        // "program": "/bin/zsh",
         "args": ["-li"]
       }
     },
@@ -123,5 +192,21 @@
     "coloring": "indent_aware",
     "active_line_width": 2
   },
-  "unnecessary_code_fade": 0.4
+  "unnecessary_code_fade": 0.4,
+
+  "agent_servers": {
+    "auggie": {
+      "type": "registry",
+    },
+    "cursor": {
+      "type": "registry",
+    },
+    "codex-acp": {
+      "type": "registry",
+    },
+    "claude-acp": {
+      "type": "registry",
+    },
+  },
+
 }

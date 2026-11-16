@@ -32,8 +32,14 @@
       "ctrl-shift-left": "editor::SelectSmallerSyntaxNode",
 
       // transpose
-      "ctrl-t": "editor::RotateForward",
-      "ctrl-shift-t": "editor::RotateBackward"
+      "ctrl-t": "editor::RotateSelectionsForward",
+      "ctrl-shift-t": "editor::RotateSelectionsBackward",
+
+      // Split and move the current file into the new pane
+      "alt-shift-cmd-left": "pane::SplitAndMoveLeft",
+      "alt-shift-cmd-right": "pane::SplitAndMoveRight",
+      "alt-shift-cmd-up": "pane::SplitAndMoveUp",
+      "alt-shift-cmd-down": "pane::SplitAndMoveDown"
     }
   }
 ]
