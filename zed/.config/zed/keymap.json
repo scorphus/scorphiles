@@ -10,7 +10,9 @@
     "context": "Workspace",
     "bindings": {
       "shift shift": "file_finder::Toggle",
-      "G G": "go_to_line::Toggle"
+      "G G": "go_to_line::Toggle",
+      "alt-shift-cmd-left": ["workspace::MoveItemToPaneInDirection", { "direction": "left" }],
+      "alt-shift-cmd-right": ["workspace::MoveItemToPaneInDirection", { "direction": "right" }]
     }
   },
   {
@@ -36,8 +38,6 @@
       "ctrl-shift-t": "editor::RotateSelectionsBackward",
 
       // Split and move the current file into the new pane
-      "alt-shift-cmd-left": "pane::SplitAndMoveLeft",
-      "alt-shift-cmd-right": "pane::SplitAndMoveRight",
       "alt-shift-cmd-up": "pane::SplitAndMoveUp",
       "alt-shift-cmd-down": "pane::SplitAndMoveDown"
     }
