@@ -1,0 +1,2 @@
+\setenv PAGER 'pspg -s 22'
+\pset pager always
