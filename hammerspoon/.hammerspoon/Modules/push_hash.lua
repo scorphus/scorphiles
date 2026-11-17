@@ -8,3 +8,7 @@ local function typePushHash()
 end
 
 hotkey.bind({ "cmd", "alt", "shift" }, "H", "Type the push hash for Claude", { "claude", "md5", "push" }, typePushHash)
+
+hotkey.bind({ "cmd", "alt", "shift" }, "G", "Type \"A: go\" for Claude", { "claude", "go" }, function()
+  hs.eventtap.keyStrokes("A: go")
+end)
