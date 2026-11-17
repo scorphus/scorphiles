@@ -1,0 +1,61 @@
+# the greens of the tmux status bar, as in the shortcut panel
+[mgr]
+cwd             = { fg = "#d1e467" }
+find_keyword    = { fg = "#d1e467", bold = true, underline = true }
+find_position   = { fg = "#b8cb4d", bold = true }
+marker_copied   = { fg = "#a8b946", bg = "#a8b946" }
+marker_cut      = { fg = "#e67e80", bg = "#e67e80" }
+marker_marked   = { fg = "#d1e467", bg = "#d1e467" }
+marker_selected = { fg = "#b8cb4d", bg = "#b8cb4d" }
+count_copied    = { fg = "#292929", bg = "#a8b946" }
+count_cut       = { fg = "#292929", bg = "#e67e80" }
+count_selected  = { fg = "#292929", bg = "#b8cb4d" }
+border_style    = { fg = "#3a3c30" }
+
+[indicator]
+parent  = { fg = "#e4e4dc", bg = "#3a3c30" }
+current = { fg = "#e4e4dc", bg = "#616932", bold = true }
+preview = { fg = "#e4e4dc", bg = "#3a3c30" }
+
+[tabs]
+active   = { fg = "#292929", bg = "#a8b946", bold = true }
+inactive = { fg = "#b8b9ad", bg = "#3a3c30" }
+
+[mode]
+normal_main = { fg = "#292929", bg = "#a8b946", bold = true }
+normal_alt  = { fg = "#e4e4dc", bg = "#3a3c30" }
+select_main = { fg = "#292929", bg = "#d1e467", bold = true }
+select_alt  = { fg = "#e4e4dc", bg = "#3a3c30" }
+unset_main  = { fg = "#292929", bg = "#b8cb4d", bold = true }
+unset_alt   = { fg = "#e4e4dc", bg = "#3a3c30" }
+
+[status]
+perm_type       = { fg = "#a8b946" }
+perm_read       = { fg = "#d1e467" }
+perm_write      = { fg = "#e67e80" }
+perm_exec       = { fg = "#b8cb4d" }
+progress_normal = { fg = "#a8b946", bg = "#3a3c30" }
+progress_error  = { fg = "#e67e80", bg = "#3a3c30" }
+
+[pick]
+border = { fg = "#a8b946" }
+active = { fg = "#d1e467", bold = true }
+
+[input]
+border = { fg = "#a8b946" }
+
+[cmp]
+border = { fg = "#a8b946" }
+
+[tasks]
+border  = { fg = "#a8b946" }
+hovered = { fg = "#d1e467", underline = true }
+
+[spot]
+border = { fg = "#a8b946" }
+title  = { fg = "#a8b946" }
+
+[notify]
+title_info  = { fg = "#a8b946" }
+title_warn  = { fg = "#d1e467" }
+title_error = { fg = "#e67e80" }
