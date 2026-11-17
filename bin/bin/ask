@@ -1,0 +1,51 @@
+#!/bin/bash
+# ask, from Michael Borisov's dotfiles
+# https://github.com/SecTedd/dotfiles
+#
+# Licensed under the MIT license:
+# http://www.opensource.org/licenses/mit-license
+# Copyright (c) 2026 Michael Borisov
+
+# `ask [pane]`: write a Claude Code prompt in Zed and paste it into that Claude's prompt; you
+# press Enter there. From a shell pane, without a pane, claude-menu.sh --choose picks the Claude
+# in this tmux window, with a menu when there are several. As `!ask` inside Claude Code it is
+# that same Claude. Hammerspoon's Modules/ask.lua lays the Zed window over the shell pane (from
+# Claude: the largest other pane of the window) and closes it when the prompt.md tab is closed.
+set -euo pipefail
+pane=${1:-}
+[ -n "${TMUX_PANE:-}" ] || { echo "ask: not inside tmux" >&2; exit 1; }
+[ -n "${CLAUDECODE:-}" ] && pane=$TMUX_PANE
+[ -n "$pane" ] || pane=$(bash ~/.claude/claude-menu.sh --choose "$TMUX_PANE")
+# empty when there is no Claude here, or when the menu is up: picking an entry runs `ask %<pane>`
+[ -n "$pane" ] || exit 0
+
+read -r left top width height cols rows < <(tmux display -p -t "$TMUX_PANE" \
+    '#{pane_left} #{pane_top} #{pane_width} #{pane_height} #{client_width} #{client_height}')
+if [ -n "${CLAUDECODE:-}" ]; then
+    # Zed goes over the largest other pane of this window, or the lower half of Claude's when alone
+    other=$(tmux list-panes -t "$TMUX_PANE" -F '#{pane_width} #{pane_height} #{pane_left} #{pane_top} #{pane_id}' |
+        awk -v me="$TMUX_PANE" '$5 != me { print $1 * $2, $3, $4, $1, $2 }' | sort -rn | head -1)
+    if [ -n "$other" ]; then
+        read -r _ left top width height <<<"$other"
+    else
+        top=$((top + height / 2))
+        height=$((height - height / 2))
+    fi
+fi
+dir=$(mktemp -d)
+trap 'rm -rf "$dir"' EXIT
+open -g "hammerspoon://ask-place?left=$left&top=$top&width=$width&height=$height&cols=$cols&rows=$rows"
+touch "$dir/prompt.md"
+zed -n --wait "$dir/prompt.md"
+open -g hammerspoon://ask-done
+[ -s "$dir/prompt.md" ] || exit 0
+printf '%s' "$(cat "$dir/prompt.md")" | tmux load-buffer -b ask -
+# bracketed paste (-p): newlines stay in the prompt instead of submitting it. Inside Claude Code
+# the paste waits for `!ask` to end, since Claude takes input again only once the command is done
+if [ -n "${CLAUDECODE:-}" ]; then
+    (sleep 0.5; tmux paste-buffer -p -d -b ask -t "$pane") >/dev/null 2>&1 &
+    disown
+else
+    tmux paste-buffer -p -d -b ask -t "$pane"
+    tmux select-pane -t "$pane"
+fi
