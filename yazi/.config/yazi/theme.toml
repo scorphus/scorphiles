@@ -60,6 +60,29 @@ title_info  = { fg = "#a8b946" }
 title_warn  = { fg = "#d1e467" }
 title_error = { fg = "#e67e80" }
 
+# Yazi 26.9.1's own file type colours, folders in our green
+[filetype]
+rules = [
+	# Image
+	{ mime = "**/image/*", fg = "yellow" },
+	# Media
+	{ mime = "**/{audio,video}/*", fg = "magenta" },
+	# Archive
+	{ mime = "**/application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "red" },
+	# Document
+	{ mime = "**/application/{pdf,doc,rtf}", fg = "cyan" },
+	# Virtual file system
+	{ mime = "vfs/{absent,stale}", fg = "gray" },
+	# Special file
+	{ url = "*", is = "orphan", bg = "red" },
+	{ url = "*", is = "exec"  , fg = "green" },
+	# Dummy file
+	{ url = "*", is = "dummy", bg = "red" },
+	{ url = "*/", is = "dummy", bg = "red" },
+	# Fallback
+	{ url = "*/", fg = "#a8b946" }
+]
+
 # Yazi 26.9.1's own icons (yazi-config/preset/theme-dark.toml, MIT), each colour greyed and tinted green
 [icon]
 globs = []
