@@ -12,7 +12,7 @@ FAILED=0
 check() { if [ -z "$2" ]; then echo $'\e[32m✓\e[0m' "$1"; else echo $'\e[31m✗\e[0m' "$1"; echo "$2"; FAILED=1; fi; }
 
 # stow packages; each folder mirrors its files' place under ~
-PACKAGES="bin claude fish ghostty git hammerspoon peco tmux vim yazi zed"
+PACKAGES="bin claude fish ghostty git hammerspoon omf peco tmux vim yazi zed"
 # created as real folders first, so stow links what is inside them, never the folder itself
 REAL_DIRS="$HOME/.config $HOME/.config/fish $HOME/.config/fish/conf.d $HOME/.config/zed $HOME/.claude"
 STOW="stow --ignore=TODO\.md -t $HOME"
@@ -39,6 +39,28 @@ for p in $PACKAGES; do
         run $STOW --restow "$p" || exit 1
     fi
 done
+
+echo "== omf"
+OMF=$HOME/.local/share/omf
+# the bundle's entries missing from omf's folders; omf names a repo without its plugin-/theme- prefix
+missing_omf() {
+    while read -r kind name; do
+        name=${name##*/}; name=${name#plugin-}; name=${name#theme-}; name=${name%.git}
+        dir=pkg; [ "$kind" = theme ] && dir=themes
+        [ -d "$OMF/$dir/$name" ] || echo "  $kind $name"
+    done < omf/.config/omf/bundle
+}
+if [ "$MODE" = --check ]; then
+    check "omf installed" "$([ -d "$OMF" ] || echo "  $OMF missing")"
+    check "omf bundle" "$(missing_omf)"
+else
+    if [ ! -d "$OMF" ]; then
+        installer=$(mktemp)
+        run curl -fsSL -o "$installer" https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install || exit 1
+        run fish "$installer" --noninteractive --yes || exit 1
+    fi
+    [ -z "$(missing_omf)" ] || run fish -c 'omf install' || exit 1
+fi
 
 if [ "$MODE" = --check ]; then
     echo "== shells"

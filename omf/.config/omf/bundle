@@ -1,0 +1,8 @@
+package foreign-env
+package https://github.com/scorphus/plugin-uv
+package nvm
+package peco
+package rustup
+package z
+theme default
+theme scorphish
