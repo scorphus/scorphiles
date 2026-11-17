@@ -9,7 +9,7 @@ cd "$(dirname "$0")"
 MODE=${1:-}
 run() { echo "+ $*"; [ "$MODE" = --dry-run ] || "$@"; }
 FAILED=0
-check() { if [ -z "$2" ]; then echo "✓ $1"; else echo "✗ $1"; echo "$2"; FAILED=1; fi; }
+check() { if [ -z "$2" ]; then echo $'\e[32m✓\e[0m' "$1"; else echo $'\e[31m✗\e[0m' "$1"; echo "$2"; FAILED=1; fi; }
 
 # stow packages; each folder mirrors its files' place under ~
 PACKAGES="bin claude fish ghostty git hammerspoon peco tmux vim zed"
