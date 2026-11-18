@@ -62,6 +62,18 @@ else
     [ -z "$(missing_omf)" ] || run fish -c 'omf install' || exit 1
 fi
 
+echo "== tmux plugins"
+THUMBS=$HOME/.tmux/plugins/tmux-thumbs
+if [ "$MODE" = --check ]; then
+    check "tmux-thumbs" "$([ -x "$THUMBS/target/release/tmux-thumbs" ] || echo "  $THUMBS/target/release/tmux-thumbs missing")"
+else
+    if [ ! -d "$THUMBS" ]; then
+        run git clone -q https://github.com/fcsonline/tmux-thumbs "$THUMBS" || exit 1
+        run git -C "$THUMBS" checkout -q ae91d5f || exit 1
+    fi
+    [ -x "$THUMBS/target/release/tmux-thumbs" ] || run cargo build -q --release --manifest-path "$THUMBS/Cargo.toml" || exit 1
+fi
+
 if [ "$MODE" = --check ]; then
     echo "== shells"
     check "fish starts clean" "$(fish -i -c exit 2>&1)"
