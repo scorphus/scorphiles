@@ -35,3 +35,6 @@ if status is-interactive
     # editor yay
     set -x EDITOR "zed --wait"
 end
+
+# opam (OCaml); does nothing where opam isn't installed
+test -r $HOME/.opam/opam-init/init.fish && source $HOME/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
