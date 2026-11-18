@@ -21,6 +21,8 @@ echo "== packages"
 if [ "$MODE" = --check ]; then
     check Brewfile "$(out=$(brew bundle check --file=Brewfile --verbose --no-upgrade 2>&1) || echo "$out")"
 else
+    # newer brew refuses third-party taps until they are trusted
+    for tap in $(sed -n 's/^tap "\(.*\)"/\1/p' Brewfile); do run brew trust "$tap" || exit 1; done
     brew bundle check --file=Brewfile >/dev/null || run brew bundle --file=Brewfile || exit 1
 fi
 
