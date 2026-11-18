@@ -2,3 +2,4 @@ bin/rtomayko/** linguist-vendored
 bin/holman/** linguist-vendored
 bin/fast-export/** linguist-vendored
 holman-dotfiles-master/** linguist-vendored
+claude/.claude/settings.json filter=claude-settings

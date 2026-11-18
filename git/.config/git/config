@@ -136,3 +136,6 @@
 	role = maintainer
 [push]
 	useForceIfIncludes = true
+[filter "claude-settings"]
+	# named in the dotfiles' .gitattributes: drops the `model` key, which /model rewrites on every switch
+	clean = jq --indent 2 'del(.model)'

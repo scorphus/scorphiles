@@ -10,7 +10,6 @@
   "permissions": {
     "defaultMode": "auto"
   },
-  "model": "opus",
   "skillOverrides": {
     "docs": "off",
     "docx": "off",
@@ -92,7 +91,6 @@
     "rust-analyzer-lsp@claude-plugins-official": true,
     "vercel@claude-plugins-official": true
   },
-  "alwaysThinkingEnabled": true,
   "sandbox": {
     "enabled": false,
     "autoAllowBashIfSandboxed": true,
@@ -176,6 +174,7 @@
       "just *"
     ]
   },
+  "alwaysThinkingEnabled": true,
   "effortLevel": "high",
   "tui": "default",
   "skipDangerousModePermissionPrompt": true,
