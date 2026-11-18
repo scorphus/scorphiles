@@ -62,6 +62,7 @@ Thumbs.db
 # Python object files
 *.pyo
 *.pyc
+__pycache__
 
 
 # Backup files
@@ -146,6 +147,8 @@ cdk.out
 
 # Secret stuff
 .secrets
+.env
+.vercel
 
 # Gleam, babe. Gleam.
 *.beam
