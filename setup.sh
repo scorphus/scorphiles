@@ -62,6 +62,13 @@ else
         run fish "$installer" --noninteractive --yes || exit 1
     fi
     [ -z "$(missing_omf)" ] || run fish -c 'omf install' || exit 1
+    # omf rewrites its bundle as a plain file, replacing the link; link it back if omf changed nothing
+    bundle=$HOME/.config/omf/bundle
+    if [ -e "$bundle" ] && [ ! -L "$bundle" ]; then
+        cmp -s "$bundle" omf/.config/omf/bundle || { echo "omf changed $bundle; compare it with omf/.config/omf/bundle"; exit 1; }
+        run rm "$bundle" || exit 1
+        run $STOW --restow omf || exit 1
+    fi
 fi
 
 echo "== tmux plugins"
