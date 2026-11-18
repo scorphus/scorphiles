@@ -120,6 +120,18 @@ target
 zig-cache
 
 
+# OCaml stuff
+_build/
+*.cmi
+*.cmo
+*.cmx
+*.cma
+*.cmxa
+*.a
+*.byte
+*.native
+
+
 # CDK asset staging directory
 .cdk.staging
 cdk.out
