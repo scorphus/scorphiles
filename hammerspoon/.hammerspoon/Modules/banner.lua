@@ -1,4 +1,6 @@
 local active = {}
+-- a timer nothing refers to can be collected before it fires, which leaves its banner up for good
+local timers = {}
 local style = { font = { size = 18 }, color = { white = 1, alpha = 0.4 }, paragraphStyle = { alignment = "center" } }
 local pad, gap = 18, 8
 
@@ -26,7 +28,8 @@ function banner(text, seconds)
   table.insert(active, c)
   layout()
   c:show(0.15)
-  hs.timer.doAfter(seconds or 5, function()
+  timers[c] = hs.timer.doAfter(seconds or 5, function()
+    timers[c] = nil
     for i, x in ipairs(active) do
       if x == c then table.remove(active, i) end
     end
