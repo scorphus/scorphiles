@@ -12,7 +12,9 @@
       "shift shift": "file_finder::Toggle",
       "G G": "go_to_line::Toggle",
       "alt-shift-cmd-left": ["workspace::MoveItemToPaneInDirection", { "direction": "left" }],
-      "alt-shift-cmd-right": ["workspace::MoveItemToPaneInDirection", { "direction": "right" }]
+      "alt-shift-cmd-right": ["workspace::MoveItemToPaneInDirection", { "direction": "right" }],
+      "alt-shift-cmd-up": ["workspace::MoveItemToPaneInDirection", { "direction": "up" }],
+      "alt-shift-cmd-down": ["workspace::MoveItemToPaneInDirection", { "direction": "down" }]
     }
   },
   {
@@ -35,11 +37,7 @@
 
       // transpose
       "ctrl-t": "editor::RotateSelectionsForward",
-      "ctrl-shift-t": "editor::RotateSelectionsBackward",
-
-      // Split and move the current file into the new pane
-      "alt-shift-cmd-up": "pane::SplitAndMoveUp",
-      "alt-shift-cmd-down": "pane::SplitAndMoveDown"
+      "ctrl-shift-t": "editor::RotateSelectionsBackward"
     }
   }
 ]
