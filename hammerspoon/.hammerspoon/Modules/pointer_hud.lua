@@ -120,7 +120,7 @@ local M = {}
 local size, elements, update = hud()
 M.canvas = hs.canvas.new({ x = 0, y = 0, w = size.w, h = size.h })
 M.canvas:appendElements(elements)
-M.canvas:level(hs.canvas.windowLevels.floating)
+M.canvas:level(hs.canvas.windowLevels.overlay)
 M.canvas:behavior({ "canJoinAllSpaces", "stationary" })
 
 -- apps draw tooltips inside their own windows, under anything we draw; tooltips come up
