@@ -42,6 +42,18 @@ keybind = super+digit_7=csi:27;5;55~
 keybind = super+digit_8=csi:27;5;56~
 keybind = super+digit_9=csi:27;5;57~
 
+# Ctrl+Shift+§ and Ctrl+Shift+1..9 send Ctrl+Alt+0..9, which select tmux panes 0-9
+keybind = ctrl+shift+§=csi:27;7;48~
+keybind = ctrl+shift+digit_1=csi:27;7;49~
+keybind = ctrl+shift+digit_2=csi:27;7;50~
+keybind = ctrl+shift+digit_3=csi:27;7;51~
+keybind = ctrl+shift+digit_4=csi:27;7;52~
+keybind = ctrl+shift+digit_5=csi:27;7;53~
+keybind = ctrl+shift+digit_6=csi:27;7;54~
+keybind = ctrl+shift+digit_7=csi:27;7;55~
+keybind = ctrl+shift+digit_8=csi:27;7;56~
+keybind = ctrl+shift+digit_9=csi:27;7;57~
+
 # Cmd+Opt+← and Cmd+Opt+K send Shift+↑, Cmd+Opt+→ and Cmd+Opt+J send Shift+↓,
 # which select the previous and next tmux window
 keybind = super+alt+arrow_left=csi:1;2A
