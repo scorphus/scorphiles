@@ -121,4 +121,6 @@ if File.exist?(File.expand_path("~/.work-machine"))
   cask "linear"
   cask "paper-design"
   cask "tunnelblick"
+else
+  cask "android-commandlinetools"
 end
