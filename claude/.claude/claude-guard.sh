@@ -49,7 +49,7 @@ fi
 # git push runs only on the user's "A: <hash>", the hash being the md5 of the current Unix
 # time rounded up to the minute: the last message the user typed must carry "A: <hash>"
 # for this minute, anywhere in it. A push combined with other commands still asks.
-if printf '%s\n' "$cmd" | /usr/bin/grep -qE '\bgit\s+push\b'; then
+if printf '%s\n' "$cmd" | /usr/bin/grep -qE '\bgit(\s+(-[cC]|--git-dir|--work-tree|--namespace|--attr-source|--config-env)\s+("[^"]*"|'"'"'[^'"'"']*'"'"'|\S+)|\s+-[^[:space:]]+)*\s+push\b'; then
     transcript=$(jq -r '.transcript_path // ""' <<<"$input")
     said=$(jq -c 'select(.type == "user" and (.isMeta | not)) | .message.content
         | if type == "string" then . else map(select(.type == "text") | .text) | join("\n") end
