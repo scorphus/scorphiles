@@ -2,27 +2,47 @@
 
 local icon = require "Modules/menubar_icon"
 
-local function corner(i, radius)
-  local angle = math.rad(-90 + 60 * i)
-  return { x = 7 + radius * math.cos(angle), y = 8 + radius * math.sin(angle) }
+local RING, ARM, STROKE = 4.2, 2.2, 1.6
+
+local function polar(center, radius, degrees)
+  local angle = math.rad(degrees)
+  return { x = center.x + radius * math.cos(angle), y = center.y + radius * math.sin(angle) }
 end
 
-local function innerBar(i)
-  local from, to = corner(i, 4.2), corner(i + 1, 4.2)
-  local function at(t) return { x = from.x + (to.x - from.x) * t, y = from.y + (to.y - from.y) * t } end
-  return icon.cut(icon.line(1.8, at(0.15), at(0.85)))
+local function ring(center, radius, start, corners)
+  local points = {}
+  for i = 0, corners do points[#points + 1] = polar(center, radius, start + 360 / corners * i) end
+  return icon.line(STROKE, table.unpack(points))
 end
 
-iconOn = icon.image(14, {
-  icon.shape(corner(0, 7.4), corner(1, 7.4), corner(2, 7.4), corner(3, 7.4), corner(4, 7.4), corner(5, 7.4)),
-  innerBar(0),
-  innerBar(2),
-  innerBar(4),
+local function arm(center, radius, degrees)
+  return icon.line(STROKE, polar(center, radius, degrees), polar(center, radius + ARM, degrees))
+end
+
+-- caffeine's skeleton: a hexagon and a pentagon sharing one side, both with sides of length RING
+local hexagon = { x = 6.4, y = 8 }
+local pentagonRadius = RING / (2 * math.sin(math.rad(36)))
+local pentagon = { x = hexagon.x + RING * math.cos(math.rad(30)) + RING / (2 * math.tan(math.rad(36))), y = 8 }
+
+iconOn = icon.image(17.5, {
+  ring(hexagon, RING, -90, 6),
+  ring(pentagon, pentagonRadius, 144, 5),
+  arm(hexagon, RING, -90),
+  arm(hexagon, RING, 90),
+  arm(hexagon, RING, 210),
+  arm(hexagon, RING, 150),
+  arm(pentagon, pentagonRadius, -72),
 })
 
-iconOff = icon.image(14, {
-  icon.line(2, { x = 7, y = 1.2 }, { x = 13, y = 1.2 }, { x = 7, y = 7.4 }, { x = 13, y = 7.4 }),
-  icon.line(2, { x = 1, y = 9.8 }, { x = 5.5, y = 9.8 }, { x = 1, y = 14.8 }, { x = 5.5, y = 14.8 }),
+local function z(width, left, top, right, bottom)
+  return icon.line(width, { x = left, y = top }, { x = right, y = top }, { x = left, y = bottom }, { x = right, y = bottom })
+end
+
+iconOff = icon.image(15.8, {
+  icon.dot(6.3, 9.4, 6.2),
+  icon.cut(icon.dot(9.6, 6.6, 5.4)),
+  z(1.3, 8.4, 6, 10.8, 8.7),
+  z(1.5, 11.4, 0.9, 15, 4.6),
 })
 
 local module = {}
