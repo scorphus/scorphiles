@@ -1,0 +1,23 @@
+#!/bin/bash
+# A push from a Claude Code shell runs only after the command guard confirmed the
+# user's "A: <hash>" and wrote that minute to ~/.claude/push-ok. The guard reads
+# the command as text, so it misses a push behind a variable, an alias or a
+# script; git runs this hook for all of them.
+
+own=$(git rev-parse --git-dir)/hooks/pre-push
+
+# pushes typed by the user are not checked; Claude Code sets CLAUDECODE in its shells
+if [ -n "${CLAUDECODE:-}" ]; then
+    ok=~/.claude/push-ok
+    minute=$(cat "$ok" 2>/dev/null)
+    rm -f "$ok"
+    # the guard confirmed up to the end of the minute; the push itself starts a little later
+    if [ -z "$minute" ] || [ "$(date +%s)" -gt $((minute + 10)) ]; then
+        echo "pre-push: no confirmed \"A: <hash>\" for this minute, not pushing" >&2
+        exit 1
+    fi
+fi
+
+# a global core.hooksPath makes git skip the repo's own hooks folder
+[ -x "$own" ] && exec "$own" "$@"
+exit 0

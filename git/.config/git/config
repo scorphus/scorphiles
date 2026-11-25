@@ -39,6 +39,7 @@
 	colorMoved = zebra
 [core]
 	editor = vim
+	hooksPath = ~/.config/git/hooks
 	whitespace = tab-in-indent,tabwidth=4
 	pager = diff-so-fancy | less -FKMRX
 	commentChar = ";"

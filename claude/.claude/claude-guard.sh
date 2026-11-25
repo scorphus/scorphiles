@@ -58,6 +58,8 @@ if printf '%s\n' "$cmd" | /usr/bin/grep -qE '\bgit(\s+(-[cC]|--git-dir|--work-tr
     now=$(date +%s)
     [ -n "$hash" ] && [ "$hash" = "$(printf '%s' $(((now + 59) / 60 * 60)) | md5)" ] ||
         decide deny "guard: git push needs the user's \"A: <hash>\" for this minute; ask the user for it, do not push otherwise"
+    # git's pre-push hook (~/.config/git/hooks/pre-push) refuses a push from Claude without this
+    printf '%s\n' $(((now + 59) / 60 * 60)) > ~/.claude/push-ok
     case $cmd in
         *[\;\&\|]*) decide ask "guard: confirmed push, but combined with other commands" ;;
     esac
