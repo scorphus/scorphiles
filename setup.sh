@@ -76,6 +76,11 @@ else
     [ -x "$THUMBS/target/release/tmux-thumbs" ] || run cargo build -q --release --manifest-path "$THUMBS/Cargo.toml" || exit 1
 fi
 
+if [ "$MODE" != --check ]; then
+    echo "== macOS preferences"
+    run ./macos.sh || exit 1
+fi
+
 if [ "$MODE" = --check ]; then
     echo "== shells"
     check "fish starts clean" "$(fish -i -c exit 2>&1)"
